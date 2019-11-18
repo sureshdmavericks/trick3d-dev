@@ -1,0 +1,71 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-note"></i> Client Form
+          <div class="card-header-actions">
+                      </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                <div class="form-group">
+                  <label class="col-form-label" for="firstName">Name</label>
+                  <input class="form-control"
+                         id="firstName"
+                         type="text"
+                         formControlName="name"
+                         placeholder="Name"
+                         autocomplete="given-name"
+                         required
+                         autofocus
+                         [ngClass]="{ 'is-invalid': submitted && f.name.errors, 'is-valid': f.name.touched && !f.name.errors }" />
+                  <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['name'].errors.required">Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="address">Address</label>
+                  <input class="form-control"
+                         id="address"
+                         type="text"
+                         formControlName="address"
+                         placeholder="Address"
+                         autocomplete="family-name"
+                         required
+                         [ngClass]="{ 'is-invalid': submitted && f.address.errors, 'is-valid': f.address.touched && !f.address.errors }" />
+                  <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+                    <div *ngIf="f['address'].errors.required">Address is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="username">Website</label>
+                  <input class="form-control"
+                         id="website"
+                         type="text"
+                         formControlName="website"
+                         placeholder="website"
+                         autocomplete="website"
+                         required
+                         [ngClass]="{ 'is-invalid': submitted && f.website.errors, 'is-valid': f.website.touched && !f.website.errors }" />
+                  <div *ngIf="submitted && simpleForm.controls['website'].errors" class="invalid-feedback">
+                    <div *ngIf="f['website'].errors.required">Website is required</div>
+                    <div *ngIf="f['website'].errors.minlength">{{formErrors.website.minLength}}</div>
+                  </div>
+                </div>
+    
+                <div class="form-group">
+                  <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
+                  <button class="btn btn-success mr-1" type="submit" [disabled]="simpleForm.valid">Submit</button>
+                  <button class="btn btn-danger" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button>
+                </div>
+              </form>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
