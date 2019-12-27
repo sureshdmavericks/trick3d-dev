@@ -15,27 +15,27 @@
                   <input class="form-control"
                          id="name"
                          type="text"
-                         formControlName="name"
+                         formControlName="Name"
                          placeholder="Category name"
                          autocomplete="given-name"
                          required
                          autofocus
-                         [ngClass]="{ 'is-invalid': submitted && f.name.errors, 'is-valid': f.name.touched && !f.name.errors }" />
-                  <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                    <div *ngIf="f['name'].errors.required">Category Name is required</div>
+                         [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
+                  <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['Name'].errors.required">Category Name is required</div>
                   </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label" for="parent"> Parent Category</label>
                   <div class="col-md-9">
-                    <select class="form-control" id="parent" formControlName="parent" autofocus [ngClass]="{ 'is-invalid': submitted && f.parent.errors, 'is-valid': f.parent.touched && !f.parent.errors }" >
-                      <option value="cat1">Category 1</option>
-                      <option value="cat2">Category 2</option>
+                    <select class="form-control" id="parent" formControlName="Parent" autofocus [ngClass]="{ 'is-invalid': submitted && f.Parent.errors, 'is-valid': f.Parent.touched && !f.Parent.errors }" >
+                      <option value="" [disabled]>Select Parent</option>
+                      <option *ngFor="let cat of parentData" [value]="cat && cat.CategoryID">{{cat && cat.Name}}</option>
                     </select>
                   </div>
                 </div>
-                
+
                 <div class="form-group">
                   <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
                   <button class="btn btn-success mr-1" type="submit" >Submit</button>

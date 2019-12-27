@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientManagementData, ClientService } from './client.service';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   templateUrl: 'client-management.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class ClientManagementComponent implements OnInit {
 
   error: any;
-  public data: ClientManagementData;
+  public clients: ClientManagementData;
   public filterQuery = '';
 
   constructor(
@@ -18,12 +19,14 @@ export class ClientManagementComponent implements OnInit {
     ) {
     this.dataTableService.getData()
       .subscribe(
-        (data: ClientManagementData) => {
-          setTimeout(() => {
-            this.data = [...data];
-            }, 1000);
-        }, // success path
-        error => this.error = error // error path
+        (data:any) => {
+            this.clients = _.map(data.body, function(x) {
+              return _.assign(x, {
+                FullName: `${x.FirstName} ${x.LastName}`
+              });
+            });
+        },
+        error => this.error = error
       );
   }
 

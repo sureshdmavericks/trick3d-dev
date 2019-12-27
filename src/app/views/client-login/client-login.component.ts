@@ -18,7 +18,7 @@ export class ClientLoginComponent implements OnInit {
     ) {
     this.dataTableService.getData()
       .subscribe(
-        (data: ClientManagementData) => {
+        (data: any) => {
           setTimeout(() => {
             this.data = [...data];
             }, 1000);

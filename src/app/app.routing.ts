@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {
   AuthGuardService as AuthGuard
-} from './auth/auth-guard.service';
+} from './authentication/auth-guard.service';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
@@ -22,9 +22,25 @@ import { CategoryFormComponent } from './views/category-form/category-form.compo
 import { InitialUploadComponent } from './views/asset-management/initial-upload/initial-upload.component';
 import { ClientMarkingComponent } from './views/asset-management/client-marking/client-marking.component';
 import { AdminReviewComponent } from './views/asset-management/admin-review/admin-review.component';
+import { P500Component } from './views/error/500.component';
+import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
 
+  {
+    path: '404',
+    component: P404Component,
+    data: {
+      title: 'Page 404'
+    }
+  },
+  {
+    path: '500',
+    component: P500Component,
+    data: {
+      title: 'Page 500'
+    }
+  },
   {
     path: 'dashboard', pathMatch: 'full', redirectTo: '/dashboard'
   },
@@ -34,6 +50,13 @@ export const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Trick3D Admin Portal Login Page'
+    }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    data: {
+      title: 'Trick3D Admin Portal Forgot Password Page'
     }
   },
 
@@ -47,123 +70,123 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule),
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {
-          expectedRole: 'admin'
+          expectedRole: [1,2,3,4,5]
         }
       },
       {
-    path: 'client-management',
-    component: ClientManagementComponent,
-    // canActivate: [AuthGuard],
-    data: {
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'user-management',
-    component: UserManagementComponent,
-    // canActivate: [AuthGuard],
-    data: {
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'usage-logs',
-    component: UsageLogsComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'client-login',
-    component: ClientLoginComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'client-form',
-    component: ClientFormComponent,
-    // canActivate: [AuthGuard],
-    data: {
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'user-form',
-    component: UserFormComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'notifications',
-    component: NotificationsComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'assets',
-    component: AssetManagementComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'initupload',
-    component: InitialUploadComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'marking',
-    component: ClientMarkingComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'admin-review',
-    component: AdminReviewComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: 'admin'
-    }
-  },
-  {
-    path: 'category-management',
-    component: CategoryManagementComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: ['admin','client']
-    }
-  },
-  {
-    path: 'category-form',
-    component: CategoryFormComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      expectedRole: ['admin','client']
-    }
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    // canActivate: [AuthGuard],
-    data:{
-      title: 'My Profile'
-    }
-  },
+        path: 'client-management',
+        component: ClientManagementComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: [1,3]
+        }
+      },
+      {
+        path: 'user-management',
+        component: UserManagementComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: [1,2,3]
+        }
+      },
+      {
+        path: 'usage-logs',
+        component: UsageLogsComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,3]
+        }
+      },
+      {
+        path: 'client-login',
+        component: ClientLoginComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,3]
+        }
+      },
+      {
+        path: 'client-form',
+        component: ClientFormComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: [1,3]
+        }
+      },
+      {
+        path: 'user-form',
+        component: UserFormComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,2,3]
+        }
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,2,3,4,5]
+        }
+      },
+      {
+        path: 'assets',
+        component: AssetManagementComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,2,3]
+        }
+      },
+      {
+        path: 'initupload',
+        component: InitialUploadComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,2,3]
+        }
+      },
+      {
+        path: 'marking',
+        component: ClientMarkingComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,2,3]
+        }
+      },
+      {
+        path: 'admin-review',
+        component: AdminReviewComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [1,2,3]
+        }
+      },
+      {
+        path: 'category-management',
+        component: CategoryManagementComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [2]
+        }
+      },
+      {
+        path: 'category-form',
+        component: CategoryFormComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole: [2]
+        }
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole:[1,2,3,4,5]
+        }
+      },
     ]
   },
   { path: '**', component: P404Component }

@@ -1,0 +1,21 @@
+<ul class="nav">
+  <ng-template ngFor let-navitem [ngForOf]="navItems">
+    <li
+      *ngIf="!isHasChild(navitem) && navitem.role.includes(myRole)"
+      [ngClass]="{
+        'nav-title': isTitle(navitem),
+        'nav-item': !(isTitle(navitem) || isDivider(navitem)),
+        'nav-divider': isDivider(navitem)
+      }">
+      <span *ngIf="isTitle(navitem)">{{ navitem.name }}</span>
+      <span *ngIf="isDivider(navitem)"></span>
+      <a
+        class="nav-link"
+        *ngIf="!(isTitle(navitem) || isDivider(navitem))"
+        routerLink="{{ navitem.url }}"
+        routerLinkActive="active">
+        <i class="nav-icon" [ngClass]="navitem.icon"></i> {{ navitem.name }}
+      </a>
+    </li>
+  </ng-template>
+</ul>

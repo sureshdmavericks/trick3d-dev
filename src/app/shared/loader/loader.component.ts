@@ -9,7 +9,11 @@ import { Subject } from 'rxjs';
 })
 export class LoaderComponent implements OnInit {
 
+  color = 'accent';
+  mode = 'indeterminate';
+  value = 50;
   isLoading: Subject<boolean> = this.loaderService.isLoading;
+
 
   constructor(private loaderService: LoaderService) { }
 

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ClientService } from '../client-management/client.service';
 
 @Component({
   templateUrl: './client-form.component.html',
+  providers:[ClientService]
 })
 export class ClientFormComponent implements OnInit {
   simpleForm: FormGroup;
@@ -12,6 +14,7 @@ export class ClientFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private dataTableService: ClientService,
     private _router:Router
   ) {
     this.createForm();
@@ -23,9 +26,10 @@ export class ClientFormComponent implements OnInit {
 
   createForm() {
     this.simpleForm = this.fb.group({
-      name: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      website: ['', [Validators.required] ],
+      FullName: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email]],
+      Address: ['', [Validators.required]],
+      Website: ['', [Validators.required] ],
     });
   }
 
@@ -43,15 +47,18 @@ export class ClientFormComponent implements OnInit {
 
     this.submitted = true;
 
+    console.log(this.simpleForm)
+
     // stop here if form is invalid
     if (this.simpleForm.invalid) {
       return;
     }
 
-    // TODO: Use EventEmitter with form value
     console.warn(this.simpleForm.value);
-    // alert('SUCCESS!');
-    this._router.navigateByUrl('client-management')
+    this.dataTableService.create(this.simpleForm.value).subscribe(res=>{
+        console.log(res);
+        this._router.navigateByUrl('client-management')
+    })
   }
 
 }

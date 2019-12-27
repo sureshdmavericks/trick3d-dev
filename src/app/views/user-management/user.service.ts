@@ -7,24 +7,23 @@ import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../../authentication/auth.service';
 
-export interface ClientData {
-  ClientID?: string;
-  FirstName?: string;
-  LastName?: string;
-  FullName: string;
-  Address:string;
-  Website:string;
+export interface UserData {
+  UserID: string;
+  FirstName: string;
+  LastName: string;
+  FullName?: string;
   Email: string;
+  Type:string;
   Status?: boolean;
   CreatedAt?: string;
-  users?: Array<any>;
 }
 
-export interface ClientManagementData extends Array<ClientData> {}
+export interface UserManagementData extends Array<UserData> {}
 
 @Injectable()
-export class ClientService {
-  dataUrl = environment.API_URL + '/users/clients';
+export class UserService {
+
+  dataUrl = environment.API_URL + '/users';
 
   constructor(private http: HttpClient, private _authService: AuthService) {}
 
@@ -33,14 +32,14 @@ export class ClientService {
   }
 
   getData() {
-    return this.http.get<ClientManagementData>(this.dataUrl,{
+    return this.http.get<UserManagementData>(this.dataUrl,{
           observe: 'response',
           headers: new HttpHeaders().set('Authorization', this.authHeader)
         }
       )
       .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
+        retry(3),
+        catchError(this.handleError)
       );
   }
 
@@ -51,9 +50,22 @@ export class ClientService {
         }
       )
       .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
+        retry(3),
+        catchError(this.handleError)
       );
+  }
+
+  status(Status:boolean, id:string){
+    return this.http.patch(
+      this.dataUrl + `/${id}`, {Status}, {
+        observe: 'response',
+        headers: new HttpHeaders().set('Authorization', this.authHeader)
+      }
+    )
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

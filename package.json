@@ -28,7 +28,8 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.6",
-    "@angular/animations": "^8.0.2",
+    "@angular/animations": "^8.2.14",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "^8.0.2",
     "@angular/compiler": "^8.0.2",
     "@angular/core": "^8.0.2",
@@ -56,6 +57,7 @@
     "flag-icon-css": "^3.3.0",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mutationobserver-shim": "^0.3.3",
     "ng-select": "^1.0.2",

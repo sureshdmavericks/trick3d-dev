@@ -43,23 +43,22 @@
 </app-header>
 <div class="app-body">
   <app-sidebar [fixed]="true" [display]="'lg'">
-    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
-    <app-sidebar-minimizer></app-sidebar-minimizer>
+    <!--<app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>-->
+    <app-sidebar-nav-custom [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav-custom>
+    <!--<app-sidebar-minimizer></app-sidebar-minimizer>-->
   </app-sidebar>
   <!-- Main content -->
   <main class="main">
     <!-- Breadcrumb -->
-    <cui-breadcrumb></cui-breadcrumb>
+    <cui-breadcrumb [fixed]="true"></cui-breadcrumb>
     <div class="container-fluid">
       <app-loader></app-loader>
       <router-outlet></router-outlet>
     </div><!-- /.container-fluid -->
   </main>
-  <app-aside [fixed]="true" [display]="false">
-
-  </app-aside>
+  <!--<app-aside [fixed]="true" [display]="false"></app-aside>-->
 </div>
-<app-footer>
+<app-footer [fixed]="true">
   <span><a href="http://trick3d.com/">Trick3D </a> &copy; 2019.</span>
   <span class="ml-auto">Powered by <a href="http://trick3d.com">Trick3D </a></span>
 </app-footer>

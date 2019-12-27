@@ -21,6 +21,7 @@ export interface NavData {
   badge?: NavBadge;
   title?: boolean;
   children?: NavData[];
+  role?: Array<number>;
   variant?: string;
   attributes?: NavAttributes;
   divider?: boolean;
@@ -34,39 +35,36 @@ export const navItems: NavData[] = [
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer',
-    // badge: {
-    //   variant: 'info',
-    //   text: 'NEW'
-    // }
+    role: [1,2,3,4,5]
   },
   {
     name: 'Client Management',
     url: '/client-management',
     icon: 'icon-globe',
-
+    role: [1,3]
   },
   {
     name: 'Category Management',
     url: '/category-management',
     icon: 'icon-list',
-
+    role: [2]
   },
   {
     name: 'Usage Logs',
     url: '/usage-logs',
     icon: 'icon-list',
-
+    role: [1]
   },
   {
     name: 'User Management',
     url: '/user-management',
     icon: 'icon-people',
-
+    role: [1,2,3]
   },
   {
     name: 'Asset Management',
     url: '/assets',
     icon: 'icon-drawer',
-
+    role: [1, 2, 3]
   }
 ];
