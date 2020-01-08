@@ -6,6 +6,7 @@ import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../../authentication/auth.service';
+import { User } from '../user-form/user-form.component';
 
 export interface UserData {
   UserID: string;
@@ -24,6 +25,7 @@ export interface UserManagementData extends Array<UserData> {}
 export class UserService {
 
   dataUrl = environment.API_URL + '/users';
+  roleUrl = environment.API_URL + '/roles';
 
   constructor(private http: HttpClient, private _authService: AuthService) {}
 
@@ -43,7 +45,8 @@ export class UserService {
       );
   }
 
-  create(data:any) {
+  create(data:User) {
+    data.RoleID = +data.RoleID
     return this.http.post(this.dataUrl, data, {
           observe: 'response',
           headers: new HttpHeaders().set('Authorization', this.authHeader)
@@ -58,6 +61,19 @@ export class UserService {
   status(Status:boolean, id:string){
     return this.http.patch(
       this.dataUrl + `/${id}`, {Status}, {
+        observe: 'response',
+        headers: new HttpHeaders().set('Authorization', this.authHeader)
+      }
+    )
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  roles(){
+    return this.http.get(
+      this.roleUrl , {
         observe: 'response',
         headers: new HttpHeaders().set('Authorization', this.authHeader)
       }

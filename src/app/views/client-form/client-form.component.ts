@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, Event } from '@angular/router';
 import { ClientService } from '../client-management/client.service';
+import swal from 'sweetalert2'; 
 
 @Component({
   templateUrl: './client-form.component.html',
@@ -11,6 +12,8 @@ export class ClientFormComponent implements OnInit {
   simpleForm: FormGroup;
   submitted = false;
   formErrors: any;
+  isSwalVisible:boolean = false;
+  swalText:string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +31,7 @@ export class ClientFormComponent implements OnInit {
     this.simpleForm = this.fb.group({
       FullName: ['', [Validators.required]],
       Email: ['', [Validators.required, Validators.email]],
+      FirstName: ['', [Validators.required]],
       Address: ['', [Validators.required]],
       Website: ['', [Validators.required] ],
     });
@@ -54,10 +58,13 @@ export class ClientFormComponent implements OnInit {
       return;
     }
 
-    console.warn(this.simpleForm.value);
     this.dataTableService.create(this.simpleForm.value).subscribe(res=>{
         console.log(res);
+        swal.fire('Hey!', 'Client added successfully','success')
         this._router.navigateByUrl('client-management')
+    }, err =>{
+      console.log(err)
+      swal.fire('Oh!', err.error.error.message, 'error');
     })
   }
 

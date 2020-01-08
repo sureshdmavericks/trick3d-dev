@@ -1,87 +1,263 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <i class="icon-note"></i> Client Form
-          <div class="card-header-actions">
-                      </div>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
-                <div class="form-group">
-                  <label class="col-form-label" for="firstName">Name</label>
-                  <input class="form-control"
-                         id="firstName"
-                         type="text"
-                         formControlName="FullName"
-                         placeholder="Name"
-                         autocomplete="given-name"
-                         required
-                         autofocus
-                         [ngClass]="{ 'is-invalid': submitted && f.FullName.errors, 'is-valid': f.FullName.touched && !f.FullName.errors }" />
-                  <div *ngIf="submitted && f['FullName'].errors" class="invalid-feedback">
-                    <div *ngIf="f['FullName'].errors.required">Name is required</div>
-                  </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="icon-note"></i> Client Registration Form
+                    <div class="card-header-actions"></div>
                 </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="Email">Email</label>
-                  <input class="form-control"
-                         id="Email"
-                         type="text"
-                         formControlName="Email"
-                         placeholder="Email"
-                         autocomplete="given-email"
-                         required
-                         autofocus
-                         [ngClass]="{ 'is-invalid': submitted && f.Email.errors, 'is-valid': f.Email.touched && !f.Email.errors }" />
-                  <div *ngIf="submitted && f['Email'].errors" class="invalid-feedback">
-                    <div *ngIf="f['Email'].errors.required">Email is required</div>
-                    <div *ngIf="f['Email'].errors.email">Invalid email address</div>
-                  </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form
+                                [formGroup]="simpleForm"
+                                novalidate
+                                (ngSubmit)="onSubmit()"
+                                class="needs-validation"
+                            >
+                                <div class="col-md-5 left">
+                                    <div class="form-group">
+                                        <label
+                                            class="col-form-label"
+                                            for="firstName"
+                                            >Name of the Client</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="firstName"
+                                            type="text"
+                                            formControlName="FullName"
+                                            placeholder="Name"
+                                            autocomplete="given-name"
+                                            required
+                                            autofocus
+                                            [ngClass]="{
+                                                'is-invalid':
+                                                    submitted &&
+                                                    f.FullName.errors,
+                                                'is-valid':
+                                                    f.FullName.touched &&
+                                                    !f.FullName.errors
+                                            }"
+                                        />
+                                        <div
+                                            *ngIf="
+                                                submitted &&
+                                                f['FullName'].errors
+                                            "
+                                            class="invalid-feedback"
+                                        >
+                                            <div
+                                                *ngIf="
+                                                    f['FullName'].errors
+                                                        .required
+                                                "
+                                            >
+                                                Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="form-group">
+                                        <label
+                                            class="col-form-label"
+                                            for="address"
+                                            >Address</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="address"
+                                            type="text"
+                                            formControlName="Address"
+                                            placeholder="Address"
+                                            autocomplete="family-name"
+                                            required
+                                            [ngClass]="{
+                                                'is-invalid':
+                                                    submitted &&
+                                                    f.Address.errors,
+                                                'is-valid':
+                                                    f.Address.touched &&
+                                                    !f.Address.errors
+                                            }"
+                                        />
+                                        <div
+                                            *ngIf="
+                                                submitted && f['Address'].errors
+                                            "
+                                            class="invalid-feedback"
+                                        >
+                                            <div
+                                                *ngIf="
+                                                    f['Address'].errors.required
+                                                "
+                                            >
+                                                Address is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label
+                                            class="col-form-label"
+                                            for="username"
+                                            >Website</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="website"
+                                            type="text"
+                                            formControlName="Website"
+                                            placeholder="website"
+                                            autocomplete="website"
+                                            required
+                                            [ngClass]="{
+                                                'is-invalid':
+                                                    submitted &&
+                                                    f.Website.errors,
+                                                'is-valid':
+                                                    f.Website.touched &&
+                                                    !f.Website.errors
+                                            }"
+                                        />
+                                        <div
+                                            *ngIf="
+                                                submitted &&
+                                                simpleForm.controls['Website']
+                                                    .errors
+                                            "
+                                            class="invalid-feedback"
+                                        >
+                                            <div
+                                                *ngIf="
+                                                    f['Website'].errors.required
+                                                "
+                                            >
+                                                Website is required
+                                            </div>
+                                            <div
+                                                *ngIf="
+                                                    f['Website'].errors
+                                                        .minlength
+                                                "
+                                            >
+                                                {{
+                                                    formErrors.website.minLength
+                                                }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 right">
+                                    <div class="form-group">
+                                        <label
+                                            class="col-form-label"
+                                            for="FirstName"
+                                            >Default User Name</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="FirstName"
+                                            type="text"
+                                            formControlName="FirstName"
+                                            placeholder="Default User Name"
+                                            autocomplete="given-email"
+                                            required
+                                            autofocus
+                                            [ngClass]="{
+                                                'is-invalid':
+                                                    submitted && f.FirstName.errors,
+                                                'is-valid':
+                                                    f.FirstName.touched &&
+                                                    !f.FirstName.errors
+                                            }"
+                                        />
+                                        <div
+                                            *ngIf="
+                                                submitted && f['FirstName'].errors
+                                            "
+                                            class="invalid-feedback"
+                                        >
+                                            <div
+                                                *ngIf="
+                                                    f['FirstName'].errors.required
+                                                "
+                                            >
+                                                User Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label
+                                          class="col-form-label"
+                                          for="Email"
+                                          >Email</label
+                                      >
+                                      <input
+                                          class="form-control"
+                                          id="Email"
+                                          type="text"
+                                          formControlName="Email"
+                                          placeholder="Email"
+                                          autocomplete="given-email"
+                                          required
+                                          autofocus
+                                          [ngClass]="{
+                                              'is-invalid':
+                                                  submitted && f.Email.errors,
+                                              'is-valid':
+                                                  f.Email.touched &&
+                                                  !f.Email.errors
+                                          }"
+                                      />
+                                      <div
+                                          *ngIf="
+                                              submitted && f['Email'].errors
+                                          "
+                                          class="invalid-feedback"
+                                      >
+                                          <div
+                                              *ngIf="
+                                                  f['Email'].errors.required
+                                              "
+                                          >
+                                              Email is required
+                                          </div>
+                                          <div
+                                              *ngIf="f['Email'].errors.email"
+                                          >
+                                              Invalid email address
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
+                                        <button
+                                            class="btn btn-success mr-1"
+                                            type="submit"
+                                            [disabled]="simpleForm.invalid"
+                                        >
+                                            Submit
+                                        </button>
+                                        <button
+                                            class="btn btn-danger"
+                                            type="reset"
+                                            [disabled]="
+                                                simpleForm.pristine &&
+                                                !submitted
+                                            "
+                                            (click)="onReset()"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="address">Address</label>
-                  <input class="form-control"
-                         id="address"
-                         type="text"
-                         formControlName="Address"
-                         placeholder="Address"
-                         autocomplete="family-name"
-                         required
-                         [ngClass]="{ 'is-invalid': submitted && f.Address.errors, 'is-valid': f.Address.touched && !f.Address.errors }" />
-                  <div *ngIf="submitted && f['Address'].errors" class="invalid-feedback">
-                    <div *ngIf="f['Address'].errors.required">Address is required</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="username">Website</label>
-                  <input class="form-control"
-                         id="website"
-                         type="text"
-                         formControlName="Website"
-                         placeholder="website"
-                         autocomplete="website"
-                         required
-                         [ngClass]="{ 'is-invalid': submitted && f.Website.errors, 'is-valid': f.Website.touched && !f.Website.errors }" />
-                  <div *ngIf="submitted && simpleForm.controls['Website'].errors" class="invalid-feedback">
-                    <div *ngIf="f['Website'].errors.required">Website is required</div>
-                    <div *ngIf="f['Website'].errors.minlength">{{formErrors.website.minLength}}</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
-                  <button class="btn btn-success mr-1" type="submit" [disabled]="simpleForm.invalid">Submit</button>
-                  <button class="btn btn-danger" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button>
-                </div>
-              </form>
             </div>
         </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>

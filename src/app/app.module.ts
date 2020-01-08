@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -91,6 +92,7 @@ import { SidebarNavCustomComponent } from './containers/sidebar-nav-custom/sideb
 import { LoginService } from './views/login/login.service';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { ConfirmComponent } from './views/modals/confirm/confirm.component';
+import { CreatePasswordComponent } from './views/create-password/create-password.component';
 
 @NgModule({
   imports: [
@@ -98,6 +100,7 @@ import { ConfirmComponent } from './views/modals/confirm/confirm.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    SweetAlert2Module.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     JwtModule.forRoot({
@@ -138,7 +141,8 @@ import { ConfirmComponent } from './views/modals/confirm/confirm.component';
     CategoryManagementComponent,
     CategoryFormComponent,
     ForgotPasswordComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    CreatePasswordComponent
   ],
   entryComponents: [
     ChangeAssetCategoryComponent,

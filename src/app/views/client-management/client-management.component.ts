@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientManagementData, ClientService } from './client.service';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import swal from 'sweetalert2'
 
 @Component({
   templateUrl: 'client-management.component.html',
@@ -22,9 +23,11 @@ export class ClientManagementComponent implements OnInit {
         (data:any) => {
             this.clients = _.map(data.body, function(x) {
               return _.assign(x, {
-                FullName: `${x.FirstName} ${x.LastName}`
+                FullName: `${x.FirstName} ${x.LastName}`,
+                users: x.users.length
               });
             });
+            console.log(this.clients)
         },
         error => this.error = error
       );
@@ -35,6 +38,16 @@ export class ClientManagementComponent implements OnInit {
 
   addClient(){
     this.router.navigateByUrl('/client-form')
+  }
+
+  resendLink($event, ClientID){
+    if(ClientID){
+      this.dataTableService.resend(ClientID).subscribe(response=>{
+        swal.fire('Yeah!',response.body.message, 'success')
+      }, err=>{
+        swal.fire('Oh!',err.error.error.message, 'error')
+      })
+    }
   }
 
   public toInt(num: string) {

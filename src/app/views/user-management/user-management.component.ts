@@ -52,7 +52,7 @@ export class UserManagementComponent implements OnInit {
 
     this.modalRef = this.modalService.show(ConfirmComponent, {
       initialState: {
-        prompt: 'Are you sure you want to delete this record?',
+        prompt: 'Are you sure you want to do this?',
         callback: (result) => {
           if(result == 'no') {
             event.target.checked = !event.target.checked;
