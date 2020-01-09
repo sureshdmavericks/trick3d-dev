@@ -55,6 +55,18 @@ export class ClientService {
       );
   }
 
+  status(Status:boolean, id:string){
+    return this.http.patch(
+      this.dataUrl + `/${id}`, {Status}, {
+        observe: 'response',
+        headers: new HttpHeaders().set('Authorization', this.authHeader)
+      }
+    )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   resend(data:any):Observable<any> {
     return this.http.post(this.resendUrl, data, {
           observe: 'response',

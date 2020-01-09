@@ -33,6 +33,7 @@
             <th style="width: 15%">
               &nbsp;
             </th>
+            <th>Status</th>
             <th>Actions</th>
             <th>&nbsp;</th>
           </tr>
@@ -41,12 +42,25 @@
           <tr *ngFor="let item of mf.data">
             <td>{{item.FullName}}</td>
             <td>{{item.Email}}</td>
-            <td align="center">{{item.users}}</td>
-            <td align="center"><button class="btn btn-sm btn-primary text-white" (click)="resendLink($event,item.ClientID)">Resend Invitation <i class="icon icon-login"></i></button></td>
+            <td align="center">{{item.users.length}}</td>
+            <td align="center">
+              <div class="center">
+                <button *ngIf="item.isActive.length==0" class="btn btn-sm btn-primary text-white" (click)="resendLink($event,item.ClientID)">Resend Invitation <i class="icon icon-login"></i></button>
+                <p *ngIf="item.isActive.length>0">Registered</p>
+              </div>
+            </td>
             <td>
-                <a href="#"><span class="fa fa-pencil-square-o"></span></a>
-                <a href="#"><span class="fa fa-trash-o text-danger"></span></a>
+              <label class="switch switch-label switch-pill switch-primary">
+                <input type="checkbox" class="switch-input" [checked]="item.Status" (change)="changeStatus($event, item)">
+                <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+              </label>
+            </td>
+            <td align="center">
+              <div class="center">
+                <a href="javascript:void"><span class="fa fa-pencil-square-o"></span></a>
+                <a href="javascript:void"><span class="fa fa-trash-o text-danger"></span></a>
                 <!-- <a href="#"><span class="fa fa-eye"></span></a> -->
+              </div>
             </td>
             <td>
               <button type="button" class="btn btn-sm btn-info text-white">Login <i class="icon icon-login"></i></button>
@@ -55,7 +69,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="6">
+            <td colspan="7">
               <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
             </td>
           </tr>
