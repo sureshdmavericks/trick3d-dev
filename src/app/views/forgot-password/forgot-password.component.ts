@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgotForm = this.fb.group({
-      email:['', [Validators.required, Validators.email]]
+      Email:['', [Validators.required, Validators.email]]
     })
   }
 
@@ -34,9 +35,11 @@ export class ForgotPasswordComponent implements OnInit {
     console.log(form.value);
     this._loginService.forgot(form.value).subscribe((res:any)=>{
       console.log(res)
+      swal.fire('Hey!', 'Reset Password link sent','success')
       this._router.navigate(['/login']);
     }, error=>{
       console.log(error)
+      swal.fire('Oh!', error.error.error.message, 'error');
     })
 
   }

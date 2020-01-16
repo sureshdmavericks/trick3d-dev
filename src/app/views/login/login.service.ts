@@ -33,8 +33,9 @@ export class LoginService {
       // );
   }
 
-  forgot(email:string){
-    return this.http.post(ForgotUrl, {Email:email}, this.accessWithOptions)
+  forgot(Email:any){
+    console.log(Email)
+    return this.http.post(ForgotUrl, Email, this.accessWithOptions)
   }
 
   private handleError(error: HttpErrorResponse) {
