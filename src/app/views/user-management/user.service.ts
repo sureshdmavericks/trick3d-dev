@@ -13,6 +13,7 @@ export interface UserData {
   FirstName: string;
   LastName: string;
   FullName?: string;
+  UserName?:string;
   Email: string;
   Type:string;
   Status?: boolean;
@@ -46,7 +47,7 @@ export class UserService {
   }
 
   getProfile() {
-    return this.http.get<UserManagementData>(`${this.dataUrl}/me`,{
+    return this.http.get<UserData>(`${this.dataUrl}/me`,{
           observe: 'response',
           headers: new HttpHeaders().set('Authorization', this.authHeader)
         }
@@ -76,6 +77,15 @@ export class UserService {
     .pipe(
       retry(3),
       catchError(this.handleError)
+    );
+  }
+
+  updateProfile(data:any){
+    return this.http.patch(
+      `${this.dataUrl}/profile`, data, {
+        observe: 'response',
+        headers: new HttpHeaders().set('Authorization', this.authHeader)
+      }
     );
   }
 

@@ -42,10 +42,10 @@ export class DefaultLayoutComponent implements OnDestroy {
       sessionData.shift();
       this._authService.setData(sessionData[0], true);
       console.log('sessionStorage::',sessionStorage.getItem('token'))
-      // window.location.reload();
+      window.location.reload();
     }else{
       this._authService.setData(null);
-      // this.router.navigate(['/']);
+      this.router.navigate(['/']);
     }
     
   }

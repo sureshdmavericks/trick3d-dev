@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit{
 
   checkAuth() {
     let loginData = this._authService.getData();
+    console.log('loginData::',loginData)
     if (loginData && loginData.data) {
       this.router.navigate(['/dashboard']);
     } else {

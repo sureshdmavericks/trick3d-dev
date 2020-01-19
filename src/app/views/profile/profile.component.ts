@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user-management/user.service';
+import swal from "sweetalert2"
 
 @Component({
   templateUrl: './profile.component.html',
@@ -16,14 +17,28 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _router:Router
+    private _router:Router,
+    private _userService: UserService
   ) {
     this.createForm();
    }
 
   ngOnInit() {
+    this.getProfile();
   }
-  
+
+  getProfile(){
+    this._userService.getProfile().subscribe(response=>{
+      console.log(response.body);
+      this.simpleForm.patchValue({
+        Email:response.body.Email,
+        FirstName: response.body.FirstName,
+        LastName: response.body.LastName,
+        UserName: response.body.UserName
+      })
+    })
+  }
+
   createForm() {
     this.simpleForm = this.fb.group({
       UserName: ['', [Validators.required]],
@@ -50,15 +65,19 @@ export class ProfileComponent implements OnInit {
 
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.simpleForm.invalid) {
       return;
     }
 
-    // TODO: Use EventEmitter with form value
     console.warn(this.simpleForm.value);
-    // alert('SUCCESS!');
-    this._router.navigateByUrl('assets')
+    let data = {
+      FirstName: this.simpleForm.controls['FirstName'].value,
+      LastName: this.simpleForm.controls['LastName'].value
+    }
+    this._userService.updateProfile(data).subscribe(response=>{
+      console.log(response.body)
+      swal.fire("Success!", `Your profile has been updated.`, "success");
+    })
   }
 }
 
