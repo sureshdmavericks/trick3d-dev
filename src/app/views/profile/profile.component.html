@@ -1,128 +1,55 @@
 <div class="animated fadeIn trick-profile">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
         <!-- <div class="card"> -->
-          <div class="col-md-12 trick-header">
-            <!-- <i class="icon-note"></i> Asset Initial Upload Form
+        <div class="col-md-12 trick-header">
+          <!-- <i class="icon-note"></i> Asset Initial Upload Form
             <div class="card-header-actions">
             </div> -->
-            <div class="col-md-2 trick-profile-left">
-                <span class="profile-photo-bdr"><img class="profile-img" src="../assets/img/profile.png"></span>
-            </div>
-            <div class="col-md-10 trick-profile-right">
-                <!-- <a href="#" class="trick-edit-pctre">Edit Profile Picture</a> -->
-                <a href="#" class="trick-edit-pctre">Change Password</a>
-                <div class="form-group row trick-form">
-                        <span class="trick-user">User Name</span>
-                        <input type="text" formControlName="username" class="form-control trick-profile-usrname" placeholder="Username" autocomplete="username" required/>
-                      </div>
+          <div class="col-md-2 trick-profile-left">
+            <span class="profile-photo-bdr"><img class="profile-img" src="../assets/img/profile.png" /></span>
+          </div>
+          <div class="col-md-10 trick-profile-right">
+            <!-- <a href="#" class="trick-edit-pctre">Edit Profile Picture</a> -->
+            <a routerLink="/" class="trick-edit-pctre">Change Password</a>
+            <div class="form-group row trick-form">
+              <span class="trick-user">User Name</span>
+              <input type="text" formControlName="UserName" class="form-control trick-profile-usrname"
+                placeholder="Username" autocomplete="username" required />
             </div>
           </div>
-          <div class="col-md-12 trick-body">
-              <div class="trick-body-form">
-            <span class="col-md-2 trick-user">First Name</span>
-            <input type=text placeholder="First name" class="col-md-8 form-control trick-profile-usrname">
-            </div>
-            <div class="trick-body-form">
-                    <span class="col-md-2 trick-user">Last Name</span>
-                    <input type=text placeholder="Last name" class="col-md-8 form-control trick-profile-usrname">
-                    </div>
-                    <div class="trick-body-form">
-                    <span class="col-md-2 trick-user">Email</span>
-                    <input type="Email" placeholder="Email" class="col-md-8 form-control trick-profile-usrname">
-                    </div>
-                    <div class="trick-body-form">
-                            <span class="col-md-2 trick-user">Phone Number</span>
-                            <input type="Tel" placeholder="Phone number" class="col-md-8 form-control trick-profile-usrname">
-                            </div>                            
-          
+        </div>
+        <div class="col-md-12 trick-body">
           <div class="trick-body-form">
-                <span class="col-md-2 trick-user">&nbsp;</span>
-                <div class="col-md-8 trick-profile-btn">
-              <button class="btn profile-submit-btn" value="Reset">Reset</button>
-              <button class="btn profile-reset-btn" value="Submit">Submit</button>
-              </div>
+            <span class="col-md-2 trick-user">First Name</span>
+            <input type="text" placeholder="FirstName" class="col-md-8 form-control trick-profile-usrname" />
           </div>
-          <!-- <div class="card-body"> -->
-            <!-- <div class="row">
-              <div class="col-md-6">
-                <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="_client">Client</label>
-                    <div class="col-md-8">
-                      <select class="form-control" formControlName="client" id="_client">
-                        <option value="">Select Client</option>
-                        <option value="Hitesh">Hitesh</option>
-                        <option value="Elliott">Elliott</option>
-                        <option value="Dinesh">Dinesh</option>
-                      </select>
-                      <div *ngIf="submitted && f['client'].errors" class="invalid-feedback">
-                        <div *ngIf="f['client'].errors.required">Client is required</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="_category">Category</label>
-                    <div class="col-md-8">
-                    <select class="form-control" formControlName="category" id="_category">
-                      <option value="">Select Category</option>
-                      <option value="Category 1">Category 1</option>
-                      <option value="Category 2">Category 2</option>
-                      <option value="Category 3">Category 3</option>
-                      <option value="Category 4">Category 4</option>
-                    </select>
-                    <div *ngIf="submitted && f['client'].errors" class="invalid-feedback">
-                      <div *ngIf="f['client'].errors.required">Client is required</div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="_name">Asset Name</label>
-                    <div class="col-md-8">
-                    <input class="form-control"
-                           id="_name"
-                           type="text"
-                           formControlName="asset_name"
-                           placeholder="Asset Name"
-                           autocomplete="family-name"
-                           required
-                           [ngClass]="{ 'is-invalid': submitted && f.asset_name.errors, 'is-valid': f.asset_name.touched && !f.address.errors }" />
-                    <div *ngIf="submitted && f['asset_name'].errors" class="invalid-feedback">
-                      <div *ngIf="f['asset_name'].errors.required">Asset Name is required</div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="file-input">Asset Upload</label>
-                    <div class="col-md-8">
-                      <input type="file" id="file-input" name="file-input">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="file-input">PNG 1</label>
-                    <div class="col-md-8">
-                      <input type="file" id="file-input" name="file-input">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-md-4 col-form-label" for="file-input">PNG 2</label>
-                    <div class="col-md-8">
-                      <input type="file" id="file-input" name="file-input">
-                    </div>
-                  </div>
-  
-                  <div class="form-actions">
-                    <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
-                    <!-- <button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.valid">Submit</button>
-                    <button class="btn btn-danger" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button>
-                    <button class="btn btn-secondary" type="button" (click)="cancel()">Cancel</button>
-                  </div> -->
-                <!-- </form>
-              </div>
-          </div> -->
-        <!-- </div>
-      </div> -->
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">Last Name</span>
+            <input type="text" placeholder="Lastname" class="col-md-8 form-control trick-profile-usrname" />
+          </div>
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">Email</span>
+            <input type="Email" placeholder="Email" class="col-md-8 form-control trick-profile-usrname" />
+          </div>
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">Phone Number</span>
+            <input type="Tel" placeholder="Phone number" class="col-md-8 form-control trick-profile-usrname" />
+          </div>
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">&nbsp;</span>
+            <div class="col-md-8 trick-profile-btn">
+              <button class="btn profile-submit-btn" value="Reset">
+                Reset
+              </button>
+              <button class="btn profile-reset-btn" value="Submit">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  </div>
-  
+</div>

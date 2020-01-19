@@ -24,6 +24,7 @@ import { ClientMarkingComponent } from './views/asset-management/client-marking/
 import { AdminReviewComponent } from './views/asset-management/admin-review/admin-review.component';
 import { P500Component } from './views/error/500.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './views/change-password/change-password.component';
 
 export const routes: Routes = [
 
@@ -182,6 +183,14 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard],
+        data:{
+          expectedRole:[1,2,3,4,5]
+        }
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
         canActivate: [AuthGuard],
         data:{
           expectedRole:[1,2,3,4,5]

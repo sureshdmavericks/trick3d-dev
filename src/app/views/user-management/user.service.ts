@@ -45,6 +45,14 @@ export class UserService {
       );
   }
 
+  getProfile() {
+    return this.http.get<UserManagementData>(`${this.dataUrl}/me`,{
+          observe: 'response',
+          headers: new HttpHeaders().set('Authorization', this.authHeader)
+        }
+      )
+  }
+
   create(data:User) {
     data.RoleID = +data.RoleID
     return this.http.post(this.dataUrl, data, {

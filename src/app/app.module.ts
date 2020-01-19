@@ -94,6 +94,7 @@ import { LoginService } from './views/login/login.service';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 import { ConfirmComponent } from './views/modals/confirm/confirm.component';
 import { CreatePasswordComponent } from './views/create-password/create-password.component';
+import { ChangePasswordComponent } from './views/change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -145,7 +146,8 @@ import { CreatePasswordComponent } from './views/create-password/create-password
     CategoryFormComponent,
     ForgotPasswordComponent,
     ConfirmComponent,
-    CreatePasswordComponent
+    CreatePasswordComponent,
+    ChangePasswordComponent
   ],
   entryComponents: [
     ChangeAssetCategoryComponent,
