@@ -15,6 +15,7 @@ export interface AssetMgntData extends Array<AssetData> {}
 @Injectable()
 export class AssetService {
   dataUrl = 'assets/assets.json';
+  // dataUrl = `${environment.API_URL}/assets`;
 
   constructor(private http: HttpClient) {}
 

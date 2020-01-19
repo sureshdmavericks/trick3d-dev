@@ -1,0 +1,98 @@
+.trick-profile{
+    .trick-header,{
+        background-color: transparent;
+        border-bottom: 0px;
+    .trick-profile-left{
+        float: left;
+    .profile-photo-bdr{
+        width: 147px;
+    height: 100px;
+    float: left;
+    border: 1px solid #3262A5;
+    border-radius: 4px;
+    .profile-img{
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75px;
+    padding-top: 11px;
+    }
+    }
+}
+.trick-profile-right{
+     float: left;
+     .trick-edit-pctre{
+         display: block;
+         color: #3262A5;
+     }
+     .trick-form{
+         padding-left: 15px;
+         padding-top: 18px;
+         .trick-user{
+             float: left;
+             line-height: 33px;
+             color: #3262A5;
+         }
+         .trick-profile-usrname{
+            float: left;
+            width: 200px;
+            background-color: #a4a6aa;
+            color: #3262A5;
+            margin-left: 15px;
+            &::placeholder{
+                color: #3262A5;
+            }
+         }
+     }
+}
+}
+.trick-body{
+    float: left;
+    padding-top: 38px;
+    padding-left: 34px;
+    .trick-body-form{
+        width: 100%;
+        float: left;
+        padding-bottom: 10px;
+    .trick-user{
+        color:#3262A5;
+        float: left;
+        line-height: 33px;
+    }
+    .trick-profile-usrname{
+        float: left;
+        width: 200px;
+        margin-left: 100px;
+        border: 1px solid #3262A5;
+        &::placeholder{
+            color: #3262A5;
+        }
+    }
+}
+.trick-profile-btn{
+        float: left;
+    width: 200px;
+    margin-left: 100px;
+    padding:0px;
+    margin-top: 54px;
+    .profile-submit-btn{
+        color: #fff;
+        background-color: #3262A5;
+        &:hover{
+            background-color: #fff;
+            color:#3262A5;
+            border: 1px solid #3262A5
+        }
+    }
+    .profile-reset-btn{
+        color: #3262A5;
+        background-color: #fff;
+        border: 1px solid #3262A5;
+        &:hover{
+            background-color: #3262A5;
+            color:#fff;
+        }
+    }
+}
+}
+}

@@ -1,0 +1,7 @@
+<div class="modal-body text-center">
+  <p>{{prompt}}</p>
+  {{Status}}
+  {{user | json }}
+  <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+  <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+</div>

@@ -26,6 +26,7 @@ export interface ClientManagementData extends Array<ClientData> {}
 export class ClientService {
   dataUrl = environment.API_URL + '/clients';
   resendUrl = environment.API_URL + '/users/resend/link';
+  clientLoginUrl = environment.API_URL + '/users/client/login';
 
   constructor(private http: HttpClient, private _authService: AuthService) {}
 
@@ -69,6 +70,17 @@ export class ClientService {
 
   resend(data:any):Observable<any> {
     return this.http.post(this.resendUrl, data, {
+          observe: 'response',
+          headers: new HttpHeaders().set('Authorization', this.authHeader)
+        }
+      )
+      .pipe(
+        catchError(this.handleError) // then handle the error
+      );
+  }
+
+  clientLogin(data:any):Observable<any> {
+    return this.http.post(this.clientLoginUrl, data, {
           observe: 'response',
           headers: new HttpHeaders().set('Authorization', this.authHeader)
         }

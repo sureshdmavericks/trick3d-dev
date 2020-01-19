@@ -1,3 +1,9 @@
 .nav-link {
   font-size: 0.86rem!important;
+  &:hover{
+    background-color: #3262A5;
+  }
+  &.active{
+    background-color: #3262A5;
+  }
 }

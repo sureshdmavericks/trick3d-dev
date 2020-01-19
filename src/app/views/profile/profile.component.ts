@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+
+  // simpleForm: FormGroup;
+  // submitted = false;
+  // formErrors: any;
+
+  // constructor(
+  //   private fb: FormBuilder,
+  //   private _router:Router
+  // ) {
+  //   this.createForm();
+  //  }
 
   ngOnInit() {
   }
+  // createForm() {
+  //   this.simpleForm = this.fb.group({
+  //     client: ['', [Validators.required]],
+  //     category: ['', [Validators.required]],
+  //     asset_name: ['', [Validators.required] ],
+  //     asset_upload: ['', [Validators.required] ],
+  //     asset_png1: ['', [Validators.required] ],
+  //     asset_png2: ['', [Validators.required] ],
+  //   });
+  // }
 
+  // // convenience getter for easy access to form fields
+  // get f() { return this.simpleForm.controls; }
+
+  // onReset() {
+
+  //   this.submitted = false;
+  //   this.simpleForm.reset();
+
+  // }
+
+  // cancel(){
+  //   this._router.navigateByUrl('assets')
+  // }
+
+  // onSubmit() {
+
+  //   this.submitted = true;
+
+  //   // stop here if form is invalid
+  //   if (this.simpleForm.invalid) {
+  //     return;
+  //   }
+
+  //   // TODO: Use EventEmitter with form value
+  //   console.warn(this.simpleForm.value);
+  //   // alert('SUCCESS!');
+  //   this._router.navigateByUrl('assets')
+  // }
 }
+
+

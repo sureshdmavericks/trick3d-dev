@@ -1,4 +1,4 @@
-<div class="app-body">
+<div class="app-body login-body">
   <main class="main d-flex align-items-center">
     <div class="container">
       <div class="row">
@@ -6,14 +6,14 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" name="loginForm">
+                <form class="trick-login" [formGroup]="loginForm" (ngSubmit)="onSubmit()" name="loginForm">
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <div class="input-group mb-3">
-                    <div class="input-group-prepend">
+                    <!-- <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-user"></i></span>
-                    </div>
-                    <input type="text" formControlName="username" class="form-control" placeholder="Username" autocomplete="username" required
+                    </div> -->
+                    <input type="text" formControlName="username" class="form-control login-form" placeholder="Username" autocomplete="username" required
                       [ngClass]="{ 'is-invalid': submitted && f.username.errors, 'is-valid': f.username.touched && !f.username.errors }"
                     />
                     <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
@@ -21,10 +21,10 @@
                     </div>
                   </div>
                   <div class="input-group mb-4">
-                    <div class="input-group-prepend">
+                    <!-- <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
-                    </div>
-                    <input type="password" formControlName="password" class="form-control" placeholder="Password" autocomplete="current-password" required
+                    </div> -->
+                    <input type="password" formControlName="password" class="form-control login-form" placeholder="Password" autocomplete="current-password" required
                     [ngClass]="{ 'is-invalid': submitted && f.password.errors, 'is-valid': f.password.touched && !f.password.errors }"
                     />
                     <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
@@ -36,7 +36,7 @@
                   </div>
                   <div class=row *ngIf="login && login.error">
                       <div class="col-12">
-                        <alert type="danger">
+                        <alert type="danger" class="login-form">
                           <strong>Oh!</strong> {{login.message}}
                         </alert>
                       </div>

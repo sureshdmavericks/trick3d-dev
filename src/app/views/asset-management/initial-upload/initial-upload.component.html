@@ -1,9 +1,10 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn initial-upload-foam">
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <i class="icon-note"></i> Asset Initial Upload Form
+      <div class="card no-border">
+        <div class="card-header no-bgclr">
+          <!-- <i class="icon-note"></i> -->
+           Asset Initial Upload Form
           <div class="card-header-actions">
           </div>
         </div>
@@ -14,7 +15,7 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="_client">Client</label>
                   <div class="col-md-8">
-                    <select class="form-control" formControlName="client" id="_client">
+                    <select class="form-control form-clr" formControlName="client" id="_client">
                       <option value="">Select Client</option>
                       <option value="Hitesh">Hitesh</option>
                       <option value="Elliott">Elliott</option>
@@ -28,7 +29,7 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="_category">Category</label>
                   <div class="col-md-8">
-                  <select class="form-control" formControlName="category" id="_category">
+                  <select class="form-control form-clr" formControlName="category" id="_category">
                     <option value="">Select Category</option>
                     <option value="Category 1">Category 1</option>
                     <option value="Category 2">Category 2</option>
@@ -43,7 +44,7 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="_name">Asset Name</label>
                   <div class="col-md-8">
-                  <input class="form-control"
+                  <input class="form-control form-clr"
                          id="_name"
                          type="text"
                          formControlName="asset_name"
@@ -59,7 +60,7 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="file-input">Asset Upload</label>
                   <div class="col-md-8">
-                    <input type="file" id="file-input" name="file-input">
+                    <input class="choose-file-form" type="file" id="file-input" name="file-input">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -76,10 +77,13 @@
                 </div>
 
                 <div class="form-actions">
+                    <span class="trick-form-submit" for="file-input">&nbsp;</span>
                   <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
-                  <button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.valid">Submit</button>
+                  <button class="btn btn-primary mr-1 profile-reset-btn" type="submit" [disabled]="simpleForm.valid">Submit</button>
                   <button class="btn btn-danger" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button>
-                  <button class="btn btn-secondary" type="button" (click)="cancel()">Cancel</button>
+                  <button class="btn btn-secondary profile-submit-btn" type="button" (click)="cancel()">Cancel</button>
+                  <!-- <button class="btn profile-submit-btn" value="Reset">Reset</button>
+              <button class="btn profile-reset-btn" value="Submit">Submit</button> -->
                 </div>
               </form>
             </div>

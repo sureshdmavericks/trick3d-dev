@@ -1,0 +1,52 @@
+.initial-upload-foam{
+    .no-border{
+        border: none;
+    }
+    .no-bgclr{
+        background-color: transparent;
+        border-bottom: none;
+    }
+    .card{
+    .card-header{
+        color: #3262A5;
+    }
+    .card-body{
+        color: #3262A5;
+        .form-clr{
+            color: #3262A5;
+            border: 1px solid #3262A5;
+            &::placeholder{
+                color: #3262A5;
+            }
+        }
+        .choose-file-form{
+            color: #3262A5;
+        }
+        // input[type=file]{
+        //     border: 1px solid #fff;
+        // }
+        .trick-form-submit{
+            width: 35%;
+            float: left;
+        }
+        .profile-submit-btn{
+            color: #fff;
+            background-color: #3262A5;
+            &:hover{
+                background-color: #fff;
+                color:#3262A5;
+                border: 1px solid #3262A5
+            }
+        }
+        .profile-reset-btn{
+            color: #3262A5;
+            background-color: #fff;
+            border: 1px solid #3262A5;
+            &:hover{
+                background-color: #3262A5;
+                color:#fff;
+            }
+        }
+    }
+}
+}

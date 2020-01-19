@@ -1,0 +1,72 @@
+.trick-asset-management{
+    .btn-primary{
+        background-color: #3262A5;
+        
+    }
+    .card{
+        border:none;
+        .card-header{
+            border-bottom:none;
+            background-color:transparent;
+        }
+.card-body{
+    // background-color:#fff;
+    .asset-saerch{
+        background-color: #3262A5;
+        color:#fff;
+        position: relative;
+        border-radius: 9px;
+        &:focus{
+            border: none;
+            box-shadow: none;
+        }
+        &::placeholder{
+            color: #fff;
+        }
+    }
+    .search-img{
+        position: absolute;
+    right: 42px;
+    top: 8px;
+    }
+
+    .asset-form-bgclr{
+        background-color: transparent;
+        line-height:34px;
+        &:hover{
+            background-color: #ecf2f8;
+            line-height:34px;
+        }
+    }
+    .btn-unaproved{
+        background-color: #777a80;
+        &:focus{
+            box-shadow:none;
+        }
+        &:active{
+            border:none;
+        }
+    }
+    .btn-approved{
+        background-color: #3262A5;
+    }
+    .no-border{
+        border:none;
+    }
+    .asset-eye-img{
+        width:23px;
+    }
+    .title-clr {
+        color:#80a8cf;
+        font-weight: normal;
+    }
+    .tbody-clr{
+        color:#3262A5;
+    }
+    .pagination{
+        float:left;
+        width:11%;
+    }
+}
+    }
+}

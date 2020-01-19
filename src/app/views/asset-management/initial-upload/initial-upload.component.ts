@@ -24,12 +24,11 @@ export class InitialUploadComponent implements OnInit {
 
   createForm() {
     this.simpleForm = this.fb.group({
-      client: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      asset_name: ['', [Validators.required] ],
-      asset_upload: ['', [Validators.required] ],
-      asset_png1: ['', [Validators.required] ],
-      asset_png2: ['', [Validators.required] ],
+      ClientID: ['', [Validators.required]],
+      CategoryID: ['', [Validators.required]],
+      sub_category:['', [Validators.required]],
+      Name: ['', [Validators.required] ],
+      Upload: ['', [Validators.required] ],
     });
   }
 

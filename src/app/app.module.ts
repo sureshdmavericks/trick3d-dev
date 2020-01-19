@@ -5,6 +5,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -103,6 +104,8 @@ import { CreatePasswordComponent } from './views/create-password/create-password
     SweetAlert2Module.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
+    AccordionModule.forRoot(),
+
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

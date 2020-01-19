@@ -2,3 +2,12 @@
     border-right: 1px solid gray !important;
     border-left: 1px solid gray !important;
 }
+.client-regster-form{
+    .card{
+        border:none;
+        .card-header{
+            border-bottom: none;
+            background-color: transparent;
+        }
+    }
+}

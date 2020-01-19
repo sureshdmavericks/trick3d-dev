@@ -9,6 +9,7 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal"
 import { ConfirmComponent } from "../modals/confirm/confirm.component"
 import * as _ from "lodash"
 import swal from "sweetalert2"
+import { AuthService } from "../../authentication/auth.service"
 
 @Component({
   templateUrl: "client-management.component.html",
@@ -23,6 +24,7 @@ export class ClientManagementComponent implements OnInit {
   constructor(
     private dataTableService: ClientService,
     private modalService: BsModalService,
+    private _authService: AuthService,
     private router: Router
   ) {
     this.dataTableService.getData().subscribe(
@@ -33,13 +35,13 @@ export class ClientManagementComponent implements OnInit {
               /^\/|\/$/g,
               ""
             ),
-            isActive: (()=>{
-              let active =  _.filter(x.users, (z)=>{
-                if(z.RoleID==2 && z.IsActive){
+            isActive: (() => {
+              let active = _.filter(x.users, z => {
+                if (z.RoleID == 2 && z.IsActive) {
                   return true
                 }
               })
-              return active;
+              return active
             })()
           })
         })
@@ -52,6 +54,33 @@ export class ClientManagementComponent implements OnInit {
 
   addClient() {
     this.router.navigateByUrl("/client-form")
+  }
+
+  login(email: string) {
+    if (!email) {
+      swal.fire("Error!", "Please provide an email.", "error")
+      return false
+    }
+    this.dataTableService.clientLogin({ Email: email }).subscribe(
+      response => {
+        console.log("sessionStorage:::", sessionStorage.getItem("token"))
+        swal
+          .fire("Success!", `Now you are logged in as ${email}`, "success")
+          .then(result => {
+            this._authService.setData(response.body.token)
+            this.router.navigate(["/dashboard"]).then(() => {
+              window.location.reload()
+            })
+          })
+      },
+      error => {
+        console.log(error)
+        if (error.status === 400)
+          swal.fire("Oops..", error.error.error.message, "error")
+        else swal.fire("Oops..", `Something went wrong.`, "error")
+        return false
+      }
+    )
   }
 
   resendLink($event: Event, ClientID: string) {

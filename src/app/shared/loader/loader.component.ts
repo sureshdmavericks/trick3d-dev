@@ -18,7 +18,7 @@ export class LoaderComponent implements OnInit {
   constructor(private loaderService: LoaderService) { }
 
   ngOnInit() {
-    console.log(this.isLoading)
+    // console.log(this.isLoading)
   }
 
 }

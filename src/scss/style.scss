@@ -18,3 +18,9 @@ $spinkit-spinner-color: $body-color;
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+@import "../app/views/login/login.component.scss";
+@import "../app/views/asset-management/asset-management.component.scss";
+@import "../app/views/profile/profile.component.scss";
+@import "../app/views/asset-management/initial-upload/initial-upload.component.scss";
+@import "../app/views/client-management/client-management.component.scss";
+@import "../app/views/client-form/client-form.component.scss";

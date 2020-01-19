@@ -6,14 +6,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   private jwtHelper = new JwtHelperService();
+  private tokenArray: Array<string> = [];
 
   constructor(private jwtHelperService: JwtHelperService) {}
 
   getData() {
-    let mainData = sessionStorage.getItem("token");
+    let mainData = JSON.parse(sessionStorage.getItem("token"));
     let step2 = null;
     if (mainData) {
-      step2 = mainData;
+      step2 = mainData[0];
     }
     let adminData = this.getDecodedAccessToken(step2) || {};
     console.log('adminData:',adminData)
@@ -22,6 +23,13 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
+    const token = JSON.parse(sessionStorage.getItem('token'))[0];
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  public isClientLoggedIn(): boolean {
     const token = sessionStorage.getItem('token');
     // Check whether the token is expired and return
     // true or false
@@ -45,8 +53,11 @@ export class AuthService {
     return appData ? appData.token : false;
   }
 
-  setData(data) {
-    sessionStorage.setItem("token", data);
+  setData(data:string, flag?:boolean) {
+    // if(flag) this.tokenArray.shift();
+    console.log('this.tokenArray::',this.tokenArray)
+    this.tokenArray.unshift(data);
+    sessionStorage.setItem("token", JSON.stringify(this.tokenArray));
   }
 
   getDecodedAccessToken(token: string): any {

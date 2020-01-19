@@ -1,0 +1,106 @@
+.trick3d-client-management {
+  .border-none {
+    border: none;
+  }
+  .bg-clr {
+    border-bottom: none;
+    background-color: transparent;
+  }
+  .add-client-bgclr {
+    background-color: transparent;
+    color: #3262a5;
+    border: 1px solid #3262a5;
+    &:hover {
+      color: #ecf2f8;
+      background-color: #3262a5;
+    }
+  }
+  .serch-bgclr {
+    background-color: #3262a5;
+    color: #ecf2f8;
+    border-radius: 5px;
+    width: 26%;
+    float: left;
+    &::placeholder {
+      color: #ecf2f8;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .trick3d-client-table {
+    .card {
+      border: none;
+      padding: 0px;
+      background-color: #ecf2f8;
+      .card-header {
+        background-color: transparent;
+        border-bottom: none;
+        padding: 0px;
+        .no-border {
+          border: none;
+          padding: 0px;
+        }
+        .header-paddind {
+          padding: 15px 0px 0px 12px;
+        }
+        .text-center {
+          text-align: center;
+        }
+        .asset-form-bgclr {
+          background-color: transparent;
+        }
+        .btn-unaproved {
+          background-color: #3262a5;
+          border: 1px solid #3262a5;
+        }
+        .title-clr {
+          color: #80a8cf;
+        }
+        .tbody-clr {
+          text-align: center;
+          color: #3262a5;
+        }
+      }
+      .card-body {
+        padding: 0px;
+        .trick3d-table-body {
+          .client-width {
+            width: 11%;
+            padding-left: 0px;
+            color: #3262a5;
+          }
+          .text-left {
+            float: left;
+            margin-right: 9px;
+          }
+          .header-paddind {
+            padding: 0px 0px 15px 12px;
+          }
+          .resend-color {
+            color: #3262a5;
+            &:hover {
+              color: #3262a5;
+            }
+          }
+          .trick-usrname {
+            border: 1px solid #3262a5;
+            background-color: transparent;
+            padding: 8px;
+            color: #3262a5;
+            &:focus {
+              outline: none;
+            }
+            &::placeholder {
+              color: #80a8cf;
+            }
+          }
+        }
+      }
+      &:hover {
+        background-color: transparent;
+        padding-bottom: 0px;
+      }
+    }
+  }
+}
