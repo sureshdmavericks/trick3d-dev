@@ -12,6 +12,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -154,6 +155,7 @@ import { ChangePasswordComponent } from './views/change-password/change-password
     ConfirmComponent
   ],
   providers: [
+    NgxNavigationWithDataComponent,
     AuthGuardService,
     LoginService,
     RoleGuardService,

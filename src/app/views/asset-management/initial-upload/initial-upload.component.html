@@ -4,7 +4,7 @@
       <div class="card no-border">
         <div class="card-header no-bgclr">
           <!-- <i class="icon-note"></i> -->
-           Asset Initial Upload Form
+          <h2>Create Product Form </h2>
           <div class="card-header-actions">
           </div>
         </div>
@@ -15,75 +15,64 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="_client">Client</label>
                   <div class="col-md-8">
-                    <select class="form-control form-clr" formControlName="client" id="_client">
+                    <select [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }" class="form-control form-clr" formControlName="ClientID" id="_client" required (change)="getCategpries()">
                       <option value="">Select Client</option>
-                      <option value="Hitesh">Hitesh</option>
-                      <option value="Elliott">Elliott</option>
-                      <option value="Dinesh">Dinesh</option>
+                      <option *ngFor="let client of clients" [value]="client.ClientID">{{client.FullName}}</option>
                     </select>
-                    <div *ngIf="submitted && f['client'].errors" class="invalid-feedback">
-                      <div *ngIf="f['client'].errors.required">Client is required</div>
+                    <div *ngIf="submitted && f['ClientID'].errors" class="invalid-feedback">
+                      <div *ngIf="f['ClientID'].errors.required">Client is required</div>
                     </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="_category">Category</label>
                   <div class="col-md-8">
-                  <select class="form-control form-clr" formControlName="category" id="_category">
+                  <select [ngClass]="{ 'is-invalid': submitted && f.CategoryID.errors, 'is-valid': f.CategoryID.touched && !f.CategoryID.errors }" class="form-control form-clr" formControlName="CategoryID" id="_category" required>
                     <option value="">Select Category</option>
-                    <option value="Category 1">Category 1</option>
-                    <option value="Category 2">Category 2</option>
-                    <option value="Category 3">Category 3</option>
-                    <option value="Category 4">Category 4</option>
+                    <option *ngFor="let catogory of categories" [value]="catogory.CategoryID">{{catogory.Name}}</option>
                   </select>
-                  <div *ngIf="submitted && f['client'].errors" class="invalid-feedback">
-                    <div *ngIf="f['client'].errors.required">Client is required</div>
+                  <div *ngIf="submitted && f['CategoryID'].errors" class="invalid-feedback">
+                    <div *ngIf="f['CategoryID'].errors.required">Category is required</div>
                   </div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="_name">Asset Name</label>
+                  <label class="col-md-4 col-form-label" for="_name">Give Product Name</label>
                   <div class="col-md-8">
                   <input class="form-control form-clr"
                          id="_name"
                          type="text"
-                         formControlName="asset_name"
-                         placeholder="Asset Name"
+                         formControlName="Name"
+                         placeholder="Product Name"
                          autocomplete="family-name"
                          required
-                         [ngClass]="{ 'is-invalid': submitted && f.asset_name.errors, 'is-valid': f.asset_name.touched && !f.address.errors }" />
-                  <div *ngIf="submitted && f['asset_name'].errors" class="invalid-feedback">
-                    <div *ngIf="f['asset_name'].errors.required">Asset Name is required</div>
+                         [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
+                  <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['Name'].errors.required">Product Name is required</div>
                   </div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="file-input">Asset Upload</label>
+                  <label class="col-md-4 col-form-label" for="file-input">Upload Thumbnail</label>
                   <div class="col-md-8">
-                    <input class="choose-file-form" type="file" id="file-input" name="file-input">
+                    <input accept='image/*' required class="choose-file-form" (change)="onFileChange($event)" type="file" id="file-input" 
+                    [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="file-input">PNG 1</label>
+                  <label class="col-md-4 col-form-label" for="features">Number of Hot Spots</label>
                   <div class="col-md-8">
-                    <input type="file" id="file-input" name="file-input">
+                    <input [ngClass]="{ 'is-invalid': submitted && f.NoOfFeatures.errors, 'is-valid': f.NoOfFeatures.touched && !f.NoOfFeatures.errors }" class="form-control" formControlName="NoOfFeatures" type="number" id="features"/>
+                  </div>
+                  <div *ngIf="submitted && f['NoOfFeatures'].errors" class="invalid-feedback">
+                    <div *ngIf="f['NoOfFeatures'].errors.required">Number of Hot Spots is required</div>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="file-input">PNG 2</label>
-                  <div class="col-md-8">
-                    <input type="file" id="file-input" name="file-input">
-                  </div>
-                </div>
-
                 <div class="form-actions">
                     <span class="trick-form-submit" for="file-input">&nbsp;</span>
-                  <!--<button class="btn btn-primary mr-1" type="submit" [disabled]="simpleForm.pristine">Submit</button>-->
-                  <button class="btn btn-primary mr-1 profile-reset-btn" type="submit" [disabled]="simpleForm.valid">Submit</button>
+                  <button class="btn btn-primary mr-1 profile-reset-btn" type="submit" [disabled]="simpleForm.invalid">Submit</button>
                   <button class="btn btn-danger" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button>
                   <button class="btn btn-secondary profile-submit-btn" type="button" (click)="cancel()">Cancel</button>
-                  <!-- <button class="btn profile-submit-btn" value="Reset">Reset</button>
-              <button class="btn profile-reset-btn" value="Submit">Submit</button> -->
                 </div>
               </form>
             </div>

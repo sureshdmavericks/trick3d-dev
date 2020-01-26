@@ -157,7 +157,7 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'admin-review',
+        path: 'product-review',
         component: AdminReviewComponent,
         canActivate: [AuthGuard],
         data:{

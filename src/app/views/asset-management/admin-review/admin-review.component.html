@@ -1,1 +1,70 @@
-<p>admin-review works!</p>
+<div class="animated fadeIn initial-upload-foam">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card no-border">
+                <div class="card-header no-bgclr">
+                    <!-- <i class="icon-note"></i> -->
+                    Product Review Form
+                    <div class="card-header-actions">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img width="400" src="./../../../../assets/img/MSD-Mobile Shears.png" />
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <!-- <i class="icon-note"></i> -->
+                                <h2>Product Facts</h2>
+
+                                <div class="col-md-12 jumbotron">
+                                    <div class="form-group">
+                                        <label for="name" class="col-md-4">Name</label>
+                                        <div class="col-md-8">
+                                            {{product_data.Name}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label" for="_client">Image Upload</label>
+                                <div class="col-md-8">
+                                    <input type="file" accept="image/*" />
+                                    <!-- <div *ngIf="submitted && f['ClientID'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['ClientID'].errors.required">Client is required</div>
+                                        </div> -->
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                    <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()" class="col-md-12 needs-validation">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="" class="col-md-6">Select Feature</label>
+                                                <div class="col-md-6">
+                                                    <select class="form-control">
+                                                        <option value="">Select Feature</option>
+                                                        <option value="">1</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </div>
+
+                            <div class="form-actions">
+                                <span class="trick-form-submit" for="file-input">&nbsp;</span>
+                                <button class="btn btn-primary mr-1 profile-reset-btn" type="submit"
+                                    [disabled]="simpleForm.invalid">Submit</button>
+                                <button class="btn btn-danger" type="reset"
+                                    [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button>
+                                <button class="btn btn-secondary profile-submit-btn" type="button"
+                                    (click)="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

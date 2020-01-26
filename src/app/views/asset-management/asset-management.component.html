@@ -23,17 +23,14 @@
           <tr>
             <!-- <th class="no-border" style="width:5%">S.No.</th> -->
             <th class="title-clr no-border" style="width: 10%">
-              <mfDefaultSorter by="notification">Asset ID</mfDefaultSorter>
+              <mfDefaultSorter by="notification">Product Name</mfDefaultSorter>
             </th>
             <th class="title-clr no-border" style="width: 15%;text-align:center">
               <mfDefaultSorter by="createdAt">Category</mfDefaultSorter>
             </th>
-            <th class="title-clr no-border" style="width: 15%;text-align:center">
+            <!-- <th class="title-clr no-border" style="width: 15%;text-align:center">
               <mfDefaultSorter by="createdAt">Sub Category</mfDefaultSorter>
-            </th>
-            <th class="title-clr no-border" style="width: 15%;text-align:center">
-              <mfDefaultSorter by="createdAt">Type</mfDefaultSorter>
-            </th>
+            </th> -->
             <th class="title-clr no-border" style="width: 15%;text-align:center">
               <mfDefaultSorter by="createdAt">Status</mfDefaultSorter>
             </th>
@@ -47,23 +44,25 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of mf.data; let i=index" class="asset-form-bgclr">
-            <!-- <td class="no-border">{{i+1}}</td> -->
-            <td class="tbody-clr no-border" style="width: 10%">{{item.name}}</td>
-            <td class="tbody-clr no-border" style="width: 15%;text-align:center"><a class="tbody-clr" href="javascript:void(0)" data-toggle="modal" (click)="openModalWithComponent()">{{item.path}}</a></td>
-            <td class="tbody-clr no-border" style="width: 15%;text-align:center">Sub Category</td>
-            <td class="tbody-clr no-border" style="width: 15%;text-align:center">Type</td>            
+            <td class="tbody-clr no-border" style="width: 10%">{{item.Name}}</td>
             <td class="tbody-clr no-border" style="width: 15%;text-align:center">
-              <span class="badge" *ngIf="item.status=='Publish'">Publish</span>
-              <span class="badge" *ngIf="item.status=='Unpublish'">UnPublish</span>
-              <span class="badge" *ngIf="item.status=='Approved'">Approved</span>
-              <span class="badge" *ngIf="item.status=='IntialUpload'">IntialUpload</span>
-
+              <!-- <a class="tbody-clr" href="javascript:void(0)" data-toggle="modal" (click)="openModalWithComponent()">{{item.category.Name}}</a> -->
+              {{item.category.Name}}
             </td>
-            <td class="tbody-clr no-border" style="width: 15%;text-align:center"><img src="../../assets/img/eye.png" class="asset-eye-img"></td>
+            <!-- <td class="tbody-clr no-border" style="width: 15%;text-align:center">Sub Category</td> -->
+            <td class="tbody-clr no-border" style="width: 15%;text-align:center">
+              <span class="badge" *ngIf="item.Status=='publish'">Publish</span>
+              <span class="badge" *ngIf="item.Status=='unpublish'">Un Publish</span>
+              <span class="badge" *ngIf="item.Status=='under-review'">Under Review</span>
+            </td>
+            <td class="tbody-clr no-border" style="width: 15%;text-align:center">
+              <!-- <img src="../../assets/img/eye.png" class="asset-eye-img"> -->
+              <a href="javascript:void(0)" (click)="openReview(item)"><span class="fa fa-eye"></span></a>
+            </td>
             <td class="tbody-clr no-border" style="width: 10%;text-align:center">
-                <button style="width:100px" class="btn btn-sm btn-primary btn-unaproved" *ngIf="item.status=='IntialUpload'">Approve<img src="../../assets/img/approve.png"></button>
-                <button style="width:100px" class="btn btn-sm btn-primary btn-unaproved" *ngIf="item.status=='Approved' || item.status=='Unpublish'">Approve<img src="../../assets/img/approve.png"></button>
-                <button style="width:100px" class="btn btn-sm btn-warning btn-unaproved" *ngIf="item.status=='Publish'">UnPublish<img src="../../assets/img/approve.png"></button>
+                <button style="width:100px" class="btn btn-sm btn-primary btn-unaproved" *ngIf="item.Status=='under-review'">Approve<img src="../../assets/img/approve.png"></button>
+                <button style="width:100px" class="btn btn-sm btn-primary btn-unaproved" *ngIf="item.Status=='unpublish'">Approve<img src="../../assets/img/approve.png"></button>
+                <button style="width:100px" class="btn btn-sm btn-warning btn-unaproved" *ngIf="item.Status=='publish'">Un Publish<img src="../../assets/img/approve.png"></button>
             </td>
           </tr>
         </tbody>
