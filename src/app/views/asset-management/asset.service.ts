@@ -16,7 +16,7 @@ export interface AssetMgntData extends Array<AssetData> {}
 @Injectable()
 export class AssetService {
   dataUrl = `${environment.API_URL}/assets`;
-  // dataUrl = `${environment.API_URL}/image/upload`;
+  dataMarkingUrl = `${environment.API_URL}/asset-markings`;
 
   constructor(private http: HttpClient, private _authService: AuthService) {}
 
@@ -25,7 +25,17 @@ export class AssetService {
   }
 
   getData() {
-    return this.http.get<AssetMgntData>(this.dataUrl);
+    return this.http.get<AssetMgntData>(this.dataUrl, {
+      observe: 'response',
+      headers: new HttpHeaders().set('Authorization', this.authHeader)
+    });
+  }
+
+  getById(AssetID:string) {
+    return this.http.get<AssetMgntData>(`${this.dataUrl}/${AssetID}`,{
+      observe: 'response',
+      headers: new HttpHeaders().set('Authorization', this.authHeader)
+    });
   }
 
   create(data:any):Observable<any> {
@@ -40,6 +50,25 @@ export class AssetService {
           headers: new HttpHeaders().set('Authorization', this.authHeader)
         }
       )
+  }
+
+  createMarking(data:any, ClientID:string):Observable<any>{
+    let sdata = new FormData()
+    sdata.append('Title', data.Title)
+    sdata.append('Description', data.Description)
+    sdata.append('MarkingNumber', data.MarkingNumber)
+    sdata.append('AssetID', data.AssetID)
+    if(data.MarkingImgURL)
+    sdata.append('MarkingImgURL', data.MarkingImgURL)
+    if(data.MarkingVideoURL)
+    sdata.append('MarkingVideoURL', data.MarkingVideoURL)
+    if(data.MarkingText)
+    sdata.append('MarkingText', data.MarkingText)
+    return this.http.post(`${this.dataMarkingUrl}?cid=${ClientID}`, sdata, {
+      observe: 'response',
+      headers: new HttpHeaders().set('Authorization', this.authHeader)
+    }
+  )
   }
 
 

@@ -25,7 +25,8 @@ export class AssetManagementComponent implements OnInit {
   ) {
     this.dataTableService.getData().subscribe(
       (data: any) => {
-        this.data = data;
+        console.log
+        this.data = [...data.body]
       },
       error => (this.error = error)
     )
