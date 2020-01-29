@@ -37,7 +37,7 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="_name">Give Product Name</label>
+                  <label class="col-md-4 col-form-label" for="_name">Product Name </label>
                   <div class="col-md-8">
                   <input class="form-control form-clr"
                          id="_name"
@@ -58,6 +58,7 @@
                     <input accept='image/*' required class="choose-file-form" (change)="onFileChange($event)" type="file" id="file-input" 
                     [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
                   </div>
+                  <span *ngIf="product_data.Upload"><img width="60" [src]="f.Upload.value" (click)="openImagePopup()"/></span>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="features">Number of Hot Spots</label>

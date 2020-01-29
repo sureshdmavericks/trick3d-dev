@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidationFormsService } from './validation-forms.service';
 import { UserService } from '../user-management/user.service';
+import swal from 'sweetalert2';
 
 export class User {
   RoleID:number;
@@ -60,20 +61,15 @@ export class UserFormComponent implements OnInit {
   onSubmit() {
 
     this.submitted = true;
-    console.warn(this.simpleForm.value);
-    // stop here if form is invalid
     if (this.simpleForm.invalid) {
-      console.log('invalid')
       return;
     }
-    console.log('Valid')
-
-    // TODO: Use EventEmitter with form value
-    console.warn(this.simpleForm.value);
-    // alert('SUCCESS!');
     this._userService.create(this.simpleForm.value).subscribe((data:any)=>{
-      console.log(data)
-      this._router.navigateByUrl('user-management')
+      swal.fire('Success','User added successfully.','success').then(result=>{
+        this._router.navigateByUrl('user-management')
+      })
+    }, err=>{
+      swal.fire('Oops!',err.error.error.message,'error');
     })
   }
 

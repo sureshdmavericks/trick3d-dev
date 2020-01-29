@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal"
 import { ChangeAssetCategoryComponent } from "../modals/change-asset-category/change-asset-category.component";
 import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
 import * as _ from 'lodash';
+import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   templateUrl: "./asset-management.component.html",
@@ -15,11 +16,13 @@ export class AssetManagementComponent implements OnInit {
 
   error: any
   public data: AssetMgntData
-  public filterQuery = ""
+  // public filterQuery = ""
+  isAdmin:boolean;
 
   constructor(
     private dataTableService: AssetService,
     private modalService: BsModalService,
+    private _authService: AuthService,
     public navCtrl: NgxNavigationWithDataComponent,
     private router: Router
   ) {
@@ -35,11 +38,19 @@ export class AssetManagementComponent implements OnInit {
   openReview(item:any){
     console.log(item)
     if(item){
-      this.navCtrl.navigate('product-review', _.omit(item,['category']));
+      if(!this.isAdmin)
+        this.navCtrl.navigate('product-review', _.omit(item,['category']));
+      else
+      {
+        this.navCtrl.navigate('initupload', _.omit(item,['category']));
+      }
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this._authService.getData())
+    this.isAdmin = (this._authService.getData()).role==1?true:false;
+  }
 
   addAsset() {
     this.router.navigateByUrl("/initupload")

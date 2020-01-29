@@ -17,7 +17,7 @@ export class AuthService {
       step2 = mainData[0];
     }
     let adminData = this.getDecodedAccessToken(step2) || {};
-    console.log('adminData:',adminData)
+    // console.log(adminData)
     if (step2) adminData.token = step2;
     return adminData;
   }

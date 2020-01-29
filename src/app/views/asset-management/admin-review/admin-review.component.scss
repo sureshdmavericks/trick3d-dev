@@ -1,0 +1,156 @@
+// .overlay {
+//   display: none !important;
+// }
+.asset-producr-review {
+  .trick3d-review-image {
+    border-right: 1px solid #3262a5;
+    .review-header {
+      color: #3262a5;
+      font-weight: normal;
+    }
+  }
+  .trick3d-product-form {
+    .review-form-body {
+      padding-left: 15px;
+      .review-title {
+        color: #3262a5;
+      }
+      .review-forms {
+        background-color: #ecf2f8;
+        border-radius: 7px;
+        padding-top: 25px;
+        .review-name {
+          display: flex;
+          font-size: 16px;
+          color: #3262a5;
+          .product-name{
+            border: none;
+            border-radius: 4px;
+            padding: 7px 14px;
+            width:98%;
+            color: #3262a5;
+            &:focus{
+              border: none;
+              box-shadow: none;
+              outline: none;
+            }
+          }
+          .product-select{
+            width: 98%;
+            height: 38px;
+            color: #3262a5;
+            font-size: 16px;
+            &:focus{
+              border: none;
+              box-shadow: none;
+            }
+          }
+          // .float-left{
+          //     float: left;
+          // }
+          //   input[type="file" i] {
+          //     display: none;
+          //   }
+          input[type="file"] {
+            width: 100%;
+            position: relative;
+            opacity: 0;
+          }
+          .custom-file-upload {
+            position: absolute;
+            opacity: 1;
+            background-color: #fff;
+            width: 94%;
+            .upload-labe {
+              border: 1px solid #3262a5;
+              width: 69%;
+              border-radius: 3px;
+              padding: 6px 14px;
+            }
+          }
+          .trick-width {
+            width: 100%;
+            .feature-select {
+              background-color: #3262a5;
+              color: #fff;
+              font-size: 16px;
+              .selected-feature {
+                background-color: #fff;
+                color: #3262a5;
+                height: 38px;
+                &:hover {
+                  background-color: #3262a5;
+                  color: #fff;
+                }
+                &:active {
+                  background-color: #3262a5;
+                  color: #fff;
+                }
+              }
+              &:focus {
+                box-shadow: none;
+              }
+            }
+          }
+          .review-feature{
+              border:1px solid #3262a5;
+              border: 1px solid #3262a5;
+              padding: 6px 14px;
+              border-radius: 4px;
+              width: 100%;
+              color: #3262a5;
+              &::placeholder{
+                  color: #3262a5;
+              }
+          }
+          .text-scroll{
+              height: 100px;
+              resize: none;
+          }
+        }
+        .margin-btm {
+          margin-bottom: 20px;
+        }
+      }
+      .bg-noclr {
+        background-color: transparent;
+      }
+    }
+    .review-btns {
+      float: right;
+      margin-right: 32px;
+      margin-top: 25px;
+      .profile-cncl-btn{
+        background-color: transparent;
+        color: #3262a5;
+        border: 1px solid #3262a5;
+        height: 38px;
+        width: 120px;
+        font-size: 16px;
+        &:hover {
+          background-color: #3262a5;
+          color: #fff;
+        }
+      }
+      .profile-submit-btn {
+        background-color: #3262a5;
+        color: #fff;
+        border: 1px solid #3262a5;
+        height: 38px;
+        width: 120px;
+        font-size: 16px;
+        &:hover {
+          background-color: transparent;
+          color: #3262a5;
+          border: 1px solid #3262a5;
+        }
+      }
+    }
+    .paddin-top {
+      padding-top: 20px;
+    }
+  }
+  .no-border {
+    border: none;
+  }
+}
