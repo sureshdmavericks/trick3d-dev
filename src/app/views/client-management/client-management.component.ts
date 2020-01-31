@@ -63,7 +63,6 @@ export class ClientManagementComponent implements OnInit {
     }
     this.dataTableService.clientLogin({ Email: email }).subscribe(
       response => {
-        console.log("sessionStorage:::", sessionStorage.getItem("token"))
         swal
           .fire("Success!", `Now you are logged in as ${email}`, "success")
           .then(result => {

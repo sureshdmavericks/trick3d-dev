@@ -2,8 +2,9 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserManagementData, UserService, UserData } from './user.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { ConfirmComponent } from '../modals/confirm/confirm.component';
+import swal from 'sweetalert2';
 
 @Component({
   templateUrl: './user-management.component.html',
@@ -30,7 +31,7 @@ export class UserManagementComponent implements OnInit {
               FullName: `${x.FirstName} ${x.LastName}`
             });
           });
-          console.log('this.datao::',this.datao)
+          // console.log('this.datao::',this.datao)
         },
         error => this.error = error
       );
@@ -50,22 +51,25 @@ export class UserManagementComponent implements OnInit {
       UserID
     } = user;
 
-    this.modalRef = this.modalService.show(ConfirmComponent, {
-      initialState: {
-        prompt: 'Are you sure you want to do this?',
-        callback: (result) => {
-          if(result == 'no') {
-            event.target.checked = !event.target.checked;
-            return
-          };
-          this.dataTableService.status(Status, UserID).subscribe((res:any)=>{
-            console.log(res);
-          }, error=>{
-            console.log(error);
-          })
-        }
+    swal.fire({
+      title: 'Are you sure?',
+      text: `User will be ${Status?'activated':'inactivated'}.`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        this.dataTableService.status(Status, UserID).subscribe((res:any)=>{
+          swal.fire("Success", `User ${Status?'activated':'inactivated'}`, "success")
+        }, err=>{
+          swal.fire("Oops!", err.error.error.message, "error")
+        })
+      }else{
+        event.target.checked = !event.target.checked;
       }
-    });
+    })
   }
 
   public toInt(num: string) {
