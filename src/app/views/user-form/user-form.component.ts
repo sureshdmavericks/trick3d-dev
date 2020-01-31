@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ValidationFormsService } from './validation-forms.service';
 import { UserService } from '../user-management/user.service';
 import swal from 'sweetalert2';
+import { ClientService } from '../client-management/client.service';
+import _ from 'lodash';
 
 export class User {
   RoleID:number;
@@ -15,18 +17,21 @@ export class User {
 
 @Component({
   templateUrl: './user-form.component.html',
-  providers:[ValidationFormsService, UserService]
+  providers:[ValidationFormsService, UserService,ClientService]
 })
 export class UserFormComponent implements OnInit {
   simpleForm: FormGroup;
   submitted = false;
   formErrors: any;
-  roles;
+  roles:any;
+  clients:any;
+  showClients:boolean = false;
 
   constructor(
     private fb: FormBuilder,
     public vf: ValidationFormsService,
     private _userService:UserService,
+    private _clientService:ClientService,
     private _router:Router
   ) {
     this.createForm();
@@ -40,6 +45,7 @@ export class UserFormComponent implements OnInit {
  
     this.simpleForm = this.fb.group({
       RoleID:[0, [Validators.required]],
+      ClientID:[""],
       FirstName: ['', [Validators.required]],
       LastName: ['', [Validators.required]],
       UserName: ['', [Validators.required, Validators.minLength(this.vf.formRules.usernameMin), Validators.pattern(this.vf.formRules.nonEmpty)] ],
@@ -72,6 +78,29 @@ export class UserFormComponent implements OnInit {
       swal.fire('Oops!',err.error.error.message,'error');
     })
   }
+
+  private getClients() {
+    this._clientService.getData().subscribe(response => {
+      this.clients = _.map(response.body, x => {
+        if (x.Status) {
+          return x
+        }
+      })
+    })
+  }
+
+  toggleClients(event){
+    console.log(event.target.value)
+    let role = event.target.value;
+    if(role==2){
+      this.getClients();
+      this.showClients = true;
+    }else{
+      this.showClients = false;
+    }
+  }
+
+
 
   getRoles(){
     this._userService.roles().subscribe((data:any)=>{

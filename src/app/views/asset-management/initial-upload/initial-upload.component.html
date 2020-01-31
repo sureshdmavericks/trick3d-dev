@@ -15,7 +15,8 @@
                 <div class="form-group row">
                   <label class="col-md-4 col-form-label" for="_client">Client</label>
                   <div class="col-md-8">
-                    <select [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }" class="form-control form-clr" formControlName="ClientID" id="_client" required (change)="getCategpries()">
+                    <!-- <select [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }" class="form-control form-clr" formControlName="ClientID" id="_client" required (change)="getCategpries()"> -->
+                      <select [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }" class="form-control form-clr" formControlName="ClientID" id="_client" required>
                       <option value="">Select Client</option>
                       <option *ngFor="let client of clients" [value]="client.ClientID">{{client.FullName}}</option>
                     </select>

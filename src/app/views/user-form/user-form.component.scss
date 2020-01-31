@@ -1,0 +1,90 @@
+.trick3d-user-form {
+    .card {
+      border: none;
+      .card-header {
+        border-bottom: none;
+        background-color: transparent;
+        color: #3262a5;
+        font-size: 21px;
+        font-weight: 600;
+      }
+      .card-body {
+        .trick-form-left {
+          float: left;
+          padding: 0px;
+          .trick-col-float-left {
+            // float: left;
+            padding: 0px;
+            .trick-float-left {
+              //float: left;
+              color: #3262a5;
+            }
+            .trick-md-right {
+              float: right;
+              width: 60%;
+              color: #3262a5;
+              border: 1px solid #3262a5;
+              &::placeholder {
+                color: #3262a5;
+              }
+              &:focus {
+                box-shadow: none;
+              }
+            }
+            .textarea-height {
+              height: 120px;
+            }
+            .is-valid {
+              background-image: url(../assets/img/tick.png);
+              background-size: 16px;
+              &:focus {
+                box-shadow: none;
+              }
+            }
+            .invalid-feedback {
+              float: left;
+              .invalid-text {
+                float: right;
+                color: #3262a5;
+              }
+            }
+          }
+          .trick-buttons {
+            padding-left: 15px;
+            margin-top: 25px;
+            margin-left: 194px;
+            .trick-submit-btn {
+              background-color: #3262a5;
+              border: 1px solid #3262a5;
+              color: #fff;
+              font-size: 16px;
+              padding: 6px 30px;
+              &:hover {
+                color: #3262a5;
+                background-color: #fff;
+                border: 1px solid #3262a5;
+              }
+              &:focus {
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .trick-col-float-left {
+      float: left;
+      .trick-float-left {
+        display: none;
+      }
+      .trick-md-right {
+        width: 100% !important;
+      }
+    }
+    .trick-buttons {
+      margin-left: 0px !important;
+    }
+  }
+  

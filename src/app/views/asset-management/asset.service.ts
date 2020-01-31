@@ -53,21 +53,22 @@ export class AssetService {
   }
 
   createMarking(data:any, ClientID:string):Observable<any>{
-    let sdata = new FormData()
-    sdata.append('Title', data.Title)
-    sdata.append('Name', data.Name)
-    sdata.append('Description', data.Description)
-    sdata.append('MarkingNumber', data.MarkingNumber)
-    sdata.append('AssetID', data.AssetID)
-    sdata.append('CategoryID', data.CategoryID)
+    let sdata = new FormData();
+    sdata.append('Title', data.Title);
+    sdata.append('Name', data.Name);
+    sdata.append('Description', data.Description);
+    sdata.append('MarkingNumber', data.MarkingNumber);
+    sdata.append('AssetID', data.AssetID);
+    sdata.append('CategoryID', data.CategoryID);
+    sdata.append('PictureID', data.PictureID);
     if(data.ProductImage)
-    sdata.append('ProductImage', data.ProductImage)
+    sdata.append('ProductImage', data.ProductImage);
     if(data.ProductVideo)
-    sdata.append('ProductVideo', data.ProductVideo)
+    sdata.append('ProductVideo', data.ProductVideo);
     if(data.MarkingImgURL)
-    sdata.append('MarkingImgURL', data.MarkingImgURL)
+    sdata.append('MarkingImgURL', data.MarkingImgURL);
     if(data.MarkingVideoURL)
-    sdata.append('MarkingVideoURL', data.MarkingVideoURL)
+    sdata.append('MarkingVideoURL', data.MarkingVideoURL);
     
     return this.http.post(`${this.dataMarkingUrl}?cid=${ClientID}`, sdata, {
       observe: 'response',

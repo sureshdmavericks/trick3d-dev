@@ -1,0 +1,125 @@
+.category-foam {
+  .no-border {
+    border: none;
+  }
+  .no-bgclr {
+    background-color: transparent;
+    border-bottom: none;
+  }
+  .card {
+    .card-header {
+      color: #3262a5;
+    }
+    .card-body {
+      color: #3262a5;
+      font-size: 16px;
+      .form-clr {
+        color: #3262a5;
+        border: 1px solid #3262a5;
+        font-size: 16px;
+        &::placeholder {
+          color: #3262a5;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .trick-form-submit {
+        width: 35%;
+        float: left;
+      }
+      .profile-submit-btn {
+        color: #fff;
+        background-color: #3262a5;
+        font-size: 16px;
+        &:hover {
+          background-color: #fff;
+          color: #3262a5;
+          border: 1px solid #3262a5;
+        }
+      }
+      .profile-reset-btn {
+        color: #3262a5;
+        background-color: #fff;
+        border: 1px solid #3262a5;
+        font-size: 16px;
+        &:hover {
+          background-color: #3262a5;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// .initial-upload-foam {
+//   .no-border {
+//     border: none;
+//   }
+//   .no-bgclr {
+//     background-color: transparent;
+//     border-bottom: none;
+//   }
+//   .card {
+//     .card-header {
+//       color: #3262a5;
+//       font-size: 21px;
+//       font-weight: 600;
+//     }
+//     .card-body {
+//       color: #3262a5;
+//       font-size: 16px;
+//       .form-clr {
+//         color: #3262a5;
+//         border: 1px solid #000;
+//         font-size: 17px;
+//         &::placeholder {
+//           color: #3262a5;
+//         }
+//         &:focus {
+//           box-shadow: none;
+//         }
+//       }
+//       .choose-file-form {
+//         color: #3262a5;
+//       }
+//       .trick-form-submit {
+//         width: 35%;
+//         float: left;
+//       }
+//       .profile-submit-btn {
+//         color: #fff;
+//         background-color: #3262a5;
+//         font-size: 16px;
+//         padding: 6px 30px;
+//         &:hover {
+//           background-color: #fff;
+//           color: #3262a5;
+//           border: 1px solid #3262a5;
+//         }
+//       }
+//       .profile-reset-btn {
+//         color: #3262a5;
+//         background-color: #fff;
+//         border: 1px solid #3262a5;
+//         font-size: 16px;
+//         padding: 6px 30px;
+//         &:hover {
+//           background-color: #3262a5;
+//           color: #fff;
+//         }
+//       }
+//       .profile-cancel-btn {
+//         color: #fff;
+//         background-color: #3262a5;
+//         font-size: 16px;
+//         padding: 6px 30px;
+//         border: 1px solid #3262a5;
+//         &:hover {
+//           background-color: #fff;
+//           color: #3262a5;
+//         }
+//       }
+//     }
+//   }
+// }

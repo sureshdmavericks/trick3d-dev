@@ -33,8 +33,8 @@ export class InitialUploadComponent implements OnInit {
     //   this.navCtrl.navigate("assets");
     //   return;
     // }
+    console.log('navCtrl.data::',this.navCtrl.data);
     this.product_data = this.navCtrl.data
-    console.log(this.product_data)
     this.createForm()
     if (Object.keys(this.navCtrl.data).length > 0) {
       this.simpleForm.patchValue({
@@ -43,8 +43,8 @@ export class InitialUploadComponent implements OnInit {
         Upload: this.product_data.Upload,
         NoOfFeatures: this.product_data.NoOfFeatures
       })
-      this.getCategpries();
     }
+    this.getCategpries();
   }
 
   openImagePopup(){
@@ -72,10 +72,7 @@ export class InitialUploadComponent implements OnInit {
   }
 
   getCategpries() {
-    let clientID: string
-    if (this.product_data) clientID = this.product_data.ClientID
-    else clientID = this.simpleForm.controls["ClientID"].value
-    this._categoryService.getDataByClient(clientID).subscribe(response => {
+    this._categoryService.getData().subscribe(response => {
       this.categories = response.body
       if (this.product_data) {
         this.simpleForm.patchValue({

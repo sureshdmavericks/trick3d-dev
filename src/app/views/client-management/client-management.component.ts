@@ -85,14 +85,27 @@ export class ClientManagementComponent implements OnInit {
 
   resendLink($event: Event, ClientID: string) {
     if (ClientID) {
-      this.dataTableService.resend(ClientID).subscribe(
-        response => {
-          swal.fire("Yeah!", response.body.message, "success")
-        },
-        err => {
-          swal.fire("Oh!", err.error.error.message, "error")
+      swal.fire({
+        title: 'Are you sure?',
+        text: "An activation link sent to the registered email.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.value) {
+          this.dataTableService.resend(ClientID).subscribe(
+            response => {
+              swal.fire("Yeah!", response.body.message, "success")
+            },
+            err => {
+              swal.fire("Oh!", err.error.error.message, "error")
+            }
+          )
         }
-      )
+      })
+      
     }
   }
 
@@ -117,25 +130,28 @@ export class ClientManagementComponent implements OnInit {
     if (!client) return
     let Status = event.target.checked
     let { ClientID } = client
-
-    this.modalRef = this.modalService.show(ConfirmComponent, {
-      initialState: {
-        prompt: "Are you sure you want to do this?",
-        callback: (result: string) => {
-          if (result == "no") {
-            event.target.checked = !event.target.checked
-            return
+    swal.fire({
+      title: 'Are you sure?',
+      text: `Client will be ${Status?'activated':'inactivated'}.`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        this.dataTableService.status(Status, ClientID).subscribe(
+          (res: any) => {
+            swal.fire("Success", `Client ${Status?'activated':'inactivated'}`, "success")
+          },
+          err => {
+            swal.fire("Oops!", err.error.error.message, "error")
           }
-          this.dataTableService.status(Status, ClientID).subscribe(
-            (res: any) => {
-              console.log(res)
-            },
-            error => {
-              console.log(error)
-            }
-          )
-        }
+        )
+      }else{
+        event.target.checked = !event.target.checked
       }
     })
+    
   }
 }

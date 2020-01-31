@@ -53,7 +53,7 @@ export class AssetManagementComponent implements OnInit {
   }
 
   addAsset() {
-    this.router.navigateByUrl("/initupload")
+    this.navCtrl.navigate("initupload")
   }
 
   public toInt(num: string) {
@@ -73,21 +73,4 @@ export class AssetManagementComponent implements OnInit {
     })
   }
 
-  openModalWithComponent() {
-    const initialState = {
-      list: [
-        "Open a modal with component",
-        "Pass your data",
-        "Do something else",
-        "..."
-      ],
-      title: "Change Category"
-    }
-    this.bsModalRef = this.modalService.show(ChangeAssetCategoryComponent, {
-      initialState,
-      class: "modal-info",
-      backdrop: "static"
-    })
-    this.bsModalRef.content.closeBtnName = "Close"
-  }
 }

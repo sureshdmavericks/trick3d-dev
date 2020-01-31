@@ -1,13 +1,93 @@
-.col {
-    border-right: 1px solid gray !important;
-    border-left: 1px solid gray !important;
-}
-.client-regster-form{
-    .card{
-        border:none;
-        .card-header{
-            border-bottom: none;
-            background-color: transparent;
+.client-regster-form {
+    .card {
+      border: none;
+      .card-header {
+        border-bottom: none;
+        background-color: transparent;
+        font-size: 21px;
+        font-weight: 600;
+        color: #3262a5;
+      }
+      .card-body {
+        .trick-form-left {
+          float: left;
+          padding: 0px;
+          .trick-col-float-left {
+            padding: 0px;
+            // float: left;
+            .trick-float-left {
+              //float: left;
+              color: #3262a5;
+            }
+            .trick-md-right {
+              float: right;
+              width: 60%;
+              color: #3262a5;
+              border: 1px solid #3262a5;
+              font-size: 16px;
+              &::placeholder {
+                color: #3262a5;
+              }
+              &:focus {
+                box-shadow: none;
+              }
+            }
+            .textarea-height {
+              height: 100px;
+              resize: none;
+              font-size: 16px;
+            }
+            .is-invalid {
+              background-image: url(../assets/img/wrong.png);
+              background-size: 10px;
+              &:focus {
+                box-shadow: none;
+              }
+            }
+            .invalid-feedback {
+              float: left;
+              .invalid-text {
+                float: right;
+                color: #3262a5;
+              }
+            }
+          }
+          .trick-buttons {
+            padding-left: 15px;
+            margin-top: 25px;
+            margin-left: 194px;
+            .trick-submit-btn {
+              background-color: #3262a5;
+              border: 1px solid #3262a5;
+              color: #fff;
+              font-size: 16px;
+              padding: 6px 30px;
+              &:hover {
+                color: #3262a5;
+                background-color: #fff;
+                border: 1px solid #3262a5;
+              }
+              &:focus {
+                box-shadow: none;
+              }
+            }
+          }
         }
+      }
     }
-}
+  }
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .trick-col-float-left {
+      float: left;
+      .trick-float-left {
+        display: none;
+      }
+      .trick-md-right {
+        width: 100% !important;
+      }
+    }
+    .trick-buttons{
+      margin-left: 0px !important;
+    }
+  }
+  

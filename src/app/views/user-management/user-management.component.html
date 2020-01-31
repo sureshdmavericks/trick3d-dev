@@ -1,13 +1,21 @@
-<div class="animated fadeIn">
-  <div class="card">
-    <div class="card-header">
-      Users
-      <div class="card-header-actions" style="height: 21px;">
-            <button class="btn btn-sm btn-primary" type="button" (click)="addUser()"><i class="fa fa-plus"></i>&nbsp;Add User</button>
+<div class="animated fadeIn trick3d-user-management">
+  <div class="card border-none">
+    <div class="card-header  bg-clr">
+      <!-- <div class="row mb-3 trick-client-srch">
+        <div class="col-md-4 offset-md-8 trick-client-left">
+          <div class="input-group">
+            <input type="text" class="form-control serch-bgclr" [(ngModel)]="filterQuery" placeholder="Search User" />
+            <img class="search-img" src="../../assets/img/search.png" />
           </div>
+        </div>
+      </div> -->
+      <div class="card-header-actions">
+        <button class="btn btn-sm btn-primary add-client-bgclr" type="button" (click)="addUser()">&nbsp;Add
+          User</button>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="row mb-3">
+    <div class="card-body" style="padding-top:0px;">
+      <!-- <div class="row mb-3">
         <div class="col-md-4 offset-md-8">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -16,8 +24,8 @@
             <input type="text" class="form-control" [(ngModel)]="filterQuery" placeholder="Search by name"/>
           </div>
         </div>
-      </div>
-      <table class="table table-striped table-bordered table-hover table-responsive-lg" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="10">
+      </div> -->
+      <!-- <table class="table table-striped table-bordered table-hover table-responsive-lg" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
           <tr>
             <th style="width: 20%">
@@ -39,12 +47,7 @@
             <td>{{item.FullName}}</td>
             <td>{{item.UserName}}</td>
             <td>{{item.Email}}</td>
-            <!--<td>{{item.status}}</td>-->
             <td>
-                <!-- <label class="switch switch-label switch-success">
-                  <input type="checkbox" class="switch-input" [checked]="item.Status" (change)="changeStatus($event, item, index)">
-                  <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                </label> -->
                 <label class="switch switch-label switch-pill switch-primary">
                   <input type="checkbox" class="switch-input" [checked]="item.Status"
                     (change)="changeStatus($event, item, index)">
@@ -60,7 +63,175 @@
             </td>
           </tr>
         </tfoot>
-      </table>
+      </table> -->
+      <accordion [isAnimated]="true">
+        <accordion-group class="trick3d-client-table" *ngFor="let item of data">
+          <div accordion-heading>
+            <!-- <table
+                    class="table table-striped table-bordered table-hover table-responsive-lg no-border table-left"
+                    [mfData]="data | dataFilter: filterQuery"
+                    #mf="mfDataTable"
+                    [mfRowsOnPage]="10"
+                >
+                    <thead class="table-head">
+                        <tr>
+                            
+                            <th
+                                class="title-clr no-border header-paddind text-center"
+                            >
+                                <mfDefaultSorter
+                                    by="notification"
+                                    class="client-management-header"
+                                    >Client
+                                </mfDefaultSorter>
+                                <span class="client-clr">Assets</span>
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                <mfDefaultSorter
+                                    by="notification"
+                                    class="client-management-header"
+                                    >User Name
+                                </mfDefaultSorter>
+                                <span class="client-clr"
+                                    >blackdecker</span
+                                >
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                <mfDefaultSorter
+                                    by="notification"
+                                    class="client-management-header"
+                                    >Website</mfDefaultSorter
+                                >
+                                <span class="client-clr"
+                                    >trick3d.com</span
+                                >
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                <mfDefaultSorter
+                                    by="notification"
+                                    class="client-management-header"
+                                    >Email</mfDefaultSorter
+                                >
+                                <span class="client-clr"
+                                    >trick3d@gmail.com</span
+                                >
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                <mfDefaultSorter
+                                    by="notification"
+                                    class="client-management-header"
+                                    >Role</mfDefaultSorter
+                                >
+                                <span class="client-clr"
+                                    >Producer</span
+                                >
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                <mfDefaultSorter
+                                    by="notification"
+                                    class="client-management-header"
+                                    >Status</mfDefaultSorter
+                                >
+                                <span class="client-clr"
+                                    >Registered</span
+                                >
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                
+                                <label
+                                    class="switch switch-label switch-pill switch-primary"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="switch-input"
+                                        checked
+                                    />
+                                    <span
+                                        class="switch-slider"
+                                        data-checked="On"
+                                        data-unchecked="Off"
+                                    ></span>
+                                </label>
+                            </th>
+                            <th class="title-clr no-border text-center">
+                                <button
+                                    class="btn btn-sm btn-primary btn-unaproved"
+                                >
+                                    Login<img
+                                        src="../../assets/img/approve.png"
+                                    />
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="asset-form-bgclr">
+          <td class="no-border" style="width: 10%;padding-left:12px;color:#3262A5">Asset</td>
+          <td class="tbody-clr no-border" style="width: 10%">black decker</td>
+          <td class="tbody-clr no-border" style="width: 10%">trick3d.com</td>
+          <td class="tbody-clr no-border" style="width: 10%">trick3d@gmail.com</td>
+          <td class="tbody-clr no-border" style="width: 10%">Registered</td>
+          <th class="title-clr no-border text-center" style="width: 15%">
+            <mfDefaultSorter by="notification">Action</mfDefaultSorter>
+          </th>
+          <th class="title-clr no-border text-center" style="width: 15%">
+            <button style="width:100px" class="btn btn-sm btn-primary btn-unaproved" >Login<img src="../../assets/img/approve.png"></button>
+          </th>
+          </tr>
+                    </tbody>
+                </table> -->
+            <div class="container col-lg-12 col-md-12 col-sm-12 trick3d-row">
+              <div class="row no-margin">
+                <div class="col-md-3 col-sm-12 trick3d-table">
+                  <span class="client-management-header">Name
+                  </span>
+                  <span class="client-clr">{{item.FullName}}</span>
+                </div>
+                <div class="col-md-3 col-sm-12 trick3d-table">
+                  <span class="client-management-header">Username
+                  </span>
+                  <span class="client-clr">{{item.UserName}}</span>
+                </div>
+                <div class="col-md-3 col-sm-12 trick3d-table">
+                  <span class="client-management-header">Email
+                  </span>
+                  <span class="client-clr">{{item.Email}}</span>
+                </div>
+                <div class="col-md-3 col-sm-12 trick3d-table">
+                  <span class="client-management-header">Status
+                  </span>
+                  <span class="client-clr">
+                    <label class="switch switch-label switch-pill switch-primary">
+                      <input type="checkbox" class="switch-input" [checked]="item.Status"
+                        (change)="changeStatus($event, item, index)">
+                      <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                    </label>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trick3d-table-body">
+            <div class="client-width text-left">
+              &nbsp;
+            </div>
+            <div class="text-left text-center" style="width: 17%">
+              &nbsp;
+            </div>
+            <div class="text-left text-center" style="width: 18%;"><input type="text" class="trick-usrname text-center"
+                name="username" placeholder="User name" style="width:79%" />
+
+            </div>
+            <div class="text-left text-center" style="width: 17%">
+              <input type="text" class="trick-usrname text-center" placeholder="Password" name="username"
+                style="width:84%" />
+            </div>
+            <div class="text-left text-center" style="width: 14%">
+              <a href="#" class="resend-color">Resend invitation</a>
+            </div>
+          </div>
+        </accordion-group>
+      </accordion>
     </div>
   </div>
 </div>

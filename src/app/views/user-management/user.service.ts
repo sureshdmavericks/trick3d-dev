@@ -77,6 +77,15 @@ export class UserService {
     );
   }
 
+  changePassword(data:any){
+    return this.http.post(
+      `${this.dataUrl}/reset/password`, data, {
+        observe: 'response',
+        headers: new HttpHeaders().set('Authorization', this.authHeader)
+      }
+    );
+  }
+
   roles(){
     return this.http.get(
       this.roleUrl , {

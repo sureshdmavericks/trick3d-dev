@@ -54,6 +54,7 @@ export class AdminReviewComponent implements OnInit {
       ProductImage: [""],
       ProductVideo: [""],
       AssetID: [this.product_data.AssetID],
+      PictureID: [this.product_data.assetPicture.PictureID],
       MarkingImgURL: [""],
       MarkingVideoURL: [""],
       // MarkingText: [""]
@@ -95,6 +96,12 @@ export class AdminReviewComponent implements OnInit {
 
   onSubmitMarking() {
     this.submitted = true;
+    console.log(this.simpleForm)
+    console.log(this.simpleForm.valid)
+    if(this.simpleForm.invalid){
+      return;
+    }
+    console.log(this.simpleForm.value)
     this.assetService
       .createMarking(this.simpleForm.value, this.product_data.ClientID)
       .subscribe(
@@ -121,9 +128,13 @@ export class AdminReviewComponent implements OnInit {
       const [file] = event.target.files
       reader.readAsDataURL(file)
       reader.onload = () => {
-        if (type == "fe") {
+        if (type == "fei") {
           this.simpleForm.patchValue({
             MarkingImgURL: file
+          })
+        } else if (type == "fev") {
+          this.simpleForm.patchValue({
+            MarkingVideoURL: file
           })
         } else if (type == "pi") {
           this.simpleForm.patchValue({

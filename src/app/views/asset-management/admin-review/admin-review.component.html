@@ -24,10 +24,10 @@
                                         <div class="form-group review-name">
                                             <label for="name" class="col-md-4 float-left">Categery</label>
                                             <div class="col-md-8 float-left">
-                                                <select class="form-control product-select">
+                                                <select class="form-control product-select" formControlName="CategoryID">
                                                     <option value="" class="selected-feature">Select Catergory</option>
-                                                    <option [selected]="category.CategeryID==product_data.CategeryID"
-                                                        [value]="category.CategeryID"
+                                                    <option [selected]="category.CategoryID==product_data.CategoryID"
+                                                        [value]="category.CategoryID"
                                                         *ngFor="let category of categories;">{{category.Name}}</option>
                                                 </select>
                                             </div>
@@ -87,7 +87,7 @@
                                             <div class="col-md-8 float-left">
                                                 <select formControlName="MarkingNumber"
                                                     (change)="onSelectFeature($event)"
-                                                    class="form-control feature-select">
+                                                    class="form-control feature-select"> 
                                                     <option value="" class="selected-feature">Select Feature</option>
                                                     <option *ngFor="let feature of product_data.NoOfFeatures"
                                                         [value]=feature+1>{{feature+1}}</option>
@@ -144,7 +144,7 @@
                                                     </label>
                                                     <span>No file chosen</span>
                                                 </div>
-                                                <input id="file-upload" (change)="onFileChange($event,'fei')"
+                                                <input id="file-upload" (change)="onFileChange($event,'fev')"
                                                     type="file" accept="video/*" />
                                             </div>
                                         </div>
@@ -154,7 +154,7 @@
                                     <button [disabled]="product_data.NoOfFeatures!=product_data.assetMarking.length" class="btn btn-primary" >Publish</button>
                                     <span class="trick-form-submit" for="file-input">&nbsp;</span>
                                     <button class="btn btn-primary mr-1 profile-submit-btn" type="submit"
-                                        [disabled]="simpleForm.invalid">Save</button>
+                                        >Save</button>
                                     <!-- <button class="btn btn-danger" type="reset"
                                         [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button> -->
                                     <button class="btn btn-secondary profile-cncl-btn" type="button"
