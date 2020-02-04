@@ -34,8 +34,8 @@
             <div class="col-md-3 col-sm-12 trick3d-table">
               <span class="client-management-header">Status</span>
               <a class="client-clr">
-                <span class="trick-text-size" *ngIf="item.Status == 'published'">Publish</span>
-                <span class="trick-text-size" *ngIf="item.Status == 'unpublished'">Un Publish</span>
+                <span class="trick-text-size" *ngIf="item.Status == 'published'">Published</span>
+                <span class="trick-text-size" *ngIf="item.Status == 'unpublished'">Unpublished</span>
                 <span class="trick-text-size" *ngIf="item.Status == 'under-review'">Under Review</span>
                 <span class="trick-text-size" *ngIf="item.Status == 'reviewed'">Reviewed</span>
               </a>
@@ -53,7 +53,7 @@
                 Publish
               </button>
               <button class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
-                UnPublish
+                Unpublish
               </button>
             </div>
           </div>

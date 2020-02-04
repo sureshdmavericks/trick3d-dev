@@ -138,7 +138,7 @@ export class AdminReviewComponent implements OnInit {
       .then(result => {
         if (result.value) {
           this.assetService
-            .update({ Status: "reviewed" }, this.product_data.AssetID)
+            .update({ Status: "published" }, this.product_data.AssetID)
             .subscribe(
               response => {
                 console.log(response)
