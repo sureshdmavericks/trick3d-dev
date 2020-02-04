@@ -52,6 +52,14 @@ export class AssetService {
       )
   }
 
+  update(data:any, id:string):Observable<any> {
+    return this.http.patch(`${this.dataUrl}/${id}`, data, {
+          observe: 'response',
+          headers: new HttpHeaders().set('Authorization', this.authHeader)
+        }
+      )
+  }
+
   createMarking(data:any, ClientID:string):Observable<any>{
     let sdata = new FormData();
     sdata.append('Title', data.Title);

@@ -20,10 +20,19 @@
       .col-form-label{
           font-size: 18px;
       }
+      .float-left{
+        float: left;
+      }
+      .no-padding{
+        padding: 0px;
+      }
       .form-clr {
         color: #3262a5;
         border: 1px solid #3262a5;
         font-size: 18px;
+        width: 62%;
+        // margin-left: 150px;
+        float: right;
         &::placeholder {
           color: #3262a5;
         }
@@ -32,18 +41,21 @@
         }
       }
       input[type="file"] {
-        width: 100%;
+        width:61%;
         position: relative;
         opacity: 0;
+        width: 36%;
       }
       .custom-file-upload {
         position: absolute;
         opacity: 1;
         background-color: #fff;
-        width: 94%;
+        width: 63%;
+    /* float: right; */
+        right: -7px;
         .upload-labe {
           border: 1px solid #3262a5;
-          width: 69%;
+          width: 36%;
           border-radius: 3px;
           padding: 6px 14px;
         }
@@ -79,11 +91,16 @@
         width: 35%;
         float: left;
       }
+      .trick-buttons{
+        // padding-left: 15px;
+    margin-top: 7px;
+    margin-left: 194px;
+      }
       .profile-cancel-btn {
         color: #fff;
         background-color: #3262a5;
-        height: 38px;
-        width: 100px;
+        height: 39px;
+        padding: 0px 30px;
         font-size: 18px;
         // &:hover {
         //   background-color: #fff;
@@ -92,7 +109,7 @@
         // }
       }
       .profile-reset-btn {
-        width: 100px;
+        padding: 0px 30px;
         height: 38px;
         font-size: 18px;
       }
@@ -101,8 +118,9 @@
         background-color: #fff;
         border: 1px solid #3262a5;
         height: 38px;
-        width: 100px;
+        
         font-size: 18px;
+        padding: 6px 30px;
         // &:hover {
         //   background-color: #3262a5;
         //   color: #fff;

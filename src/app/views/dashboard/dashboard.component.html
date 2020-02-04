@@ -1,16 +1,38 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn trick3d-dashboard">
   <div class="row">
-    <div class="col-sm-6 col-lg-6">
-      <div class="card text-white bg-info">
+    <div class="col-sm-4 col-lg-4 ">
+      <div class="card text-white bg-info bg-color">
+        <h2 class="trick3d-header-asset">&nbsp;</h2>
         <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
+          <!-- <button type="button" class="btn btn-transparent p-0 float-right">
             <i class="icon-location-pin"></i>
-          </button>
-          <div class="text-value">210</div>
-          <div>Clients </div>
+          </button> -->
+          <div class="text-value trick3d-clients-num">39</div>
+          <div class="trick3d-clients-text">Total number of Clients </div>
         </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <!-- <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
           <canvas baseChart class="chart"
+          [datasets]="lineChart2Data"
+          [labels]="lineChart2Labels"
+          [options]="lineChart2Options"
+          [colors]="lineChart2Colours"
+          [legend]="lineChart2Legend"
+          [chartType]="lineChart2Type"></canvas>
+        </div> -->
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-4 col-lg-4 ">
+      <div class="card text-white bg-info bg-color" style="height: 232px;">
+        <h2 class="trick3d-header-asset">Live Assets</h2>
+        <!-- <div class="card-body pb-0"> -->
+          <!-- <button type="button" class="btn btn-transparent p-0 float-right">
+            <i class="icon-location-pin"></i>
+          </button> -->
+          <!-- <div class="text-value trick3d-clients-num">39</div>
+          <div class="trick3d-clients-text">Total number of Clients </div> -->
+        <!-- </div> -->
+        <div class="chart-wrapper mt-3 mx-3">
+          <canvas baseChart class="chart" style="height: 170px;"
           [datasets]="lineChart2Data"
           [labels]="lineChart2Labels"
           [options]="lineChart2Options"
@@ -19,26 +41,60 @@
           [chartType]="lineChart2Type"></canvas>
         </div>
       </div>
-    </div><!--/.col-->
+    </div>
 
-    <div class="col-sm-6 col-lg-6">
-      <div class="card text-white bg-warning">
+    <div class="col-sm-4 col-lg-4">
+      <div class="card text-white bg-color">
+        <h2 class="trick3d-header-asset text-left">Assets Velocity</h2>
         <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
+          <div class="text-value trick3d-clients-num">39</div>
+          <div class="trick3d-clients-text">Total number of Clients </div>
+          <!-- <div class="btn-group float-right" dropdown>
             <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
               <i class="icon-settings"></i>
-            </button>
+            </button> -->
             <!--<div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>-->
-          </div>
+          <!-- </div>
           <div class="text-value">100</div>
-          <div>Users </div>
+          <div>Users </div> -->
         </div>
-        <div class="chart-wrapper mt-3" style="height:70px;">
+        <!-- <div class="chart-wrapper mt-3" style="height:70px;">
           <canvas baseChart class="chart"
+          [datasets]="lineChart3Data"
+          [labels]="lineChart3Labels"
+          [options]="lineChart3Options"
+          [colors]="lineChart3Colours"
+          [legend]="lineChart3Legend"
+          [chartType]="lineChart3Type"></canvas>
+        </div> -->
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-4 col-lg-4">
+      <div class="card text-white bg-color " style="background-color: #e1e1e1 !important;">
+        <h2 class="trick3d-header-asset text-left">Asset Categories</h2>
+        <!-- <div class="card-body pb-0"> -->
+          <!-- <div class="text-value trick3d-clients-num">39</div>
+          <div class="trick3d-clients-text">Total number of Clients </div> -->
+          <!-- <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+              <i class="icon-settings"></i>
+            </button> -->
+            <!--<div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>-->
+          <!-- </div>
+          <div class="text-value">100</div>
+          <div>Users </div> -->
+          
+        <!-- </div> -->
+        <div class="chart-wrapper mt-3" >
+          <canvas baseChart class="chart" style="height: 145px;"
           [datasets]="lineChart3Data"
           [labels]="lineChart3Labels"
           [options]="lineChart3Options"
@@ -48,15 +104,55 @@
         </div>
       </div>
     </div><!--/.col-->
+    <div class="col-sm-4 col-lg-8">
+      <div class="card text-white bg-color">
+        <h2 class="trick3d-header-asset text-left">Published / UnPublished</h2>
+        <!-- <div class="card-body pb-0"> -->
+          <!-- <div class="text-value trick3d-clients-num">39</div>
+          <div class="trick3d-clients-text">Total number of Clients </div> -->
+          <!-- <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+              <i class="icon-settings"></i>
+            </button> -->
+            <!--<div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>-->
+          <!-- </div>
+          <div class="text-value">100</div>
+          <div>Users </div> -->
+        <!-- </div> -->
+        <!-- <div class="chart-wrapper mt-3" style="height:70px;">
+          <canvas baseChart class="chart"
+          [datasets]="lineChart3Data"
+          [labels]="lineChart3Labels"
+          [options]="lineChart3Options"
+          [colors]="lineChart3Colours"
+          [legend]="lineChart3Legend"
+          [chartType]="lineChart3Type"></canvas>
+        </div> -->
+        <div class="chart-wrapper" style="height:160px;">
+          <canvas baseChart class="chart"
+          [datasets]="mainChartData"
+          [labels]="mainChartLabels"
+          [options]="mainChartOptions"
+          [colors]="mainChartColours"
+          [legend]="mainChartLegend"
+          [chartType]="mainChartType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+
 
   </div><!--/.row-->
-  <div class="card">
-    <div class="card-body">
+  <!-- <div class="card"> -->
+    <!-- <div class="card-body">
       <div class="row">
         <div class="col-sm-5">
           <h4 class="card-title mb-0">Clients</h4>
           <div class="small text-muted">November 2017</div>
-        </div><!--/.col-->
+        </div>
         <div class="col-sm-7 d-none d-md-block">
           <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
           <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
@@ -64,8 +160,8 @@
             <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Month" id="option2">Month</label>
             <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Year" id="option3">Year</label>
           </div>
-        </div><!--/.col-->
-      </div><!--/.row-->
+        </div>
+      </div>
       <div class="chart-wrapper" style="height:300px;margin-top:40px;">
         <canvas baseChart class="chart"
         [datasets]="mainChartData"
@@ -75,9 +171,9 @@
         [legend]="mainChartLegend"
         [chartType]="mainChartType"></canvas>
       </div>
-    </div>
+    </div> -->
 
-  </div>
+  <!-- </div> -->
   <!--/.card-->
 
 

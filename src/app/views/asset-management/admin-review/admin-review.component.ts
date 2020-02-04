@@ -19,6 +19,12 @@ export class AdminReviewComponent implements OnInit {
   categories: Array<any> = []
 
   product_data: any
+  isHaving: any = {
+    pi: false,
+    pv: false,
+    mi: false,
+    mv: false
+  }
 
   constructor(
     public navCtrl: NgxNavigationWithDataComponent,
@@ -69,27 +75,23 @@ export class AdminReviewComponent implements OnInit {
       this.product_data.NoOfFeatures = Array(data.NoOfFeatures)
         .fill(data.NoOfFeatures)
         .map((x, i) => i)
-      // for (let index = 0; index < data.assetMarking.length; index++) {
-      //   const element = data.assetMarking[index]
-      //   if (element.MarkingNumber == index + 1) {
-      //     this.features[element.MarkingNumber] = element
-      //   }
-      // }
     })
   }
 
   onSelectFeature(event) {
-    let featureData = _.find(this.product_data.assetMarking, {MarkingNumber:+event.target.value});
+    let featureData = _.find(this.product_data.assetMarking, {
+      MarkingNumber: +event.target.value
+    })
     if (!featureData) {
       this.simpleForm.patchValue({
         Title: "",
         Description: "",
         MarkingImgURL: "",
-        MarkingVideoURL:""
+        MarkingVideoURL: ""
       })
       return false
     }
-    console.log('featureData:',featureData);
+    console.log("featureData:", featureData)
     this.simpleForm.patchValue({
       MarkingNumber: +event.target.value,
       Title: featureData.Title,
@@ -104,19 +106,50 @@ export class AdminReviewComponent implements OnInit {
     if (this.simpleForm.invalid) {
       return
     }
-    console.log(this.simpleForm.value)
     this.assetService
       .createMarking(this.simpleForm.value, this.product_data.ClientID)
       .subscribe(
         response => {
           this.submitted = false
-          console.log(response.body)
-          let index = _.findIndex(this.product_data.assetMarking, {MarkingNumber: response.body.MarkingNumber});
-          this.product_data.assetMarking[index] = response.body;
-          console.log(this.product_data)
+          let index = _.findIndex(this.product_data.assetMarking, {
+            MarkingNumber: response.body.MarkingNumber
+          })
+          if (index >= 0) this.product_data.assetMarking[index] = response.body
+          else this.product_data.assetMarking.push(response.body)
+          swal.fire("Success", `Product updated successfully.`, "success")
         },
-        error => {}
+        error => {
+          swal.fire("Oops!", `Something went wrong.`, "error")
+        }
       )
+  }
+
+  publishProduct() {
+    swal
+      .fire({
+        title: "Are you sure?",
+        text: `Product will be published.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      })
+      .then(result => {
+        if (result.value) {
+          this.assetService
+            .update({ Status: "reviewed" }, this.product_data.AssetID)
+            .subscribe(
+              response => {
+                console.log(response)
+                swal.fire('Success','Product published successfully.');
+              },
+              error => {
+                swal.fire("Oops!", `Something went wrong.`, "error");
+              }
+            )
+        } 
+      })
   }
 
   get f() {
@@ -125,6 +158,12 @@ export class AdminReviewComponent implements OnInit {
 
   cancel() {
     this.navCtrl.navigate("/assets")
+  }
+
+  toggleAssets(flag, element) {
+    console.log("this.isHaving::", this.isHaving)
+    this.isHaving[element] = flag
+    console.log("this.isHaving n::", this.isHaving)
   }
 
   onFileChange(event, type: string) {

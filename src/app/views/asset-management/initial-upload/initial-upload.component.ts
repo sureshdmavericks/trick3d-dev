@@ -39,6 +39,7 @@ export class InitialUploadComponent implements OnInit {
     if (Object.keys(this.navCtrl.data).length > 0) {
       this.simpleForm.patchValue({
         ClientID: this.product_data.ClientID,
+        CategoryID:this.product_data.CategoryID,
         Name: this.product_data.Name,
         Upload: this.product_data.Upload,
         NoOfFeatures: this.product_data.NoOfFeatures
@@ -73,7 +74,7 @@ export class InitialUploadComponent implements OnInit {
 
   getCategpries() {
     this._categoryService.getData().subscribe(response => {
-      this.categories = response.body
+      this.categories = response.body;
       if (this.product_data) {
         this.simpleForm.patchValue({
           CategoryID: this.product_data.CategoryID

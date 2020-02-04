@@ -1,0 +1,48 @@
+.trick3d-default-layout {
+  .trick3d-notify {
+    .notifiacrtion-bgclr {
+      background-color: #3262a5;
+      color: #fff;
+      font-size: 16px;
+    }
+    .notify-dropdown {
+      color: #3262a5;
+      background-color: #fff;
+      font-size: 16px;
+
+      .user-bg-clr {
+        color: #3262a5;
+      }
+      &:hover {
+        .user-bg-clr {
+          color: #fff;
+        }
+        background-color: #3262a5;
+        color: #fff;
+      }
+    }
+  }
+  .border-clr {
+    border: 1px solid #3262a5;
+    .trick3d-accnt-header {
+      color: #fff;
+      background-color: #3262a5;
+      font-size: 16px;
+    }
+    .trick3d-profiles {
+      color: #3262a5;
+      background-color: #fff;
+      font-size: 16px;
+      .user-bg-clr {
+        color: #3262a5;
+      }
+      &:hover {
+        .user-bg-clr {
+          color: #fff;
+        }
+        background-color: #3262a5;
+        color: #fff;
+      }
+    }
+  }
+}

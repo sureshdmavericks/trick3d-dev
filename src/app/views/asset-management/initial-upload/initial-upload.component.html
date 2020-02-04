@@ -10,13 +10,14 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
               <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="_client">Client</label>
-                  <div class="col-md-8">
-                    <!-- <select [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }" class="form-control form-clr" formControlName="ClientID" id="_client" required (change)="getCategpries()"> -->
-                      <select [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }" class="form-control form-clr" formControlName="ClientID" id="_client" required>
+                <div class="col-md-12 float-left">
+                  <div class="col-md-6 form-group  no-padding">
+                    <label class=" col-form-label" for="_client">Client</label>
+                    <select
+                      [ngClass]="{ 'is-invalid': submitted && f.ClientID.errors, 'is-valid': f.ClientID.touched && !f.ClientID.errors }"
+                      class="form-control form-clr" formControlName="ClientID" id="_client" required>
                       <option value="">Select Client</option>
                       <option *ngFor="let client of clients" [value]="client.ClientID">{{client.FullName}}</option>
                     </select>
@@ -24,68 +25,73 @@
                       <div class="invalid-text" *ngIf="f['ClientID'].errors.required">Client is required</div>
                     </div>
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="_category">Category</label>
-                  <div class="col-md-8">
-                  <select [ngClass]="{ 'is-invalid': submitted && f.CategoryID.errors, 'is-valid': f.CategoryID.touched && !f.CategoryID.errors }" class="form-control form-clr" formControlName="CategoryID" id="_category" required>
-                    <option value="">Select Category</option>
-                    <option *ngFor="let catogory of categories" [value]="catogory.CategoryID">{{catogory.Name}}</option>
-                  </select>
-                  <div *ngIf="submitted && f['CategoryID'].errors" class="invalid-feedback">
-                    <div class="invalid-text" *ngIf="f['CategoryID'].errors.required">Category is required</div>
+                  <div class=" col-md-6 form-group no-padding">
+                    <label class="col-form-label" for="_category">Category</label>
+                    <!-- <div class="col-md-8"> -->
+                    <select
+                      [ngClass]="{ 'is-invalid': submitted && f.CategoryID.errors, 'is-valid': f.CategoryID.touched && !f.CategoryID.errors }"
+                      class="form-control form-clr" formControlName="CategoryID" id="_category" required>
+                      <option value="" [selected]="true">Select Category</option>
+                      <option *ngFor="let catogory of categories" [value]="catogory.CategoryID">{{catogory.Name}}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && f['CategoryID'].errors" class="invalid-feedback">
+                      <div class="invalid-text" *ngIf="f['CategoryID'].errors.required">Category is required</div>
+                    </div>
+                    <!-- </div> -->
                   </div>
+                  <div class=" col-md-6 form-group no-padding">
+                    <label class=" col-form-label" for="_name">Product Name </label>
+                    <!-- <div class="col-md-8"> -->
+                    <input class="form-control form-clr" id="_name" type="text" formControlName="Name"
+                      placeholder="Product Name" autocomplete="family-name" required
+                      [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
+                    <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
+                      <div class="invalid-text" *ngIf="f['Name'].errors.required">Product Name is required</div>
+                    </div>
+                    <!-- </div> -->
                   </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="_name">Product Name </label>
-                  <div class="col-md-8">
-                  <input class="form-control form-clr"
-                         id="_name"
-                         type="text"
-                         formControlName="Name"
-                         placeholder="Product Name"
-                         autocomplete="family-name"
-                         required
-                         [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
-                  <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
-                    <div class="invalid-text" *ngIf="f['Name'].errors.required">Product Name is required</div>
-                  </div>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="file-input">Upload Thumbnail</label>
-                  <div class="col-md-8">
+                  <div class="col-md-6 form-group no-padding">
+                    <label class="float-left col-form-label" for="file-input">Upload Thumbnail</label>
                     <div class="custom-file-upload">
                       <label for="file-upload" class="upload-labe">
-                          Choose File
+                        Choose File
                       </label>
                       <span>No file chosen</span>
+                    </div>
+                    <input accept='image/*' required class="choose-file-form" (change)="onFileChange($event)"
+                      type="file" id="file-input"
+                      [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
+                    <span *ngIf="product_data.Upload"><img width="60" [src]="f.Upload.value"
+                        (click)="openImagePopup()" /></span>
                   </div>
-                    <input accept='image/*' required class="choose-file-form" (change)="onFileChange($event)" type="file" id="file-input" 
-                    [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
+                  <div class="col-md-6 form-group no-padding">
+                    <label class=" col-form-label" for="features">Number of Hot Spots</label>
+                    <input
+                      [ngClass]="{ 'is-invalid': submitted && f.NoOfFeatures.errors, 'is-valid': f.NoOfFeatures.touched && !f.NoOfFeatures.errors }"
+                      class="form-control form-clr" formControlName="NoOfFeatures" type="number" id="features" />
+                    <div *ngIf="submitted && f['NoOfFeatures'].errors" class="invalid-feedback">
+                      <div class="invalid-text" *ngIf="f['NoOfFeatures'].errors.required">Number of Hot Spots is
+                        required
+                      </div>
+                    </div>
                   </div>
-                  <span *ngIf="product_data.Upload"><img width="60" [src]="f.Upload.value" (click)="openImagePopup()"/></span>
+
                 </div>
-                <div class="form-group row">
-                  <label class="col-md-4 col-form-label" for="features">Number of Hot Spots</label>
-                  <div class="col-md-8">
-                    <input [ngClass]="{ 'is-invalid': submitted && f.NoOfFeatures.errors, 'is-valid': f.NoOfFeatures.touched && !f.NoOfFeatures.errors }" class="form-control form-clr" formControlName="NoOfFeatures" type="number" id="features"/>
+                <div class="col-md-12 float-left">
+                  <div class="form-actions trick-buttons">
+                    <!-- <span class="trick-form-submit" for="file-input">&nbsp;</span> -->
+                    <button class="btn btn-primary mr-1 profile-submit-btn" type="submit"
+                      [disabled]="simpleForm.invalid">Submit</button>
+                    <!-- <button class="btn btn-danger profile-reset-btn" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button> -->
+                    <button class="btn btn-secondary profile-cancel-btn" type="button"
+                      (click)="cancel()">Cancel</button>
                   </div>
-                  <div *ngIf="submitted && f['NoOfFeatures'].errors" class="invalid-feedback">
-                    <div class="invalid-text" *ngIf="f['NoOfFeatures'].errors.required">Number of Hot Spots is required</div>
-                  </div>
-                </div>
-                <div class="form-actions">
-                    <span class="trick-form-submit" for="file-input">&nbsp;</span>
-                  <button class="btn btn-primary mr-1 profile-submit-btn" type="submit" [disabled]="simpleForm.invalid">Submit</button>
-                  <!-- <button class="btn btn-danger profile-reset-btn" type="reset" [disabled]="simpleForm.pristine && !submitted" (click)="onReset()">Reset</button> -->
-                  <button class="btn btn-secondary profile-cancel-btn" type="button" (click)="cancel()">Cancel</button>
                 </div>
               </form>
             </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

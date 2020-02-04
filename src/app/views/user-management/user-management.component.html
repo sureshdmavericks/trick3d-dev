@@ -42,7 +42,7 @@
                   <span class="client-clr">
                     <label class="switch switch-label switch-pill switch-primary">
                       <input type="checkbox" class="switch-input" [checked]="item.Status"
-                        (change)="changeStatus($event, item, index)" [disabled]="item.ClientID==_authService.isClient()">
+                        (change)="changeStatus($event, item, index)" [disabled]="item.ClientID==_authService.isClient() && item.UserID==_authService.getData().id">
                       <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                     </label>
                   </span>

@@ -40,6 +40,7 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit() {
     console.log(this._authService.isClient())
+    console.log(this._authService.getData())
   }
 
   addUser(){
