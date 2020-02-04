@@ -49,10 +49,10 @@
               <button [disabled]="item.Status == 'under-review'" class="btn btn-sm btn-primary btn-published " *ngIf="item.Status == 'under-review'">
                 Publish
               </button>
-              <button class="btn btn-sm btn-primary btn-published" *ngIf="['unpublished','reviewed'].includes(item.Status)">
+              <button (click)="unpublishProduct(item.AssetID,'published',i)" class="btn btn-sm btn-primary btn-published" *ngIf="['unpublished','reviewed'].includes(item.Status)">
                 Publish
               </button>
-              <button class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
+              <button (click)="unpublishProduct(item.AssetID,'unpublished',i)" class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
                 Unpublish
               </button>
             </div>

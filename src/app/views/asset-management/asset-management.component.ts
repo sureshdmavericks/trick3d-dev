@@ -6,6 +6,7 @@ import { ChangeAssetCategoryComponent } from "../modals/change-asset-category/ch
 import { NgxNavigationWithDataComponent } from 'ngx-navigation-with-data';
 import * as _ from 'lodash';
 import { AuthService } from '../../authentication/auth.service';
+import swal from 'sweetalert2';
 
 @Component({
   templateUrl: "./asset-management.component.html",
@@ -15,7 +16,7 @@ export class AssetManagementComponent implements OnInit {
   bsModalRef: BsModalRef
 
   error: any
-  public data: AssetMgntData
+  public data: any;
   // public filterQuery = ""
   isAdmin:boolean;
 
@@ -28,7 +29,6 @@ export class AssetManagementComponent implements OnInit {
   ) {
     this.dataTableService.getData().subscribe(
       (data: any) => {
-        console.log
         this.data = [...data.body]
       },
       error => (this.error = error)
@@ -72,6 +72,35 @@ export class AssetManagementComponent implements OnInit {
       day: "2-digit"
     })
   }
+
+  unpublishProduct(id:string, Status:string, i:number) {
+    swal
+      .fire({
+        title: "Are you sure?",
+        text: `Product will be ${Status}.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      })
+      .then(result => {
+        if (result.value) {
+          this.dataTableService
+            .update({ Status }, id)
+            .subscribe(
+              response => {
+                this.data[i] = response.body;
+                swal.fire('Success',`Product ${Status}.`);
+              },
+              error => {
+                swal.fire("Oops!", `Something went wrong.`, "error");
+              }
+            )
+        } 
+      })
+  }
+
 
   
 

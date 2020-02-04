@@ -25,14 +25,14 @@ export class AssetService {
   }
 
   getData() {
-    return this.http.get<AssetMgntData>(this.dataUrl, {
+    return this.http.get(this.dataUrl, {
       observe: 'response',
       headers: new HttpHeaders().set('Authorization', this.authHeader)
     });
   }
 
   getById(AssetID:string) {
-    return this.http.get<AssetMgntData>(`${this.dataUrl}/${AssetID}`,{
+    return this.http.get(`${this.dataUrl}/${AssetID}`,{
       observe: 'response',
       headers: new HttpHeaders().set('Authorization', this.authHeader)
     });
