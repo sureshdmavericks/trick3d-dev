@@ -6,6 +6,16 @@
     border-bottom: none;
     background-color: transparent;
     padding-bottom: 20px;
+    .client-title{
+      border-bottom: none;
+    background-color: transparent;
+    font-size: 21px;
+    font-weight: 600;
+    color: #3262a5;
+    float: left;
+    padding-top: 10px;
+    margin: 0px;
+    }
   }
   .card-header-actions {
     margin-right: 3px;
@@ -16,7 +26,7 @@
       border: 1px solid #3262a5;
       height: 38px;
       width: 120px;
-      font-size: 16px;
+      font-size: 18px;
       &:hover {
         color: #ecf2f8;
         background-color: #3262a5;
@@ -47,7 +57,7 @@
           color: #ecf2f8;
           border-radius: 5px;
           width: 26%;
-          font-size: 16px;
+          font-size: 18px;
           float: left;
           position: relative;
           &::placeholder {
@@ -65,11 +75,40 @@
       }
     }
   }
-  .trick3d-client-table {
-    .card {
+  .trick3d-client-table:nth-child(odd) {
+    // background-color: #3262a5;
+    border: none;
+    padding: 0px;
+    background-color: #ecf2f8;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-bottom: 22px;
+  }
+  .trick3d-client-table:nth-child(even){
+    background-color: transparent;
+    border: 1px solid #ecf2f8;
+    font-size: 18px;
+    padding: 0px;
+    border-radius: 5px;
+    margin-bottom: 22px;
+  }
+    // .card:nth-child(odd) {
+    //   border: none;
+    //   padding: 0px;
+    //   background-color: #ecf2f8;
+    //   font-size: 18px;
+    // }
+    // .card:nth-child(even){
+    //   background-color: transparent;
+    //   border: 1px solid #3262a5;
+    // }
+    .card{
+      background-color: transparent;
       border: none;
       padding: 0px;
-      background-color: #ecf2f8;
+      font-size: 18px;
+      margin-bottom: 0px;
+    }
       .card-header {
         background-color: transparent;
         border-bottom: none;
@@ -79,13 +118,16 @@
           .no-margin {
             margin: 0px;
             .trick3d-table {
-              text-align: center;
-              padding: 0px;
+              text-align: left;
+              // padding: 0px;
               .client-management-header {
                 display: block;
                 font-weight: 600;
                 color: #80a8cf;
               }
+            }
+            .text-middle{
+              text-align: center;
             }
           }
         }
@@ -112,6 +154,19 @@
         .asset-form-bgclr {
           background-color: transparent;
         }
+        .text-center {
+          padding-left: 37px;
+        }
+        .resend-color {
+          line-height: 46px;
+          color: #80a8cf;
+          text-decoration: underline;
+        }
+        .client-registered{
+          line-height: 46px;
+          margin: 0px;
+          color: #3262a5;
+        }
         .switch-pill {
           .switch-slider {
             background-color: #3262a5;
@@ -122,9 +177,10 @@
         .btn-unaproved {
           background-color: #3262a5;
           border: 1px solid #3262a5;
-          padding: 7px;
-          font-size: 14px;
-          width: 100px;
+          padding: 5px 7px;
+          font-size: 18px;
+          width: 120px;
+          height:38px;
           margin-top: 5px;
           img {
             padding-left: 8px;
@@ -142,7 +198,7 @@
         }
       }
       .card-body {
-        padding: 0px;
+        padding: 20px 0px 0px 0px;
         .trick3d-table-body {
           .client-width {
             width: 5%;
@@ -177,12 +233,11 @@
           }
         }
       }
-    }
+    
     .collapse {
       .card {
         background-color: transparent;
       }
     }
-  }
+  
 }
-

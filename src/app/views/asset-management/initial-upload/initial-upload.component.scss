@@ -1,52 +1,113 @@
-.initial-upload-foam{
-    .no-border{
-        border: none;
+.initial-upload-foam {
+  .no-border {
+    border: none;
+  }
+  .no-bgclr {
+    background-color: transparent;
+    border-bottom: none;
+  }
+  .card {
+    .card-header {
+      color: #3262a5;
+      .asset-form {
+        font-size: 21px;
+        font-weight: 600;
+        color: #3262a5;
+      }
     }
-    .no-bgclr{
-        background-color: transparent;
-        border-bottom: none;
-    }
-    .card{
-    .card-header{
-        color: #3262A5;
-    }
-    .card-body{
-        color: #3262A5;
-        .form-clr{
-            color: #3262A5;
-            border: 1px solid #3262A5;
-            &::placeholder{
-                color: #3262A5;
-            }
+    .card-body {
+      color: #3262a5;
+      .col-form-label{
+          font-size: 18px;
+      }
+      .form-clr {
+        color: #3262a5;
+        border: 1px solid #3262a5;
+        font-size: 18px;
+        &::placeholder {
+          color: #3262a5;
         }
-        .choose-file-form{
-            color: #3262A5;
+        &:focus {
+          box-shadow: none;
         }
-        // input[type=file]{
-        //     border: 1px solid #fff;
+      }
+      input[type="file"] {
+        width: 100%;
+        position: relative;
+        opacity: 0;
+      }
+      .custom-file-upload {
+        position: absolute;
+        opacity: 1;
+        background-color: #fff;
+        width: 94%;
+        .upload-labe {
+          border: 1px solid #3262a5;
+          width: 69%;
+          border-radius: 3px;
+          padding: 6px 14px;
+        }
+      }
+      .is-invalid {
+        background-image: url(../assets/img/wrong.png);
+        background-size: 10px;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .is-valid {
+        background-image: url(../assets/img/tick.png);
+        background-size: 16px;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .invalid-feedback {
+        float: left;
+        .invalid-text {
+          float: right;
+          color: #3262a5;
+        }
+      }
+      .choose-file-form {
+        color: #3262a5;
+      }
+      // input[type=file]{
+      //     border: 1px solid #fff;
+      // }
+      .trick-form-submit {
+        width: 35%;
+        float: left;
+      }
+      .profile-cancel-btn {
+        color: #fff;
+        background-color: #3262a5;
+        height: 38px;
+        width: 100px;
+        font-size: 18px;
+        // &:hover {
+        //   background-color: #fff;
+        //   color: #3262a5;
+        //   border: 1px solid #3262a5;
         // }
-        .trick-form-submit{
-            width: 35%;
-            float: left;
-        }
-        .profile-submit-btn{
-            color: #fff;
-            background-color: #3262A5;
-            &:hover{
-                background-color: #fff;
-                color:#3262A5;
-                border: 1px solid #3262A5
-            }
-        }
-        .profile-reset-btn{
-            color: #3262A5;
-            background-color: #fff;
-            border: 1px solid #3262A5;
-            &:hover{
-                background-color: #3262A5;
-                color:#fff;
-            }
-        }
+      }
+      .profile-reset-btn {
+        width: 100px;
+        height: 38px;
+        font-size: 18px;
+      }
+      .profile-submit-btn {
+        color: #3262a5;
+        background-color: #fff;
+        border: 1px solid #3262a5;
+        height: 38px;
+        width: 100px;
+        font-size: 18px;
+        // &:hover {
+        //   background-color: #3262a5;
+        //   color: #fff;
+        // }
+      }
     }
-}
+  }
 }

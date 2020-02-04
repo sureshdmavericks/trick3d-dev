@@ -18,13 +18,14 @@
             .trick-float-left {
               //float: left;
               color: #3262a5;
+              font-size: 18px;
             }
             .trick-md-right {
               float: right;
               width: 60%;
               color: #3262a5;
               border: 1px solid #3262a5;
-              font-size: 16px;
+              font-size: 18px;
               &::placeholder {
                 color: #3262a5;
               }
@@ -35,11 +36,18 @@
             .textarea-height {
               height: 100px;
               resize: none;
-              font-size: 16px;
+              font-size: 18px;
             }
             .is-invalid {
               background-image: url(../assets/img/wrong.png);
               background-size: 10px;
+              &:focus {
+                box-shadow: none;
+              }
+            }
+            .is-valid {
+              background-image: url(../assets/img/tick.png);
+              background-size: 16px;
               &:focus {
                 box-shadow: none;
               }
@@ -56,20 +64,27 @@
             padding-left: 15px;
             margin-top: 25px;
             margin-left: 194px;
-            .trick-submit-btn {
+            .trick-cancel-btn {
               background-color: #3262a5;
               border: 1px solid #3262a5;
               color: #fff;
-              font-size: 16px;
+              font-size: 18px;
               padding: 6px 30px;
-              &:hover {
-                color: #3262a5;
-                background-color: #fff;
-                border: 1px solid #3262a5;
-              }
+              // &:hover {
+              //   color: #3262a5;
+              //   background-color: #fff;
+              //   border: 1px solid #3262a5;
+              // }
               &:focus {
                 box-shadow: none;
               }
+            }
+            .trick-submit-btn{
+              color: #3262a5;
+              background-color: #fff;
+              border: 1px solid #3262a5;
+              font-size: 18px;
+              padding: 6px 30px;
             }
           }
         }

@@ -1,192 +1,229 @@
 .trick3d-user-management {
-    .border-none {
-      border: none;
+  .border-none {
+    border: none;
+  }
+  .bg-clr {
+    border-bottom: none;
+    background-color: transparent;
+    padding-bottom: 20px;
+    .user-title {
+      font-size: 21px;
+      font-weight: 600;
+      color: #3262a5;
+      float: left;
+      padding-top: 10px;
+      margin: 0px;
     }
-    .bg-clr {
-      border-bottom: none;
-      background-color: transparent;
-      padding-bottom: 20px;
-    }
-    .card-header-actions {
-      margin-right: 3px;
+  }
+  .card-header-actions {
+    margin-right: 3px;
     //   height: 21px;
-      .add-client-bgclr {
-        background-color: transparent;
-        color: #3262a5;
-        border: 1px solid #3262a5;
-        height: 38px;
-        width: 120px;
-        font-size: 16px;
-        &:hover {
-          color: #ecf2f8;
-          background-color: #3262a5;
-        }
+    .add-client-bgclr {
+      background-color: transparent;
+      color: #3262a5;
+      border: 1px solid #3262a5;
+      height: 38px;
+      width: 120px;
+      font-size: 18px;
+      &:hover {
+        color: #ecf2f8;
+        background-color: #3262a5;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+      &:active {
         &:focus {
           box-shadow: none;
         }
-        &:active {
-            &:focus {
-              box-shadow: none;
-            }
-          }
-      }
-      &:focus {
-        outline: none;
       }
     }
-    .trick-client-srch {
-      display: contents;
-      .trick-client-left {
-        float: left;
-        margin: 0px;
-        padding: 0px;
-        .input-group {
-          width: 85%;
-          .serch-bgclr {
-            background-color: #3262a5;
+    &:focus {
+      outline: none;
+    }
+  }
+  .trick-client-srch {
+    display: contents;
+    .trick-client-left {
+      float: left;
+      margin: 0px;
+      padding: 0px;
+      .input-group {
+        width: 85%;
+        .serch-bgclr {
+          background-color: #3262a5;
+          color: #ecf2f8;
+          border-radius: 5px;
+          width: 26%;
+          font-size: 18px;
+          float: left;
+          position: relative;
+          &::placeholder {
             color: #ecf2f8;
-            border-radius: 5px;
-            width: 26%;
-            font-size: 16px;
-            float: left;
-            position: relative;
-            &::placeholder {
-              color: #ecf2f8;
-            }
-            &:focus {
-              box-shadow: none;
-            }
           }
-          .search-img {
-            position: absolute;
-            right: 16px;
-            top: 8px;
+          &:focus {
+            box-shadow: none;
           }
+        }
+        .search-img {
+          position: absolute;
+          right: 16px;
+          top: 8px;
         }
       }
     }
-    .trick3d-client-table {
-      .card {
-        border: none;
+  }
+  .trick3d-client-table:nth-child(odd) {
+    border: none;
+    padding: 0px;
+    background-color: #ecf2f8;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-bottom: 22px;
+  }
+  .trick3d-client-table:nth-child(even){
+    background-color: transparent;
+    border: 1px solid #ecf2f8;
+    font-size: 18px;
+    padding: 0px;
+    border-radius: 5px;
+    margin-bottom: 22px;
+  }
+    .card {
+      background-color: transparent;
+      border: none;
+      padding: 0px;
+      font-size: 18px;
+      margin-bottom: 0px;
+    }
+      .card-header {
+        background-color: transparent;
+        border-bottom: none;
         padding: 0px;
-        background-color: #ecf2f8;
-        margin-bottom: 10px;
-        .card-header {
-          background-color: transparent;
-          border-bottom: none;
-          padding: 0px;
-          .trick3d-row{
-            padding: 15px 0px 10px 0px;
-            .no-margin{
-              margin:0px;
-            .trick3d-table{
-              text-align: center;
+        .trick3d-row {
+          padding: 15px 0px 10px 0px;
+          .no-margin {
+            margin: 0px;
+            .trick3d-table {
+              text-align: left;
+              padding: 0px 0px 0px 25px;
+              font-size: 18px;
               .client-management-header {
                 display: block;
                 font-weight: 600;
                 color: #80a8cf;
               }
             }
-          }
-          }
-          .no-border {
-            border: none;
-            padding: 0px;
-          }
-          .table-left {
-            float: left;
-          }
-          .header-paddind {
-            padding: 15px 0px 0px 0px;
-          }
-          .text-center {
-            text-align: center;
-          }
-          .client-management-header {
-            display: block;
-            font-weight: 600;
-          }
-          .client-clr {
-            color: #3262a5;
-            font-weight: normal;
-          }
-          .asset-form-bgclr {
-            background-color: transparent;
-          }
-          .switch-pill {
-            .switch-slider {
-              background-color: #3262a5;
-              border: 1px solid #3262a5;
-              margin-top: 10px;
+            .text-center {
+              text-align: center;
+              padding: 0px;
             }
-          }
-          .btn-unaproved {
-            background-color: #3262a5;
-            border: 1px solid #3262a5;
-            padding: 7px;
-            font-size: 14px;
-            width: 100px;
-            img {
-              padding-left: 8px;
-            }
-            &:focus {
-              box-shadow: none;
-            }
-          }
-          .title-clr {
-            color: #80a8cf;
-          }
-          .tbody-clr {
-            text-align: center;
-            color: #3262a5;
           }
         }
-        .card-body {
+        .no-border {
+          border: none;
           padding: 0px;
-          .trick3d-table-body {
-            .client-width {
-              width: 5%;
-              padding: 0px 0px 23px 0px;
-              color: #3262a5;
-            }
-            .text-left {
-              float: left;
-              margin-right: 9px;
-            }
-            .header-paddind {
-              padding: 0px 0px 15px 12px;
-            }
-            .resend-color {
-              color: #3262a5;
-              text-decoration: underline;
-              &:hover {
-                color: #3262a5;
-              }
-            }
-            .trick-usrname {
-              border: none;
-              background-color: #fff;
-              padding: 6px;
-              color: #3262a5;
-              &:focus {
-                outline: none;
-              }
-              &::placeholder {
-                color: #80a8cf;
-              }
-            }
-          }
         }
-       
-      }
-      .collapse {
-        .card {
+        .table-left {
+          float: left;
+        }
+        .header-paddind {
+          padding: 15px 0px 0px 0px;
+        }
+        .text-center {
+          text-align: center;
+        }
+        .client-management-header {
+          display: block;
+          font-weight: 600;
+        }
+        .client-clr {
+          color: #3262a5;
+          font-weight: normal;
+        }
+        .asset-form-bgclr {
           background-color: transparent;
         }
+        .switch-pill {
+          .switch-slider {
+            background-color: #3262a5;
+            border: 1px solid #3262a5;
+            margin-top: 10px;
+          }
+        }
+        .btn-unaproved {
+          background-color: #3262a5;
+          border: 1px solid #3262a5;
+          padding: 7px;
+          font-size: 18px;
+          width: 100px;
+          img {
+            padding-left: 8px;
+          }
+          &:focus {
+            box-shadow: none;
+          }
+        }
+        .title-clr {
+          color: #80a8cf;
+        }
+        .tbody-clr {
+          text-align: center;
+          color: #3262a5;
+        }
+      }
+      .card-body {
+        padding: 20px 0px 0px 0px;
+        .trick3d-table-body {
+          .client-width {
+            width: 5%;
+            padding: 0px 0px 23px 0px;
+            color: #3262a5;
+          }
+          .text-left {
+            float: left;
+            margin-right: 9px;
+          }
+          .header-paddind {
+            padding: 0px 0px 15px 12px;
+          }
+          .resend-color {
+            color: #3262a5;
+            text-decoration: underline;
+            &:hover {
+              color: #3262a5;
+            }
+          }
+          .trick-usrname {
+            border: none;
+            background-color: #fff;
+            padding: 6px;
+            color: #3262a5;
+            &:focus {
+              outline: none;
+            }
+            &::placeholder {
+              color: #80a8cf;
+            }
+          }
+        }
+      }
+    
+    .collapse {
+      .card {
+        background-color: transparent;
       }
     }
-  }
-  .breadcrumb{
-    display: none;
-  }
   
+}
+// .breadcrumb{
+//   display: none;
+// }
+.breadcrumb {
+  border-bottom: 1px solid #3262a5;
+  .breadcrumb-item {
+    a {
+      color: #3262a5;
+    }
+  }
+}

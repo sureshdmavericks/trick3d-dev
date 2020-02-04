@@ -1,22 +1,23 @@
 <div class="animated fadeIn trick3d-client-management">
   <div class="card border-none">
     <div class="card-header bg-clr">
+      <h2 class="client-title">Client Managemenet</h2>
       <div class="card-header-actions">
         <button class="btn btn-sm btn-primary add-client-bgclr" type="button" (click)="addClient()">&nbsp;Add
           Client</button>
       </div>
     </div>
-    <div class="card-body" style="padding-top:0px;">
+    <div class="card-body">
       <accordion [isAnimated]="true">
         <accordion-group class="trick3d-client-table" *ngFor="let item of clients; let i=index">
           <div accordion-heading>
             <div class="container col-lg-12 col-md-12 col-sm-12 trick3d-row">
               <div class="row no-margin">
-                <div class="col-md-1 col-sm-12 trick3d-table">
+                <div class="col-md-2 col-sm-12 trick3d-table">
                   <span class="client-management-header">Client</span>
                   <span class="client-clr">{{item.FullName}}</span>
                 </div>
-                <div class="col-md-2 col-sm-12 trick3d-table">
+                <div class="col-md-3 col-sm-12 trick3d-table">
                   <span class="client-management-header">Email
                   </span>
                   <span class="client-clr">{{item.Email}}</span>
@@ -24,24 +25,25 @@
                 <div class="col-md-2 col-sm-12 trick3d-table">
                   <span class="client-management-header">No. of Users
                   </span>
-                  <span class="client-clr">{{item.users.length}}</span>
+                  <span class="client-clr text-center">{{ item.users ? item.users.length:0}}</span>
                 </div>
                 <div class="col-md-1 col-sm-12 trick3d-table">
-                  <span class="client-management-header">Status
-                  </span>
+                  <!-- <span class="client-management-header">Status
+                  </span> -->
                   <label class="switch switch-label switch-pill switch-primary">
                     <input type="checkbox" class="switch-input" [checked]="item.Status"
                       (change)="changeStatus($event, item)">
                     <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                   </label>
                 </div>
-                <div class="col-md-2 col-sm-12 trick3d-table" style="width: 13%">
+                <div class="col-md-2 col-sm-12 trick3d-table text-middle">
                   <a *ngIf="item.isActive.length==0" (click)="resendLink($event,item.ClientID)" href="javascript:void(0)" class="resend-color">Resend invitation</a>
-                    <p *ngIf="item.isActive.length>0">Registered</p>
+                    <p class="client-registered" *ngIf="item.isActive.length>0">Registered</p>
                 </div>
-                <div class="col-md-2 col-sm-12 trick3d-table">
-                  <button class="btn btn-sm btn-primary btn-unaproved" (click)="login(item.Email)">Login<img
-                      src="../../assets/img/approve.png" /></button>
+                <div class="col-md-2 col-sm-12 trick3d-table text-middle">
+                  <button class="btn btn-sm btn-primary btn-unaproved" (click)="login(item.Email)">Login
+                     <img src="../../assets/img/approve.png" /> 
+                  </button>
                 </div>
               </div>
             </div>

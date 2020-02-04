@@ -49,12 +49,12 @@ export const navItems: NavData[] = [
     icon: 'icon-list',
     role: [2]
   },
-  {
-    name: 'Usage Logs',
-    url: '/usage-logs',
-    icon: 'icon-list',
-    role: [1]
-  },
+  // {
+  //   name: 'Usage Logs',
+  //   url: '/usage-logs',
+  //   icon: 'icon-list',
+  //   role: [1]
+  // },
   {
     name: 'User Management',
     url: '/user-management',
@@ -62,7 +62,7 @@ export const navItems: NavData[] = [
     role: [1,2,3]
   },
   {
-    name: 'Asset Management',
+    name: 'Product Management',
     url: '/assets',
     icon: 'icon-drawer',
     role: [1, 2, 3]

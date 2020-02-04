@@ -21,7 +21,7 @@
         padding-top: 25px;
         .review-name {
           display: flex;
-          font-size: 16px;
+          font-size: 18px;
           color: #3262a5;
           .product-name{
             border: none;
@@ -39,7 +39,7 @@
             width: 98%;
             height: 38px;
             color: #3262a5;
-            font-size: 16px;
+            font-size: 18px;
             &:focus{
               border: none;
               box-shadow: none;
@@ -73,7 +73,7 @@
             .feature-select {
               background-color: #3262a5;
               color: #fff;
-              font-size: 16px;
+              font-size: 18px;
               .selected-feature {
                 background-color: #fff;
                 color: #3262a5;
@@ -120,30 +120,30 @@
       float: right;
       margin-right: 32px;
       margin-top: 25px;
-      .profile-cncl-btn{
+      .profile-submit-btn{
         background-color: transparent;
         color: #3262a5;
         border: 1px solid #3262a5;
         height: 38px;
         width: 120px;
-        font-size: 16px;
-        &:hover {
-          background-color: #3262a5;
-          color: #fff;
-        }
+        font-size: 18px;
+        // &:hover {
+        //   background-color: #3262a5;
+        //   color: #fff;
+        // }
       }
-      .profile-submit-btn {
+      .profile-cncl-btn {
         background-color: #3262a5;
         color: #fff;
         border: 1px solid #3262a5;
         height: 38px;
         width: 120px;
-        font-size: 16px;
-        &:hover {
-          background-color: transparent;
-          color: #3262a5;
-          border: 1px solid #3262a5;
-        }
+        font-size: 18px;
+        // &:hover {
+        //   background-color: transparent;
+        //   color: #3262a5;
+        //   border: 1px solid #3262a5;
+        // }
       }
     }
     .paddin-top {

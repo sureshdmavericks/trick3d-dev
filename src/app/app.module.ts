@@ -7,6 +7,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -129,7 +130,10 @@ import { ChangePasswordComponent } from './views/change-password/change-password
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    LazyLoadImageModule.forRoot({
+      preset: scrollPreset
+    })
   ],
   declarations: [
     AppComponent,

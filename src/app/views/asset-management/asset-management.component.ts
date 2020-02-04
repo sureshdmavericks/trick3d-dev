@@ -73,4 +73,6 @@ export class AssetManagementComponent implements OnInit {
     })
   }
 
+  
+
 }

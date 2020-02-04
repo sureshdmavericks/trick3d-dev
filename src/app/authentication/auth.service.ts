@@ -36,6 +36,11 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
+  public isClient(): boolean {
+    let user = this.getData()
+    return user.clientID;
+  }
+
   loggedIn() {
     const token: string = this.jwtHelperService.tokenGetter()
 

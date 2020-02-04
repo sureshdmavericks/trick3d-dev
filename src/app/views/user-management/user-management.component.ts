@@ -5,10 +5,11 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import _ from 'lodash';
 import { ConfirmComponent } from '../modals/confirm/confirm.component';
 import swal from 'sweetalert2';
+import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   templateUrl: './user-management.component.html',
-  providers: [ UserService ],
+  providers: [ UserService, AuthService ],
 })
 export class UserManagementComponent implements OnInit {
   modalRef: BsModalRef;
@@ -18,8 +19,8 @@ export class UserManagementComponent implements OnInit {
   public filterQuery = '';
 
   constructor(
-    private modalService: BsModalService,
     private dataTableService: UserService,
+    private _authService: AuthService,
     private router : Router
     ) {
     this.dataTableService.getData()
@@ -38,6 +39,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this._authService.isClient())
   }
 
   addUser(){

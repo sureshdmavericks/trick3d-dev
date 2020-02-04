@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-md-5 trick3d-review-image">
                             <h2 class="review-header">Product Review Screen</h2>
-                            <img width="400" [src]="product_data.assetPicture.URL" />
+                            <img width="400" decode=true [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'" [lazyLoad]="product_data.assetPicture.URL" />
                         </div>
                         <div class="col-md-7 trick3d-product-form">
                             <form [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmitMarking()"
@@ -48,39 +48,54 @@
                                     <div class="col-md-12 review-forms bg-noclr">
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Product Image</label>
-                                            <div class="col-md-8 float-left">
+                                            <div class="col-md-8 float-left" *ngIf="!product_data.assetPicture.ProductImage">
                                                 <div class="custom-file-upload">
                                                     <label for="file-upload" class="upload-labe">
                                                         Choose File
                                                     </label>
-                                                    <span>No file chosen</span>
+                                                    <!-- <span>No file chosen</span> -->
                                                 </div>
                                                 <input id="file-upload" type="file" (change)="onFileChange($event,'pi')" accept="image/*" />
                                                 <!-- <div *ngIf="submitted && f['ClientID'].errors" class="invalid-feedback">
                                                     <div *ngIf="f['ClientID'].errors.required">Client is required</div>
                                                 </div> -->
                                             </div>
-
+                                            <div class="col-md-8 float-left" *ngIf="product_data.assetPicture.ProductImage">
+                                                <span><a href="javascript:void(0)" (click)="showAsset(product_data.assetPicture.ProductImage, 'image')"><img decode=true [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'" [lazyLoad]="product_data.assetPicture.ProductImage" width="42"/></a></span>
+                                            </div>
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Product Video</label>
-                                            <div class="col-md-8 float-left">
+                                            <div class="col-md-8 float-left" *ngIf="!product_data.assetPicture.ProductVideo">
                                                 <div class="custom-file-upload">
                                                     <label for="file-upload" class="upload-labe">
                                                         Choose File
                                                     </label>
-                                                    <span>No file chosen</span>
+                                                    <!-- <span>No file chosen</span> -->
                                                 </div>
                                                 <input id="file-upload" type="file" (change)="onFileChange($event,'pv')" accept="video/*" />
                                                 <!-- <div *ngIf="submitted && f['ClientID'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['ClientID'].errors.required">Client is required</div>
                                             </div> -->
                                             </div>
+                                            <div class="col-md-8 float-left" *ngIf="product_data.assetPicture.ProductVideo">
+                                                <span>
+                                                    <a href="javascript:void(0)" (click)="showAsset(product_data.assetPicture.ProductVideo,'video')">
+                                                    <!-- <img decode=true [defaultImage]="'../../../../assets/Spinner-1s-200px.gif'" [lazyLoad]="product_data.assetPicture.ProductVideo" width="42"/> -->
+                                                        <!-- <video width="42" controls>
+                                                            <source [src]="product_data.assetPicture.ProductVideo" type="video/mp4">
+                                                            Your browser does not support HTML5 video.
+                                                        </video> -->
+                                                        show Video
+                                                    </a>
+                                                </span>
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row review-form-body paddin-top">
-                                    <h2 class="review-title">Product Feature</h2>
+                                    <h2 class="review-title">Product Features</h2>
                                     <div class="col-md-12 review-forms bg-noclr">
                                         <div class="form-group review-name margin-btm">
 
@@ -89,7 +104,7 @@
                                                 <select formControlName="MarkingNumber"
                                                     (change)="onSelectFeature($event)"
                                                     class="form-control feature-select"> 
-                                                    <option value="" class="selected-feature">Select Feature</option>
+                                                    <option value="" [selected]="true" class="selected-feature">Select Feature</option>
                                                     <option *ngFor="let feature of product_data.NoOfFeatures"
                                                         [value]=feature+1>{{feature+1}}</option>
                                                 </select>
@@ -125,34 +140,44 @@
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Image</label>
-                                            <div class="col-md-8 float-left">
+                                            <div class="col-md-8 float-left" *ngIf="!f['MarkingImgURL'].value">
                                                 <div class="custom-file-upload">
                                                     <label for="file-upload" class="upload-labe">
                                                         Choose File
                                                     </label>
-                                                    <span>No file chosen</span>
+                                                    <!-- <span>No file chosen</span> -->
                                                 </div>
                                                 <input id="file-upload" (change)="onFileChange($event,'fei')"
                                                     type="file" accept="image/*" />
                                             </div>
+                                            <div class="col-md-4 float-left" *ngIf="f['MarkingImgURL'].value">
+                                                <span><a href="javascript:void(0)" (click)="showAsset(f['MarkingImgURL'].value, 'image')"><img decode=true [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'" [lazyLoad]="f['MarkingImgURL'].value" width="42"/></a></span>
+                                            </div>
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Video file</label>
-                                            <div class="col-md-8 float-left">
+                                            <div class="col-md-8 float-left" *ngIf="!f['MarkingVideoURL'].value">
                                                 <div class="custom-file-upload">
                                                     <label for="file-upload" class="upload-labe">
                                                         Choose File
                                                     </label>
-                                                    <span>No file chosen</span>
+                                                    <!-- <span>No file chosen</span> -->
                                                 </div>
                                                 <input id="file-upload" (change)="onFileChange($event,'fev')"
                                                     type="file" accept="video/*" />
+                                            </div>
+                                            <div class="col-md-4 float-left" *ngIf="f['MarkingVideoURL'].value">
+                                                <span>
+                                                    <a href="javascript:void(0)" (click)="showAsset(f['MarkingVideoURL'].value, 'video')">
+                                                        Show Video
+                                                    </a>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-actions review-btns">
-                                    <button [disabled]="product_data.NoOfFeatures!=product_data.assetMarking.length" class="btn btn-primary" >Publish</button>
+                                    <button [disabled]="product_data.assetMarking && product_data.NoOfFeatures!=product_data.assetMarking.length" class="btn btn-primary" >Publish</button>
                                     <span class="trick-form-submit" for="file-input">&nbsp;</span>
                                     <button class="btn btn-primary mr-1 profile-submit-btn" type="submit"
                                         >Save</button>
