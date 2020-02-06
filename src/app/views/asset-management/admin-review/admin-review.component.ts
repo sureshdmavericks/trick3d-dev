@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core"
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef
+} from "@angular/core"
 import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data"
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { AssetService } from "../asset.service"
@@ -17,6 +23,12 @@ export class AdminReviewComponent implements OnInit {
   submitted: boolean = false
   features: Array<any> = []
   categories: Array<any> = []
+  videoURL:boolean = true;
+
+  @ViewChild("mv", { static: false }) mv: ElementRef
+  @ViewChild("mi", { static: false }) mi: ElementRef
+  @ViewChild("pv", { static: false }) pv: ElementRef
+  @ViewChild("pi", { static: false }) pi: ElementRef
 
   product_data: any
   isHaving: any = {
@@ -25,6 +37,14 @@ export class AdminReviewComponent implements OnInit {
     mi: false,
     mv: false
   }
+  feiPreview: string
+  feiName: string
+  pvPreview: string
+  pvName: string
+  fevPreview: string
+  fevName: string
+  piPreview: string
+  piName: string
 
   constructor(
     public navCtrl: NgxNavigationWithDataComponent,
@@ -52,20 +72,26 @@ export class AdminReviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    // const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+    // const reg = `(http?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/?`;
+
     this.simpleForm = this.fb.group({
       Name: ["", Validators.required],
       CategoryID: [this.product_data.CategoryID, Validators.required],
       Title: ["", Validators.required],
+      // AssetBundle: [this.product_data.assetPicture.AssetBundle],
       Description: ["", Validators.required],
       MarkingNumber: [null, Validators.required],
       ProductImage: [""],
       ProductVideo: [""],
+      ProductVideoURL:[""],
       AssetID: [this.product_data.AssetID],
       PictureID: [this.product_data.assetPicture.PictureID],
       MarkingImgURL: [""],
       MarkingVideoURL: [""]
       // MarkingText: [""]
     })
+
   }
 
   getAssetDetails() {
@@ -103,6 +129,11 @@ export class AdminReviewComponent implements OnInit {
 
   onSubmitMarking() {
     this.submitted = true
+    console.log(this.simpleForm.value);
+    console.log(this.simpleForm.valid);
+    console.log(this.simpleForm);
+    // return;
+    // if (this.simpleForm.invalid && (this.product_data.assetMarking.length< this.product_data.NoOfFeatures.length)) {
     if (this.simpleForm.invalid) {
       return
     }
@@ -142,13 +173,13 @@ export class AdminReviewComponent implements OnInit {
             .subscribe(
               response => {
                 console.log(response)
-                swal.fire('Success','Product published successfully.');
+                swal.fire("Success", "Product published successfully.")
               },
               error => {
-                swal.fire("Oops!", `Something went wrong.`, "error");
+                swal.fire("Oops!", `Something went wrong.`, "error")
               }
             )
-        } 
+        }
       })
   }
 
@@ -160,10 +191,20 @@ export class AdminReviewComponent implements OnInit {
     this.navCtrl.navigate("/assets")
   }
 
-  toggleAssets(flag, element) {
-    console.log("this.isHaving::", this.isHaving)
-    this.isHaving[element] = flag
-    console.log("this.isHaving n::", this.isHaving)
+  toggleAssets(flag, element, iClose?: boolean) {
+    this.isHaving[element] = flag;
+    if (iClose) {
+      if(element=='pv'){
+        this.videoURL = true;
+        this.simpleForm.patchValue({
+          ProductVideo:null
+        });
+        this.simpleForm.controls['ProductVideoURL'].enable();
+      }
+      this[element].nativeElement.value = ""
+      this[`${element}Preview`] = null
+      this[`${element}Name`] = null
+    }
   }
 
   onFileChange(event, type: string) {
@@ -173,18 +214,28 @@ export class AdminReviewComponent implements OnInit {
       reader.readAsDataURL(file)
       reader.onload = () => {
         if (type == "fei") {
+          this.feiPreview = reader.result as string
+          this.feiName = "File Choosen"
           this.simpleForm.patchValue({
             MarkingImgURL: file
           })
         } else if (type == "fev") {
+          this.fevPreview = reader.result as string
+          this.fevName = file.name
           this.simpleForm.patchValue({
             MarkingVideoURL: file
           })
         } else if (type == "pi") {
+          this.piPreview = reader.result as string
+          this.piName = "File Choosen"
           this.simpleForm.patchValue({
             ProductImage: file
           })
         } else {
+          this.pvPreview = reader.result as string
+          this.pvName = file.name;
+          this.videoURL = false;
+          this.simpleForm.controls['ProductVideoURL'].disable();
           this.simpleForm.patchValue({
             ProductVideo: file
           })

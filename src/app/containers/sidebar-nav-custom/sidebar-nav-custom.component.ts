@@ -20,6 +20,7 @@ export class SidebarNavCustomComponent implements OnInit {
 
     ngOnInit(){
         this.roleData = this._authService.getData();
+        console.log(this.roleData);
         if(this.roleData)
         this.myRole = this.roleData.role;
     }

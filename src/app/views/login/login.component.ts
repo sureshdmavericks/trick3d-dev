@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit{
     private router: Router,
     private _authService: AuthService,
     private _loginService:LoginService
-  ){}
+  ){
+    this.checkAuth()
+  }
 
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
@@ -66,8 +68,7 @@ export class LoginComponent implements OnInit{
 
   checkAuth() {
     let loginData = this._authService.getData();
-    console.log('loginData::',loginData)
-    if (loginData && loginData.data) {
+    if (loginData) {
       this.router.navigate(['/dashboard']);
     } else {
       this.router.navigate(["/"]);

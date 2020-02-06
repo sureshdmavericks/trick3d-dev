@@ -13,12 +13,16 @@ import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data"
   providers: [AssetService, ClientService, CategoryService]
 })
 export class InitialUploadComponent implements OnInit {
-  simpleForm: FormGroup
-  submitted = false
-  formErrors: any
-  clients: any
-  categories: any
-  product_data: any
+  simpleForm: FormGroup;
+  submitted = false;
+  formErrors: any;
+  clients: any;
+  categories: any;
+  product_data: any;
+  preview: string;
+  pzip:string;
+  pzipName:string;
+  fileName:string;
 
   constructor(
     private fb: FormBuilder,
@@ -34,14 +38,15 @@ export class InitialUploadComponent implements OnInit {
     //   return;
     // }
     console.log('navCtrl.data::',this.navCtrl.data);
-    this.product_data = this.navCtrl.data
-    this.createForm()
+    this.product_data = this.navCtrl.data;
+    this.createForm();
     if (Object.keys(this.navCtrl.data).length > 0) {
       this.simpleForm.patchValue({
         ClientID: this.product_data.ClientID,
         CategoryID:this.product_data.CategoryID,
         Name: this.product_data.Name,
         Upload: this.product_data.Upload,
+        AssetBundle:this.product_data.AssetBundle,
         NoOfFeatures: this.product_data.NoOfFeatures
       })
     }
@@ -91,6 +96,7 @@ export class InitialUploadComponent implements OnInit {
     this.simpleForm = this.fb.group({
       ClientID: ["", [Validators.required]],
       CategoryID: ["", [Validators.required]],
+      AssetBundle:[null,[Validators.required]],
       sub_category: [""],
       Name: ["", [Validators.required]],
       Upload: [null, [Validators.required]],
@@ -131,15 +137,29 @@ export class InitialUploadComponent implements OnInit {
       )
   }
 
-  onFileChange(event) {
+  onFileChange(event, type:string) {
     const reader = new FileReader()
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files
       reader.readAsDataURL(file)
       reader.onload = () => {
-        this.simpleForm.patchValue({
-          Upload: file
-        })
+        
+
+        if (type == "fim") {
+          this.preview = reader.result as string;
+          console.log(file)
+          this.fileName = 'File Choosen';
+          this.simpleForm.patchValue({
+            Upload: file
+          })
+        } else {
+          this.pzip = file.name
+          this.pzipName = 'File Choosen'
+          this.simpleForm.patchValue({
+            AssetBundle: file
+          })
+        }
+
         this.cd.markForCheck()
       }
     }

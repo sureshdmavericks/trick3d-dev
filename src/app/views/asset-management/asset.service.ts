@@ -39,12 +39,13 @@ export class AssetService {
   }
 
   create(data:any):Observable<any> {
-    let sdata = new FormData()
-    sdata.append('CategoryID',data.CategoryID)
-    sdata.append('ClientID',data.ClientID)
-    sdata.append('Name',data.Name)
-    sdata.append('NoOfFeatures',data.NoOfFeatures)
-    sdata.append('Upload',data.Upload)
+    let sdata = new FormData();
+    sdata.append('CategoryID',data.CategoryID);
+    sdata.append('ClientID',data.ClientID);
+    sdata.append('Name',data.Name);
+    sdata.append('NoOfFeatures',data.NoOfFeatures);
+    sdata.append('Upload',data.Upload);
+    sdata.append('AssetBundle',data.AssetBundle);
     return this.http.post(this.dataUrl, sdata, {
           observe: 'response',
           headers: new HttpHeaders().set('Authorization', this.authHeader)
@@ -73,6 +74,8 @@ export class AssetService {
     sdata.append('ProductImage', data.ProductImage);
     if(data.ProductVideo)
     sdata.append('ProductVideo', data.ProductVideo);
+    if(data.ProductVideoURL)
+    sdata.append('ProductVideoURL', data.ProductVideoURL);
     if(data.MarkingImgURL)
     sdata.append('MarkingImgURL', data.MarkingImgURL);
     if(data.MarkingVideoURL)

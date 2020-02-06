@@ -37,7 +37,6 @@
                 <span class="trick-text-size" *ngIf="item.Status == 'published'">Published</span>
                 <span class="trick-text-size" *ngIf="item.Status == 'unpublished'">Unpublished</span>
                 <span class="trick-text-size" *ngIf="item.Status == 'under-review'">Under Review</span>
-                <span class="trick-text-size" *ngIf="item.Status == 'reviewed'">Reviewed</span>
               </a>
             </div>
             <div class="col-md-2 col-sm-12 trick3d-table">
@@ -49,11 +48,11 @@
               <button [disabled]="item.Status == 'under-review'" class="btn btn-sm btn-primary btn-published " *ngIf="item.Status == 'under-review'">
                 Publish
               </button>
-              <button (click)="unpublishProduct(item.AssetID,'published',i)" class="btn btn-sm btn-primary btn-published" *ngIf="['unpublished','reviewed'].includes(item.Status)">
+              <button class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'unpublished'">
                 Publish
               </button>
-              <button (click)="unpublishProduct(item.AssetID,'unpublished',i)" class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
-                Unpublish
+              <button class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
+                UnPublish
               </button>
             </div>
           </div>

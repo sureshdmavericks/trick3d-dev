@@ -66,7 +66,8 @@ export class ClientManagementComponent implements OnInit {
         swal
           .fire("Success!", `Now you are logged in as ${email}`, "success")
           .then(result => {
-            this._authService.setData(response.body.token)
+            this._authService.setData(response.body.token);
+            // window.location.href = '/dashboard';
             this.router.navigate(["/dashboard"]).then(() => {
               window.location.reload()
             })

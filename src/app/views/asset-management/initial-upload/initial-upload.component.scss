@@ -58,6 +58,10 @@
           width: 36%;
           border-radius: 3px;
           padding: 6px 14px;
+          // text-overflow: ellipsis;
+          // white-space: nowrap;
+          // overflow: hidden;
+          // width:100px; // some width
         }
       }
       .is-invalid {
