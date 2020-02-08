@@ -2,7 +2,7 @@
 //   padding: 0px!important;
 // }
 
-.trick-asset-management {
+.trick-category-management {
   .btn-primary {
     background-color: #fff;
     border: 1px solid #3262a5;
@@ -13,12 +13,21 @@
     .card-header {
       border-bottom: none;
       background-color: transparent;
+      padding: 0px;
+      .category-title{
+        font-size: 21px;
+        font-weight: 600;
+        color: #3262a5;
+        float: left;
+        padding-top: 10px;
+        margin: 0px;
+      }
       .asset-saerch {
         background-color: #3262a5;
         color: #ecf2f8;
         border-radius: 5px;
         width: 28%;
-        font-size: 16px;
+        font-size: 18px;
         float: left;
         position: absolute;
         &:focus {
@@ -35,14 +44,14 @@
         top: 8px;
       }
       .card-header-actions{
-          height: 21px;
+          // height: 21px;
           .create-client-bgclr{
             background-color: transparent;
             color: #3262a5;
             border: 1px solid #3262a5;
             height: 38px;
             width: 120px;
-            font-size: 16px;
+            font-size: 18px;
             &:hover{
                 color: #fff;
                 background-color: #3262a5;
@@ -52,7 +61,7 @@
       }
     }
     .card-body {
-      padding-top: 5px;
+      padding: 20px 0px 0px 0px;
       .asset-form-bgclr {
         background-color: #ecf2f8;
         line-height: 34px;
@@ -92,17 +101,26 @@
         width: 11%;
       }
     }
-    .trick3d-row {
+    .trick3d-row:nth-child(odd) {
       padding: 15px 0px 10px 0px;
       background-color: #ecf2f8;
-      margin-bottom: 10px;
+      margin-bottom: 22px;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 18px;
+    }
+    .trick3d-row:nth-child(even) {
+      padding: 15px 0px 10px 0px;
+      background-color: transparent;
+      margin-bottom: 22px;
+      border-radius: 5px;
+      font-size: 18px;
+      border: 1px solid #ecf2f8;
+    }
       .no-margin {
         margin: 0px;
         .trick3d-table {
-          text-align: center;
-          padding: 0px;
+          text-align: left;
+          // padding: 0px;
           .client-management-header {
             display: block;
             font-weight: 600;
@@ -111,20 +129,20 @@
           .client-clr {
             color: #3262a5;
             .trick-text-size{
-                font-size: 16px;
+                font-size: 18px;
             }
           }
           .btn-published{
             height: 38px;
             background-color: #3262a5;
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
             width: 122px;
             margin-top: 4px;
           }
         }
       }
-    }
+    
   }
 }
 

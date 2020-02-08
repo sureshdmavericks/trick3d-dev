@@ -17,13 +17,14 @@
     }
     .card-body {
       color: #3262a5;
-      .col-form-label{
-          font-size: 18px;
+      .col-form-label {
+        font-size: 18px;
       }
-      .float-left{
+      .float-left {
         float: left;
+        padding: 0px;
       }
-      .no-padding{
+      .no-padding {
         padding: 0px;
       }
       .form-clr {
@@ -41,17 +42,18 @@
         }
       }
       input[type="file"] {
-        width:61%;
+        width: 61%;
         position: relative;
         opacity: 0;
         width: 36%;
+        left: 69px;
       }
       .custom-file-upload {
         position: absolute;
         opacity: 1;
         background-color: #fff;
         width: 63%;
-    /* float: right; */
+        /* float: right; */
         right: -7px;
         .upload-labe {
           border: 1px solid #3262a5;
@@ -63,6 +65,7 @@
           // overflow: hidden;
           // width:100px; // some width
         }
+        
       }
       .is-invalid {
         background-image: url(../assets/img/wrong.png);
@@ -77,6 +80,10 @@
         &:focus {
           box-shadow: none;
         }
+      }
+      .img-upload{
+        position: relative;
+        float:right;
       }
       .invalid-feedback {
         float: left;
@@ -95,17 +102,18 @@
         width: 35%;
         float: left;
       }
-      .trick-buttons{
+      .trick-buttons {
         // padding-left: 15px;
-    margin-top: 7px;
-    margin-left: 194px;
+        margin-top: 9px;
+        margin-left: 28%;
       }
       .profile-cancel-btn {
-        color: #fff;
-        background-color: #3262a5;
-        height: 39px;
-        padding: 0px 30px;
+        color: #3262a5;
+        background-color: #fff;
+        border: 1px solid #3262a5;
+        height: 38px;
         font-size: 18px;
+        padding: 6px 30px;
         // &:hover {
         //   background-color: #fff;
         //   color: #3262a5;
@@ -118,13 +126,12 @@
         font-size: 18px;
       }
       .profile-submit-btn {
-        color: #3262a5;
-        background-color: #fff;
-        border: 1px solid #3262a5;
-        height: 38px;
-        
+        color: #fff;
+        background-color: #3262a5;
+        height: 39px;
+        padding: 0px 30px;
         font-size: 18px;
-        padding: 6px 30px;
+        border: none;
         // &:hover {
         //   background-color: #3262a5;
         //   color: #fff;

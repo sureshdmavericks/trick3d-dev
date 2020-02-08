@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="col-md-8 float-left"
                                                 *ngIf="product_data.assetPicture.ProductImage && !isHaving.pi">
-                                                <span><a href="javascript:void(0)"
+                                                <span><a svd href="javascript:void(0)"
                                                         (click)="showAsset(product_data.assetPicture.ProductImage, 'image')"><img
                                                             decode=true
                                                             [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
@@ -115,7 +115,7 @@
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Product Video Url</label>
                                             <div class="col-md-8 float-left">
-                                                <input id="_client" type="url" class="form-control"
+                                                <input id="_client" type="url" class="product-video form-control"
                                                     formControlName="ProductVideoURL" />
                                             </div>
                                             <div class="invalid-feedback" *ngIf="f['ProductVideoURL'].errors"> 
@@ -136,7 +136,7 @@
                                             <div class="col-md-8 float-left">
                                                 <select formControlName="MarkingNumber"
                                                     (change)="onSelectFeature($event)"
-                                                    class="form-control feature-select">
+                                                    class="select-featiures form-control feature-select">
                                                     <option value="" [selected]="true" class="selected-feature">Select
                                                         Feature</option>
                                                     <option *ngFor="let feature of product_data.NoOfFeatures"
@@ -233,8 +233,8 @@
                                 <div class="form-actions review-btns">
                                     <button (click)="publishProduct()"
                                         [disabled]="product_data.assetMarking && product_data.NoOfFeatures.length!=product_data.assetMarking.length"
-                                        class="btn btn-primary">Publish</button>
-                                    <span class="trick-form-submit" for="file-input">&nbsp;</span>
+                                        class="btn btn-primary profile-publish-btn">Publish</button>
+                                    <!-- <span class="trick-form-submit" for="file-input">&nbsp;</span> -->
                                     <button class="btn btn-primary mr-1 profile-submit-btn" type="submit">Save</button>
                                     <button class="btn btn-secondary profile-cncl-btn" type="button"
                                         (click)="cancel()">Cancel</button>

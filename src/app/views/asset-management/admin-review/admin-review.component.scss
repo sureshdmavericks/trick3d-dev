@@ -103,6 +103,19 @@
                   color: #3262a5;
               }
           }
+          .select-featiures{
+            border: 1px solid #3262a5;
+            font-size: 18px;
+            height: 41px;
+            color: #3262a5;
+            &::placeholder{
+              color: #3262a5;
+          }
+          }
+          .product-video{
+            border: 1px solid #3262a5;
+            height: 38px;
+          }
           .text-scroll{
               height: 100px;
               resize: none;
@@ -121,8 +134,10 @@
       margin-right: 32px;
       margin-top: 25px;
       .profile-submit-btn{
-        background-color: transparent;
-        color: #3262a5;
+        
+
+        background-color: #3262a5;
+        color: #fff;
         border: 1px solid #3262a5;
         height: 38px;
         width: 120px;
@@ -133,17 +148,27 @@
         // }
       }
       .profile-cncl-btn {
-        background-color: #3262a5;
-        color: #fff;
+        background-color: transparent;
+        color: #3262a5;
         border: 1px solid #3262a5;
         height: 38px;
         width: 120px;
         font-size: 18px;
+        
         // &:hover {
         //   background-color: transparent;
         //   color: #3262a5;
         //   border: 1px solid #3262a5;
         // }
+      }
+      .profile-publish-btn{
+        color: #fff;
+        height: 38px;
+        width: 120px;
+        font-size: 18px;
+        &:hover{
+          background-color:#20a8d8;
+        }
       }
     }
     .paddin-top {

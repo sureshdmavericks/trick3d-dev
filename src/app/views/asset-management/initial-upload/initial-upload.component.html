@@ -63,7 +63,7 @@
                     <input accept='image/*' required class="choose-file-form" (change)="onFileChange($event, 'fim')"
                       type="file" id="file-input"
                       [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
-                    <span *ngIf="product_data.Upload"><img width="60" [src]="f.Upload.value"
+                    <span class="img-upload" *ngIf="product_data.Upload"><img width="60" [src]="f.Upload.value"
                         (click)="openImagePopup()" /></span>
                   </div>
                   <div class="col-md-6 form-group no-padding">

@@ -6,17 +6,23 @@
     background-color: transparent;
     border-bottom: none;
   }
+  .category-form{
+    color: #3262a5;
+    font-size: 21px;
+    font-weight: 600;
+    margin:0px;
+  }
   .card {
     .card-header {
       color: #3262a5;
     }
     .card-body {
       color: #3262a5;
-      font-size: 16px;
+      font-size: 18px;
       .form-clr {
         color: #3262a5;
         border: 1px solid #3262a5;
-        font-size: 16px;
+        font-size: 18px;
         &::placeholder {
           color: #3262a5;
         }
@@ -28,25 +34,33 @@
         width: 35%;
         float: left;
       }
-      .profile-submit-btn {
-        color: #fff;
-        background-color: #3262a5;
-        font-size: 16px;
-        &:hover {
-          background-color: #fff;
-          color: #3262a5;
-          border: 1px solid #3262a5;
-        }
+      .form-actions{
+        padding-left: 15px;
+        margin-top: 25px;
+        margin-left: 48%;
       }
-      .profile-reset-btn {
+      .profile-submit-btn {
         color: #3262a5;
         background-color: #fff;
         border: 1px solid #3262a5;
-        font-size: 16px;
-        &:hover {
-          background-color: #3262a5;
-          color: #fff;
-        }
+        font-size: 18px;
+        padding: 6px 30px;
+        // &:hover {
+        //   background-color: #fff;
+        //   color: #3262a5;
+        //   border: 1px solid #3262a5;
+        // }
+      }
+      .profile-reset-btn {
+        background-color: #3262a5;
+        border: 1px solid #3262a5;
+        color: #fff;
+        font-size: 18px;
+        padding: 6px 30px;
+        // &:hover {
+        //   background-color: #3262a5;
+        //   color: #fff;
+        // }
       }
     }
   }

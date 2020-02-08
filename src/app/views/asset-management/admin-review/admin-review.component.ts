@@ -129,13 +129,10 @@ export class AdminReviewComponent implements OnInit {
 
   onSubmitMarking() {
     this.submitted = true
-    console.log(this.simpleForm.value);
-    console.log(this.simpleForm.valid);
-    console.log(this.simpleForm);
-    // return;
     // if (this.simpleForm.invalid && (this.product_data.assetMarking.length< this.product_data.NoOfFeatures.length)) {
     if (this.simpleForm.invalid) {
-      return
+      swal.fire('Invalid', 'Please select feature', 'error');
+      return false;
     }
     this.assetService
       .createMarking(this.simpleForm.value, this.product_data.ClientID)

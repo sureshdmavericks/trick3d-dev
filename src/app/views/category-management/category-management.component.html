@@ -1,19 +1,20 @@
-<div class="animated fadeIn trick-asset-management">
+<div class="animated fadeIn trick-category-management">
   <div class="card">
     <div class="card-header">
       <!-- <input type="text" class="form-control asset-saerch" [(ngModel)]="filterQuery" placeholder="Search Assets"/>
       <img class="search-img" src="../../assets/img/search.png"> -->
+      <h2 class="category-title">Category Management</h2>
       <div class="card-header-actions">
-        <button class="btn btn-sm btn-primary create-client-bgclr" type="button" (click)="addCategory()"><i class="fa fa-plus"></i> Category</button>
+        <button class="btn btn-sm btn-primary create-client-bgclr" type="button" (click)="addCategory()">Category</button>
       </div>
     </div>
     <div class="card-body">
-      <div class="row mb-3">
+      <!-- <div class="row mb-3">
         <div class="col-md-4">
           <div class="input-group">
           </div>
         </div>
-      </div>
+      </div> -->
       <div >
       <div class="container col-lg-12 col-md-12 col-sm-12 trick3d-row" *ngFor="let item of data; let i=index">
         <div class="row no-margin">

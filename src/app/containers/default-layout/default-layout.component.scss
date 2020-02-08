@@ -22,6 +22,50 @@
       }
     }
   }
+  .client-logged-msg{
+    width:47%;
+    // text-align: right;
+    position: relative;
+    top:-12px;
+    .client-text{
+      float: right;
+      /* text-align: right; */
+      // border: 1px solid #000;
+      border-radius: 0px 0px 19px 19px;
+      border-top: none;
+      background-color: #3262a5;
+      .text-clr{
+        color: #fff;
+        background-color: transparent;
+        padding-right: 12px;
+      }
+      .icon-lock{
+        color: #fff;
+        margin: 3px 0px 0px 10px;
+        float: left;
+      }
+
+    }
+    .logout-text {
+      right: 39px !important;
+      top: 29px !important;
+      border-radius: 0px 0px 19px 19px;
+      background-color: #3262a5;
+      .logout-clr{
+        color: #fff;
+        &:hover{
+          background-color: #3262a5;
+          border-radius: 0px 0px 19px 19px;
+        }
+      }
+      .fa-lock{
+        color: #fff;
+      }
+      &:hover{
+        border-radius: 0px 0px 19px 19px;
+      }
+    }
+  }
   .border-clr {
     border: 1px solid #3262a5;
     .trick3d-accnt-header {
@@ -43,6 +87,13 @@
         background-color: #3262a5;
         color: #fff;
       }
+    }
+  }
+}
+.trick3d-footer{
+  span{
+    a{
+      color: #3262a5;
     }
   }
 }

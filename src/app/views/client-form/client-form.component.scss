@@ -63,11 +63,11 @@
           .trick-buttons {
             padding-left: 15px;
             margin-top: 25px;
-            margin-left: 194px;
+            margin-left: 27.3%;
             .trick-cancel-btn {
-              background-color: #3262a5;
+              color: #3262a5;
+              background-color: #fff;
               border: 1px solid #3262a5;
-              color: #fff;
               font-size: 18px;
               padding: 6px 30px;
               // &:hover {
@@ -80,9 +80,9 @@
               }
             }
             .trick-submit-btn{
-              color: #3262a5;
-              background-color: #fff;
+             background-color: #3262a5;
               border: 1px solid #3262a5;
+              color: #fff;
               font-size: 18px;
               padding: 6px 30px;
             }

@@ -1,38 +1,38 @@
-<app-header [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
+<app-header class="trick3d-default-layout" [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
   [navbarBrandFull]="{src: 'assets/img/brand/logo_new3.svg', width: 89, height: 25, alt: 'Trick3D'}"
   [sidebarToggler]="'lg'" [asideMenuToggler]=false>
-  <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item dropdown d-md-down-none" dropdown placement="bottom right" *ngIf="_authService.isClient()">
-      <a class="" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
-        dropdownToggle (click)="false">
+  <div class="client-logged-msg" dropdown placement="bottom right" *ngIf="_authService.isClient()">
+    <a class="client-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+      dropdownToggle (click)="false">
 
-        <h5><i class="icon-lock"></i> <span class="badge badge-secondary"><i>Now you are loggedin as client</i> <strong>{{data.name}}</strong></span></h5>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg" *dropdownMenu aria-labelledby="simple-dropdown">
-        <a class="dropdown-item" href="javascript:void(0)" (click)="logout()"><i class="fa fa-lock"></i> Logout from client {{data.name}}</a>
-      </div>
-    </li>
+      <h5><i class="icon-lock"></i> <span class="badge badge-secondary text-clr"><i>Now you are loggedin as client</i> <strong>{{data.name}}</strong></span></h5>
+    </a>
+    <div class="logout-text dropdown-menu dropdown-menu-right dropdown-menu-lg" *dropdownMenu aria-labelledby="simple-dropdown">
+      <a class="logout-clr dropdown-item" href="javascript:void(0)" (click)="logout()"><i class="fa fa-lock"></i> Logout from client {{data.name}}</a>
+    </div>
+  </div>
+  <ul class="nav navbar-nav ml-auto">  
     <li class="nav-item dropdown d-md-down-none" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
         dropdownToggle (click)="false">
         <i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span>
       </a>
-      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg" *dropdownMenu aria-labelledby="simple-dropdown">
-        <div class="dropdown-header text-center"><strong>You have 5 notifications</strong></div>
-        <a href="#" class="dropdown-item">
-          <i class="icon-user-follow text-success"></i> New user registered
+      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg trick3d-notify" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center notifiacrtion-bgclr"><strong>You have 5 notifications</strong></div>
+        <a href="#" class="dropdown-item notify-dropdown">
+          <i class="icon-user-follow user-bg-clr"></i> New user registered
         </a>
-        <a href="#" class="dropdown-item">
-          <i class="icon-user-unfollow text-danger"></i> User deleted
+        <a href="#" class="dropdown-item notify-dropdown">
+          <i class="icon-user-unfollow user-bg-clr"></i> User deleted
         </a>
-        <a href="#" class="dropdown-item">
-          <i class="icon-chart text-info"></i> Sales report is ready
+        <a href="#" class="dropdown-item notify-dropdown">
+          <i class="icon-chart user-bg-clr"></i> Sales report is ready
         </a>
-        <a href="#" class="dropdown-item">
-          <i class="icon-basket-loaded text-primary"></i> New client
+        <a href="#" class="dropdown-item notify-dropdown">
+          <i class="icon-basket-loaded user-bg-clr"></i> New client
         </a>
-        <a href="#" class="dropdown-item">
-          <i class="icon-speedometer text-warning"></i> Server overloaded
+        <a href="#" class="dropdown-item notify-dropdown">
+          <i class="icon-speedometer user-bg-clr"></i> Server overloaded
         </a>
 
       </div>
@@ -42,10 +42,10 @@
         dropdownToggle (click)="false">
         <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="Avatar" />
       </a>
-      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
-        <div class="dropdown-header text-center"><strong>Account</strong></div>
-        <a class="dropdown-item" routerLink="/profile"><i class="fa fa-user"></i> My Profile</a>
-        <a class="dropdown-item" href="javascript:void(0)" (click)="_authService.logout()"><i class="fa fa-lock"></i> Logout</a>
+      <div class="dropdown-menu dropdown-menu-right border-clr " *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center trick3d-accnt-header"><strong>Account</strong></div>
+        <a class="dropdown-item trick3d-profiles " routerLink="/profile"><i class="fa fa-user user-bg-clr"></i> My Profile</a>
+        <a class="dropdown-item trick3d-profiles" href="javascript:void(0)" (click)="_authService.logout()"><i class="fa fa-lock user-bg-clr"></i> Logout</a>
       </div>
     </li>
   </ul>
@@ -68,7 +68,7 @@
   </main>
   <!--<app-aside [fixed]="true" [display]="false"></app-aside>-->
 </div>
-<app-footer [fixed]="true">
+<app-footer [fixed]="true"  class="trick3d-footer">
   <span><a href="http://trick3d.com/">Trick3D </a> &copy; 2020.</span>
   <span class="ml-auto">Powered by <a href="http://trick3d.com">Trick3D </a></span>
 </app-footer>
