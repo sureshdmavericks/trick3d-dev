@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService, CategoryMgntData } from '../category-management/category.service'
 import { CategoryDataService } from '../../services/category-data.service';
+import swal from 'sweetalert2';
 
 @Component({
   templateUrl: './category-form.component.html',
@@ -65,7 +66,12 @@ export class CategoryFormComponent implements OnInit {
 
     this._categoryService.postData(this.simpleForm.value).subscribe(res=>{
       console.log(res);
-      this._router.navigateByUrl('category-management')
+      swal.fire('Success',`Category added.`, 'success').then(result=>{
+        this._router.navigateByUrl('category-management');
+      });
+    }, error=>{
+      console.log(error.error.error);
+      swal.fire('Error',error.error.message,'error');
     })
   }
 

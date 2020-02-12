@@ -97,7 +97,7 @@ export class AdminReviewComponent implements OnInit {
   getAssetDetails() {
     this.assetService.getById(this.product_data.AssetID).subscribe(response => {
       let data: any = response.body
-      this.product_data = data
+      this.product_data = data;
       this.product_data.NoOfFeatures = Array(data.NoOfFeatures)
         .fill(data.NoOfFeatures)
         .map((x, i) => i)
@@ -105,6 +105,18 @@ export class AdminReviewComponent implements OnInit {
   }
 
   onSelectFeature(event) {
+    this.simpleForm.patchValue({
+      Title: "",
+      Description: "",
+      MarkingImgURL: "",
+      MarkingVideoURL: ""
+    })
+    this.isHaving.mi = false;
+    this.isHaving.mv = false;
+    this.feiPreview = null;
+    this.feiName = null;
+    this.fevPreview = null;
+    this.feiName = null;
     let featureData = _.find(this.product_data.assetMarking, {
       MarkingNumber: +event.target.value
     })
@@ -131,14 +143,15 @@ export class AdminReviewComponent implements OnInit {
     this.submitted = true
     // if (this.simpleForm.invalid && (this.product_data.assetMarking.length< this.product_data.NoOfFeatures.length)) {
     if (this.simpleForm.invalid) {
-      swal.fire('Invalid', 'Please select feature', 'error');
+      swal.fire('Invalid', 'Please fill feature details', 'error');
       return false;
     }
     this.assetService
       .createMarking(this.simpleForm.value, this.product_data.ClientID)
       .subscribe(
         response => {
-          this.submitted = false
+          this.submitted = false;
+          this.getAssetDetails();
           let index = _.findIndex(this.product_data.assetMarking, {
             MarkingNumber: response.body.MarkingNumber
           })
@@ -152,7 +165,7 @@ export class AdminReviewComponent implements OnInit {
       )
   }
 
-  publishProduct() {
+  publishProduct(event) {
     swal
       .fire({
         title: "Are you sure?",
@@ -164,13 +177,14 @@ export class AdminReviewComponent implements OnInit {
         confirmButtonText: "Yes"
       })
       .then(result => {
+        console.log(result);
         if (result.value) {
           this.assetService
             .update({ Status: "published" }, this.product_data.AssetID)
             .subscribe(
               response => {
                 console.log(response)
-                swal.fire("Success", "Product published successfully.")
+                swal.fire("Success", "Product published successfully.");
               },
               error => {
                 swal.fire("Oops!", `Something went wrong.`, "error")

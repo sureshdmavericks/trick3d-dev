@@ -42,6 +42,7 @@ export class InitialUploadComponent implements OnInit {
     this.createForm();
     if (Object.keys(this.navCtrl.data).length > 0) {
       this.simpleForm.patchValue({
+        AssetID:this.product_data.AssetID,
         ClientID: this.product_data.ClientID,
         CategoryID:this.product_data.CategoryID,
         Name: this.product_data.Name,
@@ -51,6 +52,7 @@ export class InitialUploadComponent implements OnInit {
       })
     }
     this.getCategpries();
+
   }
 
   openImagePopup(){
@@ -80,11 +82,12 @@ export class InitialUploadComponent implements OnInit {
   getCategpries() {
     this._categoryService.getData().subscribe(response => {
       this.categories = response.body;
-      if (this.product_data) {
+      if (Object.keys(this.product_data).length > 0) {
         this.simpleForm.patchValue({
           CategoryID: this.product_data.CategoryID
         })
       }
+
     })
   }
 
@@ -94,6 +97,7 @@ export class InitialUploadComponent implements OnInit {
 
   createForm() {
     this.simpleForm = this.fb.group({
+      AssetID:[null],
       ClientID: ["", [Validators.required]],
       CategoryID: ["", [Validators.required]],
       AssetBundle:[null,[Validators.required]],
@@ -122,7 +126,8 @@ export class InitialUploadComponent implements OnInit {
     if (this.simpleForm.invalid) {
       return
     }
-
+    console.log("Form Data:",this.simpleForm.value);
+    // return;
     this._dataService
       .create(_.omit(this.simpleForm.value, ["sub_category"]))
       .subscribe(
@@ -143,7 +148,6 @@ export class InitialUploadComponent implements OnInit {
       const [file] = event.target.files
       reader.readAsDataURL(file)
       reader.onload = () => {
-        
 
         if (type == "fim") {
           this.preview = reader.result as string;

@@ -8,9 +8,10 @@
             <div class="card-header-actions">
             </div> -->
           <div class="col-md-2 trick-profile-left">
-            <span class="profile-photo-bdr"><img class="profile-img" src="../assets/img/profile.png" /></span>
-            <input accept='image/*' required class="profile-choose-file"
-                      type="file" />
+            <span class="profile-photo-bdr" *ngIf="!preview"><img class="profile-img" src="../assets/img/profile.png" /></span>
+            <span class="profile-photo-bdr" *ngIf="preview"><img class="profile-img" [src]="preview" /></span>
+            <span class="profile-photo-bdr" *ngIf="!preview && f.ProfilePic.value"><img class="profile-img" [src]="f.ProfilePic.value" /></span>
+            <input accept='image/*' (change)="onFileChange($event)" class="profile-choose-file" type="file" />
           </div>
           <div class="col-md-10 trick-profile-right">
             <!-- <a href="#" class="trick-edit-pctre">Edit Profile Picture</a> -->

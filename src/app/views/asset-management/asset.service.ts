@@ -39,18 +39,24 @@ export class AssetService {
   }
 
   create(data:any):Observable<any> {
+    console.log('data:',data);
     let sdata = new FormData();
     sdata.append('CategoryID',data.CategoryID);
     sdata.append('ClientID',data.ClientID);
     sdata.append('Name',data.Name);
     sdata.append('NoOfFeatures',data.NoOfFeatures);
+    sdata.append('AssetID',data.AssetID);
+    // if(data.Upload)
     sdata.append('Upload',data.Upload);
+    // if(data.AssetBundle)
     sdata.append('AssetBundle',data.AssetBundle);
+
     return this.http.post(this.dataUrl, sdata, {
           observe: 'response',
           headers: new HttpHeaders().set('Authorization', this.authHeader)
         }
       )
+    
   }
 
   update(data:any, id:string):Observable<any> {

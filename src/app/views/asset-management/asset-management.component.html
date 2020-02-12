@@ -45,14 +45,14 @@
               </a>
             </div>
             <div class="col-md-2 col-sm-12 trick3d-table text-center" *ngIf="_authService.isClient()">
-              <button [disabled]="item.Status == 'under-review'" class="btn btn-sm btn-primary btn-published " *ngIf="item.Status == 'under-review'">
+              <button (click)="unpublishProduct(item.AssetID, 'published', i)" [disabled]="item.Status == 'under-review'" class="btn btn-sm btn-primary btn-published " *ngIf="item.Status == 'under-review'">
                 Publish
               </button>
-              <button class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'unpublished'">
+              <button (click)="unpublishProduct(item.AssetID, 'published', i)" class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'unpublished'">
                 Publish
               </button>
-              <button class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
-                UnPublish
+              <button (click)="unpublishProduct(item.AssetID, 'unpublished', i)" class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
+                Unpublish
               </button>
             </div>
           </div>

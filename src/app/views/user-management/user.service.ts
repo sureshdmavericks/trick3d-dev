@@ -15,6 +15,7 @@ export interface UserData {
   FullName?: string;
   UserName?:string;
   Email: string;
+  ProfilePic?:string;
   Type:string;
   Status?: boolean;
   CreatedAt?: string;
@@ -69,8 +70,15 @@ export class UserService {
   }
 
   updateProfile(data:any){
+
+    let sdata = new FormData();
+    sdata.append('FirstName',data.FirstName);
+    sdata.append('LastName',data.LastName);
+    sdata.append('ProfilePic',data.ProfilePic);
+    console.log(sdata);
+
     return this.http.patch(
-      `${this.dataUrl}/profile`, data, {
+      `${this.dataUrl}/profile`, sdata, {
         observe: 'response',
         headers: new HttpHeaders().set('Authorization', this.authHeader)
       }

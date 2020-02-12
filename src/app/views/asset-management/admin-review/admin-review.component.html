@@ -23,11 +23,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group review-name">
-                                            <label for="name" class="col-md-4 float-left">Categery</label>
+                                            <label for="name" class="col-md-4 float-left">Category</label>
                                             <div class="col-md-8 float-left">
                                                 <select class="form-control product-select"
                                                     formControlName="CategoryID">
-                                                    <option value="" class="selected-feature">Select Catergory</option>
+                                                    <option value="" class="selected-feature">Select Category</option>
                                                     <option [selected]="category.CategoryID==product_data.CategoryID"
                                                         [value]="category.CategoryID"
                                                         *ngFor="let category of categories;">{{category.Name}}</option>
@@ -231,7 +231,7 @@
                                     </div>
                                 </div>
                                 <div class="form-actions review-btns">
-                                    <button (click)="publishProduct()"
+                                    <button type="button" (click)="publishProduct($event)"
                                         [disabled]="product_data.assetMarking && product_data.NoOfFeatures.length!=product_data.assetMarking.length"
                                         class="btn btn-primary profile-publish-btn">Publish</button>
                                     <!-- <span class="trick-form-submit" for="file-input">&nbsp;</span> -->

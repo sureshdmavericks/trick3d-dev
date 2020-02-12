@@ -55,30 +55,31 @@
                     <label class="float-left col-form-label" for="file-input">Upload Thumbnail</label>
                     <div class="custom-file-upload">
                       <label for="file-upload" class="upload-labe">
-                        {{fileName || 'Choose File'}}
+                        {{(fileName || f.Upload.value)? 'File Choosen':'Choose File'}}
                       </label>
-                      <span *ngIf="!preview">No file chosen</span>
+                      <span *ngIf="!preview && !f.Upload.value">No file chosen</span>
                       <span *ngIf="preview && preview !== null"><img width="60" [src]="preview" [alt]="fileName"></span>
-                    </div>
-                    <input accept='image/*' required class="choose-file-form" (change)="onFileChange($event, 'fim')"
-                      type="file" id="file-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
-                    <span class="img-upload" *ngIf="product_data.Upload"><img width="60" [src]="f.Upload.value"
+                      <span class="img-upload" *ngIf="product_data.Upload && !preview"><img width="60" [src]="f.Upload.value"
                         (click)="openImagePopup()" /></span>
+                    </div>
+                    <input accept='image/*' name="Upload" required class="choose-file-form" (change)="onFileChange($event, 'fim')"
+                      type="file" id="file-input" [ngClass]="{ 'is-invalid': submitted && f.Upload.errors, 'is-valid': f.Upload.touched && !f.Upload.errors }" />
+                    
                   </div>
                   <div class="col-md-6 form-group no-padding">
                     <label class="float-left col-form-label" for="file-input">Asset Bundle</label>
                     <div class="custom-file-upload">
                       <label for="file-upload" class="upload-labe">
-                        {{ pzipName || 'Choose File'}}
+                        {{ (pzipName || f.AssetBundle.value)?'File Choosen':'Choose File'}}
                       </label>
-                      <span *ngIf="!pzip">No file chosen</span>
+                      <span *ngIf="!pzip && !f.AssetBundle.value">No file chosen</span>
                       <span *ngIf="pzip && pzip !== null">{{ pzip }}</span>
+                      <span *ngIf="f.AssetBundle.value && !pzip">{{ f.AssetBundle.value }}</span>
                     </div>
-                    <input accept='zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed' required class="choose-file-form" (change)="onFileChange($event,'fzip')"
+                    <input name="AssetBundle" accept='zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed' required class="choose-file-form" (change)="onFileChange($event,'fzip')"
                       type="file" id="file-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.Name.errors, 'is-valid': f.Name.touched && !f.Name.errors }" />
-                    <span *ngIf="product_data.AssetBundle">{{f.AssetBundle.value}}</span>
+                      [ngClass]="{ 'is-invalid': submitted && f.AssetBundle.errors, 'is-valid': f.AssetBundle.touched && !f.AssetBundle.errors }" />
+                    <!-- <span *ngIf="product_data.AssetBundle">{{f.AssetBundle.value}}</span> -->
                   </div>
                   <div class="col-md-6 form-group no-padding">
                     <label class=" col-form-label" for="features">Number of Hot Spots</label>
