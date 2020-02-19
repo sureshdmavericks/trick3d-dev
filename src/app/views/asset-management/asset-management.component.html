@@ -7,7 +7,7 @@
         <h2 class="user-title">Product Management</h2>
         <div class="card-header-actions" *ngIf="!_authService.isClient()">
           <button class="btn btn-sm btn-primary create-client-bgclr" type="button" (click)="addAsset()">
-            &nbsp;Create Asset
+            &nbsp;Create Product
           </button>
         </div>
       <!-- </div> -->
@@ -21,7 +21,7 @@
       <div>
         <div class="container col-lg-12 col-md-12 col-sm-12 trick3d-row" *ngFor="let item of data; let i = index">
           <div class="row no-margin">
-            <div class="col-md-4 col-sm-12 trick3d-table">
+            <div class="col-md-3 col-sm-12 trick3d-table">
               <span class="client-management-header">Product Name</span>
               <span class="client-clr">{{ item.Name }}</span>
             </div>
@@ -54,6 +54,10 @@
               <button (click)="unpublishProduct(item.AssetID, 'unpublished', i)" class="btn btn-sm btn-primary btn-published" *ngIf="item.Status == 'published'">
                 Unpublish
               </button>
+            </div>
+            <div class="col-md-3 col-sm-12 trick3d-table text-center" *ngIf="item.Status=='published' && !_authService.isClient()">
+              <span class="client-management-header">Last Published Date</span>
+              <span class="client-clr">{{item.UpdatedAt | date}}</span>
             </div>
           </div>
         </div>

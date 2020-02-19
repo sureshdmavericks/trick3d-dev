@@ -97,7 +97,7 @@ export class InitialUploadComponent implements OnInit {
 
   createForm() {
     this.simpleForm = this.fb.group({
-      AssetID:[null],
+      AssetID:[""],
       ClientID: ["", [Validators.required]],
       CategoryID: ["", [Validators.required]],
       AssetBundle:[null,[Validators.required]],

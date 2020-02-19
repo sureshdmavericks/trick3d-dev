@@ -10,7 +10,12 @@
           <div class="col-md-2 trick-profile-left">
             <span class="profile-photo-bdr" *ngIf="!preview"><img class="profile-img" src="../assets/img/profile.png" /></span>
             <span class="profile-photo-bdr" *ngIf="preview"><img class="profile-img" [src]="preview" /></span>
-            <span class="profile-photo-bdr" *ngIf="!preview && f.ProfilePic.value"><img class="profile-img" [src]="f.ProfilePic.value" /></span>
+            <span class="profile-photo-bdr" *ngIf="!preview && f.ProfilePic.value">
+              <img class="profile-img"
+              decode=true
+              [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
+              [lazyLoad]="f.ProfilePic.value"
+              /></span>
             <input accept='image/*' (change)="onFileChange($event)" class="profile-choose-file" type="file" />
           </div>
           <div class="col-md-10 trick-profile-right">
@@ -18,7 +23,7 @@
             <a routerLink="/change-password" class="trick-edit-pctre">Change Password</a>
             <div class="form-group row trick-form">
               <span class="trick-user">User Name</span>
-              <input type="text" disabled  formControlName="UserName" class="form-control trick-profile-usrname"
+              <input type="text" readonly  formControlName="UserName" class="form-control trick-profile-usrname"
                 placeholder="Username" autocomplete="username"/>
             </div>
           </div>
@@ -40,7 +45,7 @@
           </div>
           <div class="trick-body-form">
             <span class="col-md-2 trick-user">Email</span>
-            <input formControlName="Email" disabled type="Email" placeholder="Email" class="col-md-8 form-control trick-profile-usrname" />
+            <input formControlName="Email" readonly type="Email" placeholder="Email" class="col-md-8 form-control trick-profile-usrname" />
           </div>
           <!-- <div class="trick-body-form">
             <span class="col-md-2 trick-user">Phone Number</span>

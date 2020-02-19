@@ -80,6 +80,8 @@ export class ProfileComponent implements OnInit {
     this._userService.updateProfile(data).subscribe(response => {
       console.log(response.body)
       swal.fire("Success!", `Your profile has been updated.`, "success")
+    }, error=>{
+      console.log(error)
     })
   }
 

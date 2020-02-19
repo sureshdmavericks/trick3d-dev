@@ -45,6 +45,8 @@ export class AssetService {
     sdata.append('ClientID',data.ClientID);
     sdata.append('Name',data.Name);
     sdata.append('NoOfFeatures',data.NoOfFeatures);
+
+    if(data.AssetID)
     sdata.append('AssetID',data.AssetID);
     // if(data.Upload)
     sdata.append('Upload',data.Upload);

@@ -68,8 +68,9 @@ export class UserFormComponent implements OnInit {
   }
 
   onReset() {
-    this.submitted = false
-    this.simpleForm.reset()
+    this.submitted = false;
+    // this.simpleForm.reset();
+    this._router.navigate(['/user-management']);
   }
 
   onSubmit() {

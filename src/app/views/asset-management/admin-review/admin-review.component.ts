@@ -11,6 +11,7 @@ import { AssetService } from "../asset.service"
 import _ from "lodash"
 import { CategoryService } from "../../category-management/category.service"
 import swal from "sweetalert2"
+import { Router } from '@angular/router'
 
 @Component({
   selector: "app-admin-review",
@@ -51,7 +52,8 @@ export class AdminReviewComponent implements OnInit {
     private assetService: AssetService,
     private cd: ChangeDetectorRef,
     private _categoryService: CategoryService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router:Router
   ) {
     if (Object.keys(this.navCtrl.data).length === 0) {
       this.navCtrl.navigate("assets")
@@ -184,7 +186,9 @@ export class AdminReviewComponent implements OnInit {
             .subscribe(
               response => {
                 console.log(response)
-                swal.fire("Success", "Product published successfully.");
+                swal.fire("Success", "Product published successfully.").then(result=>{
+                  this.router.navigate(['/assets']);
+                });
               },
               error => {
                 swal.fire("Oops!", `Something went wrong.`, "error")
