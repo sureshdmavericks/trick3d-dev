@@ -1,11 +1,8 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
-
-import { throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../../authentication/auth.service';
 
 export interface LoginData {
   username: string;
@@ -13,7 +10,9 @@ export interface LoginData {
 }
 
 const LoginUrl = environment.API_URL + '/users/login';
+const LogoutUrl = environment.API_URL + '/users/logout';
 const ForgotUrl = environment.API_URL + '/users/forgot';
+const FLogout = environment.API_URL + '/users/force/logout';
 
 @Injectable()
 export class LoginService {
@@ -23,34 +22,32 @@ export class LoginService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private _authService: AuthService) {}
+
+  private get authHeader(): string {
+    return `Bearer ${this._authService.getToken()}`;
+  }
 
   login(data:any) {
     return this.http.post(LoginUrl, data, this.accessWithOptions)
-      // .pipe(
-      //   //retry(1), // retry a failed request up to 3 times
-      //   catchError(this.handleError) // then handle the error
-      // );
+  }
+
+  logout(token:string) {
+    return this.http.post(LogoutUrl,{token}, {
+      observe: 'response',
+      headers: new HttpHeaders().set('Authorization', this.authHeader)
+    });
+  }
+
+  forceLogout(email:string) {
+    return this.http.post(FLogout,{email}, {
+      observe: 'response',
+      headers: new HttpHeaders().set('Authorization', this.authHeader)
+    });
   }
 
   forgot(Email:any){
-    console.log(Email)
     return this.http.post(ForgotUrl, Email, this.accessWithOptions)
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  }
 }

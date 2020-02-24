@@ -1,9 +1,5 @@
-import { Injectable, ErrorHandler } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
-
-import { throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../../authentication/auth.service';
 import { User } from '../user-form/user-form.component';

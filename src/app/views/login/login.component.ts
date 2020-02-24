@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../authentication/auth.service';
 import { LoginService } from './login.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit{
   public submitted = false;
   public login = {
     error: false,
-    message: null
+    message: null,
+    logout:false
   };
 
   constructor(
@@ -50,19 +52,38 @@ export class LoginComponent implements OnInit{
     let logindata = {Email: data.username, Password: data.password}
 
     this._loginService.login(logindata).subscribe((res:any)=>{
-      this.login = null;
-      this._authService.setData(res.token);
-      this.goRoute()
+      if(res.error){
+        this.login.error = true; 
+        this.login.logout = true;
+        this.login.message = res.message;
+      }else{
+        this.login = null;
+        this._authService.setData(res.token);
+        this.goRoute();
+      }
 
     }, error=>{
       this.login.error = true;
+      console.log(error.error.error.message)
       if(error.error.message)
-      this.login.message = error.error.message;
+        this.login.message = error.error.message;
+      else if(error.error.error.message)
+        this.login.message = error.error.error.message;
       else
-      this.login.message = `Something went wrong.`;
+        this.login.message = `Something went wrong.`;
     })
 
     return;
+  }
+
+  forceLogout(){
+    console.log(this.loginForm.get('username').value);
+    this._loginService.forceLogout(this.loginForm.get('username').value).subscribe(res=>{
+      this.login.error = false;
+      swal.fire('Success','Logged out successfully', 'success');
+    }, error=>{
+      swal.fire('Error','Something went wrong', 'error');
+    })
   }
 
   goRoute(): void {
