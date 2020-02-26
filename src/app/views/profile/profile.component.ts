@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   simpleForm: FormGroup;
   submitted = false;
   preview:string;
+  logoview:string;
+  fileName:string;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +37,11 @@ export class ProfileComponent implements OnInit {
         FirstName: response.body.FirstName,
         LastName: response.body.LastName,
         UserName: response.body.UserName,
-        ProfilePic:response.body.ProfilePic
+        ProfilePic:response.body.ProfilePic,
+        Logo:response.body.Logo,
+        HeaderColor:response.body.HeaderColor,
+        FontColor:response.body.FontColor,
+        SidebarColor:response.body.SidebarColor
       })
     })
   }
@@ -46,8 +52,16 @@ export class ProfileComponent implements OnInit {
       FirstName: ["", [Validators.required]],
       LastName: ["", [Validators.required]],
       Email: ["", [Validators.required]],
-      ProfilePic: [""]
+      HeaderColor: [""],
+      SidebarColor: [""],
+      FontColor: [""],
+      ProfilePic: [""],
+      Logo: [""]
     })
+  }
+  colorChanged(event:Event, field:string){
+    // console.log(event);
+    this.f[field].setValue(event);
   }
 
   get f() {
@@ -65,17 +79,20 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true
-
+    console.log(this.simpleForm.value);
     if (this.simpleForm.invalid) {
       return
     }
 
-    console.warn(this.simpleForm.value);
     // return;
     let data = {
       FirstName : this.simpleForm.controls["FirstName"].value,
       LastName  : this.simpleForm.controls["LastName"].value,
-      ProfilePic: this.simpleForm.controls["ProfilePic"].value
+      ProfilePic: this.simpleForm.controls["ProfilePic"].value,
+      Logo: this.simpleForm.controls["Logo"].value,
+      HeaderColor: this.simpleForm.controls["HeaderColor"].value,
+      SidebarColor: this.simpleForm.controls["SidebarColor"].value,
+      FontColor: this.simpleForm.controls["FontColor"].value
     }
     this._userService.updateProfile(data).subscribe(response => {
       console.log(response.body)
@@ -85,16 +102,24 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  onFileChange(event) {
+  onFileChange(event, type:string) {
     const reader = new FileReader()
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files
       reader.readAsDataURL(file)
       reader.onload = () => {
-        this.preview = reader.result as string
-        this.simpleForm.patchValue({
-          ProfilePic: file
-        })
+        if (type == "profile") {
+          this.preview = reader.result as string;
+          this.simpleForm.patchValue({
+            ProfilePic: file
+          });
+        }else{
+          this.fileName = file.name;
+          this.logoview = reader.result as string;
+          this.simpleForm.patchValue({
+            Logo: file
+          });
+        }
         this.cd.markForCheck()
       }
     }

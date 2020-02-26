@@ -151,7 +151,6 @@ export class InitialUploadComponent implements OnInit {
 
         if (type == "fim") {
           this.preview = reader.result as string;
-          console.log(file)
           this.fileName = 'File Choosen';
           this.simpleForm.patchValue({
             Upload: file

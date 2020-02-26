@@ -16,7 +16,7 @@
               [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
               [lazyLoad]="f.ProfilePic.value"
               /></span>
-            <input accept='image/*' (change)="onFileChange($event)" class="profile-choose-file" type="file" />
+            <input accept='image/*' (change)="onFileChange($event,'profile')" class="profile-choose-file" type="file" />
           </div>
           <div class="col-md-10 trick-profile-right">
             <!-- <a href="#" class="trick-edit-pctre">Edit Profile Picture</a> -->
@@ -47,6 +47,36 @@
             <span class="col-md-2 trick-user">Email</span>
             <input formControlName="Email" readonly type="Email" placeholder="Email" class="col-md-8 form-control trick-profile-usrname" />
           </div>
+          <div class="trick-body-form col-md-6 form-group no-padding">
+            <span class="col-md-2 trick-user">Logo</span>
+            <div class="custom-file-upload">
+              <label for="file-upload" class="upload-labe">
+                {{(fileName || f.Logo.value)? 'File Choosen':'Choose File'}}
+              </label>
+              <span *ngIf="!logoview && !f.Logo.value">No file chosen</span>
+              <span *ngIf="logoview && logoview !== null"><img width="60" [src]="logoview" [alt]="fileName"></span>
+              <span class="img-upload" *ngIf="f.Logo.value && !logoview"><img width="60" [src]="f.Logo.value"
+                (click)="openImagePopup()" /></span>
+            </div>
+            <input accept='image/*' name="Logo" class="choose-file-form trick-profile-usrname" (change)="onFileChange($event, 'logo')"
+              type="file" id="file-input" />
+            
+          </div>
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">Header Color</span>
+            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'HeaderColor')"  [value]="f['HeaderColor'].value" [style.background]="f['HeaderColor'].value" [cpOKButton]="true" [cpSaveClickOutside]="false" [cpOKButtonClass]= "'btn btn-primary btn-xs'" [(colorPicker)]="f['HeaderColor'].value"/>
+            <!-- <input formControlName="HeaderColor" readonly type="text" placeholder="Header Color" class="col-md-8 form-control trick-profile-usrname" /> -->
+          </div>
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">Sidebar Color</span>
+            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'SidebarColor')" [value]="f['SidebarColor'].value" [style.background]="f['SidebarColor'].value" [cpOKButton]="true" [cpSaveClickOutside]="false" [cpOKButtonClass]= "'btn btn-primary btn-xs'" [(colorPicker)]="f['SidebarColor'].value"/>
+            <!-- <input formControlName="SidebarColor" readonly type="text" placeholder="Sidebar Color" class="col-md-8 form-control trick-profile-usrname" /> -->
+          </div>
+          <div class="trick-body-form">
+            <span class="col-md-2 trick-user">Font Color</span>
+            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'FontColor')" [value]="f['FontColor'].value" [style.background]="f['FontColor'].value" [cpOKButton]="true" [cpSaveClickOutside]="false" [cpOKButtonClass]= "'btn btn-primary btn-xs'" [(colorPicker)]="f['FontColor'].value"/>
+            <!-- <input formControlName="FontColor" readonly type="text" placeholder="Font Color" class="col-md-8 form-control trick-profile-usrname" /> -->
+          </div>
           <!-- <div class="trick-body-form">
             <span class="col-md-2 trick-user">Phone Number</span>
             <input [ngClass]="{ 'is-invalid': submitted && f.UserName.errors, 'is-valid': f.UserName.touched && !f.UserName.errors }" type="Tel" placeholder="Phone number" class="col-md-8 form-control trick-profile-usrname" />
@@ -57,10 +87,10 @@
           <div class="trick-body-form">
             <!-- <span class="col-md-2 trick-user">&nbsp;</span> -->
             <div class="col-md-8 trick-profile-btn">
-              <button type="button" class="btn profile-submit-btn" value="Reset">
+              <button type="button" class="btn profile-reset-btn" value="Reset">
                 Reset
               </button>
-              <button type="submit" class="btn profile-reset-btn" value="Submit">
+              <button type="submit" class="btn profile-submit-btn" value="Submit">
                 Submit
               </button>
             </div>

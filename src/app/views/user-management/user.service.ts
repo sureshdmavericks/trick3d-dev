@@ -10,6 +10,10 @@ export interface UserData {
   LastName: string;
   FullName?: string;
   UserName?:string;
+  SidebarColor?:string;
+  FontColor?:string;
+  HeaderColor?:string;
+  Logo?:string;
   Email: string;
   ProfilePic?:string;
   Type:string;
@@ -70,6 +74,14 @@ export class UserService {
     let sdata = new FormData();
     sdata.append('FirstName',data.FirstName);
     sdata.append('LastName',data.LastName);
+    if(data.HeaderColor)
+    sdata.append('HeaderColor',data.HeaderColor);
+    if(data.SidebarColor)
+    sdata.append('SidebarColor',data.SidebarColor);
+    if(data.FontColor)
+    sdata.append('FontColor',data.FontColor);
+    if(data.Logo)
+    sdata.append('Logo',data.Logo);
     sdata.append('ProfilePic',data.ProfilePic);
     console.log(sdata);
 
