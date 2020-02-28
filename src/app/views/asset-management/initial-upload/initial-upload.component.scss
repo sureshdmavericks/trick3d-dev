@@ -57,15 +57,15 @@
         right: -7px;
         .upload-labe {
           border: 1px solid #3262a5;
-          width: 36%;
+          width: 42%;
           border-radius: 3px;
           padding: 6px 14px;
+          font-size: 18px;
           // text-overflow: ellipsis;
           // white-space: nowrap;
           // overflow: hidden;
           // width:100px; // some width
         }
-        
       }
       .is-invalid {
         background-image: url(../assets/img/wrong.png);
@@ -81,9 +81,9 @@
           box-shadow: none;
         }
       }
-      .img-upload{
+      .img-upload {
         position: relative;
-        float:right;
+        float: right;
       }
       .invalid-feedback {
         float: left;
@@ -105,7 +105,7 @@
       .trick-buttons {
         // padding-left: 15px;
         margin-top: 9px;
-        margin-left: 28%;
+        margin-left: 26%;
       }
       .profile-cancel-btn {
         color: #3262a5;
@@ -137,6 +137,31 @@
         //   color: #fff;
         // }
       }
+    }
+  }
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .col-form-label {
+      display: none;
+    }
+    .form-clr {
+      width: 100% !important;
+      margin-bottom: 15px;
+      font-size: 20px !important;
+    }
+    .custom-file-upload {
+      width: 100% !important;
+      font-size: 20px !important;
+      .upload-labe {
+        width: 50% !important;
+      }
+    }
+    .trick-buttons {
+      padding-left: 25px;
+      margin-left: 0px !important;
+    }
+    .no-padding {
+      float: left;
+      height: 43px;
     }
   }
 }

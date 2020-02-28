@@ -1,106 +1,140 @@
-.trick-profile{
-    font-size: 18px;
-    .trick-header{
-        background-color: transparent;
-        border-bottom: 0px;
-    .trick-profile-left{
-        float: left;
-    .profile-photo-bdr{
+.trick-profile {
+  font-size: 18px;
+  .trick-header {
+    background-color: transparent;
+    border-bottom: 0px;
+    .trick-profile-left {
+      float: left;
+      .profile-photo-bdr {
         width: 147px;
-    height: 100px;
-    float: left;
-    border: 1px solid #3262A5;
-    border-radius: 4px;
-    position: absolute;
-    .profile-img{
-        display: block;
-    margin-left: auto;
-    margin-right: auto;
-    // width: 75px;
-    width: 145px;
-    // height: 98px;
-    padding:1px;
-    }
-    }
-    .profile-choose-file{
+        height: 100px;
+        float: left;
+        border: 1px solid #3262a5;
+        border-radius: 4px;
+        position: absolute;
+        .profile-img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 75px;
+          padding-top: 11px;
+          height: 97px;
+        }
+      }
+      .profile-choose-file {
         position: relative;
         opacity: 0;
-        height: 100px;
-        width: 145px;
+        width: 140px;
+      }
     }
-}
-.trick-profile-right{
-     float: left;
-     .trick-edit-pctre{
-         display: block;
-         color: #3262A5;
-     }
-     .trick-form{
-         padding-left: 15px;
-         padding-top: 18px;
-         .trick-user{
-             float: left;
-             line-height: 33px;
-             color: #3262A5;
-         }
-         .trick-profile-usrname{
-            float: left;
-            width: 259px;
-            background-color: #a4a6aa;
-            color: #3262A5;
-            margin-left: 15px;
-            font-size: 18px;
-            &::placeholder{
-                color: #3262A5;
-            }
-         }
-     }
-}
-}
-.trick-body{
+    .trick-profile-right {
+      float: left;
+      .trick-edit-pctre {
+        display: block;
+        color: #3262a5;
+      }
+      .trick-form {
+        padding-left: 15px;
+        padding-top: 18px;
+        .trick-user {
+          float: left;
+          line-height: 33px;
+          color: #3262a5;
+        }
+        .trick-profile-usrname {
+          float: left;
+          width: 259px;
+          background-color: #a4a6aa;
+          color: #3262a5;
+          margin-left: 15px;
+          font-size: 18px;
+          &::placeholder {
+            color: #3262a5;
+          }
+        }
+      }
+    }
+  }
+  .trick-body {
     float: left;
     padding-top: 38px;
     padding-left: 34px;
-    .trick-body-form{
-        width: 100%;
-        float: left;
-        padding-bottom: 10px;
-    .trick-user{
-        color:#3262A5;
+    .trick-body-form {
+      width: 100%;
+      float: left;
+      padding-bottom: 10px;
+      .trick-user {
+        color: #3262a5;
         float: left;
         line-height: 33px;
-    }
-    .trick-profile-usrname{
+      }
+      .trick-profile-usrname {
         float: left;
         width: 259px;
         height: 38px;
         font-size: 18px;
-        border: 1px solid #3262A5;
+        border: 1px solid #3262a5;
         color: #3262a5;
-        &::placeholder{
-            color: #3262A5;
+        &::placeholder {
+          color: #3262a5;
         }
+      }
     }
-}
-.trick-profile-btn{
-    padding-left: 15px;
-    margin-top: 25px;
-    margin-left: 18%;
-    .profile-submit-btn{
+    .trick-profile-btn {
+      padding-left: 15px;
+      margin-top: 25px;
+      margin-left: 18%;
+      .profile-submit-btn {
         background-color: #3262a5;
         border: 1px solid #3262a5;
         color: #fff;
         font-size: 18px;
         padding: 6px 30px;
-    }
-    .profile-reset-btn{
+      }
+      .profile-reset-btn {
         color: #3262a5;
         background-color: #fff;
         border: 1px solid #3262a5;
         font-size: 18px;
         padding: 6px 30px;
+      }
     }
+  }
+  @media all and (max-width: 699px) and (min-width: 320px) {
+      .trick-user{
+          display: none;
+      }
+      .trick-body{
+          padding-left:0px;
+          padding-right:0px;
+      }
+      .trick-profile-usrname{
+          width:100% !important;
+      }
+      .trick-profile-btn{
+          margin-left: 8% !important;
+      }
+      .trick-header{
+        padding-left:0px;
+        padding-right:0px;
+      }
+      .trick-profile-right{
+          padding-left: 0px;
+      }
+      .trick-profile-usrname{
+          margin-left: 0px !important;
+      }
+      .trick-profile-left{
+          margin-left: 62px;
+      }
+      .trick-edit-pctre{
+        margin-left: 62px;
+      }
+    //   .trick-body{
+    //     padding-top: 8px;
+    //   }
+    //   .trick-form{
+    //       padding-top: 61px;
+    //   }
+  }
 }
-}
-}
-

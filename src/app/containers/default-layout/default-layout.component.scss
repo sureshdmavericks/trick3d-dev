@@ -22,46 +22,45 @@
       }
     }
   }
-  .client-logged-msg{
-    width:47%;
+  .client-logged-msg {
+    width: 47%;
     // text-align: right;
     position: relative;
-    top:-12px;
-    .client-text{
+    top: -12px;
+    .client-text {
       float: right;
       /* text-align: right; */
       // border: 1px solid #000;
       border-radius: 0px 0px 19px 19px;
       border-top: none;
       background-color: #3262a5;
-      .text-clr{
+      .text-clr {
         color: #fff;
         background-color: transparent;
         padding-right: 12px;
       }
-      .icon-lock{
+      .icon-lock {
         color: #fff;
         margin: 3px 0px 0px 10px;
         float: left;
       }
-
     }
     .logout-text {
       right: 39px !important;
       top: 29px !important;
       border-radius: 0px 0px 19px 19px;
       background-color: #fff;
-      .logout-clr{
+      .logout-clr {
         color: #3262a5;
-        &:hover{
+        &:hover {
           background-color: #fff;
           border-radius: 0px 0px 19px 19px;
         }
       }
-      .fa-lock{
-        color: #fff;
+      .fa-lock {
+        color: #3262a5;
       }
-      &:hover{
+      &:hover {
         border-radius: 0px 0px 19px 19px;
       }
     }
@@ -90,9 +89,77 @@
     }
   }
 }
-.trick3d-footer{
-  span{
-    a{
+.sidebar-fixed {
+  .sidebar {
+    width: 212px;
+    .sidebar-nav {
+      width: 212px;
+    }
+  }
+}
+.trick3d-footer {
+  margin-left: 212px !important;
+}
+@media all and (max-width: 699px) and (min-width: 320px) {
+  .navbar-brand {
+    left: 28% !important;
+  }
+  .sidebar-fixed {
+    .sidebar {
+      width: 200px;
+      .sidebar-nav {
+        width: 200px;
+      }
+    }
+  }
+  .trick3d-footer {
+    margin-left: 0px !important;
+  }
+  .navbar-toggler:nth-child(5) {
+    display: none;
+  }
+  .navbar-toggler:nth-child(6) {
+    display: none;
+  }
+  .client-logged-msg {
+    width: 20% !important;
+    left: 50%;
+    .client-text {
+      width: 190% !important;
+      .icon-lock {
+        display: none !important;
+      }
+      .text-clr {
+        font-size: 9px !important;
+        i {
+          display: block;
+          padding-bottom: 3px;
+          padding-top: 4px;
+        }
+      }
+    }
+    .logout-text {
+      top: 36px !important;
+      width: 72px;
+      min-width: 136px;
+      right: -6px !important;
+      left: -65px !important;
+      margin-top: 9px;
+      .logout-clr {
+        font-size: 9px;
+        min-width: 115px !important;
+        padding: 10px 4px;
+        .fa-lock {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.trick3d-footer {
+  // margin-left:208px !important;
+  span {
+    a {
       color: #3262a5;
     }
   }

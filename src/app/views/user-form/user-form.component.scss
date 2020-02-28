@@ -59,16 +59,16 @@
           }
         }
         .trick-buttons {
-          padding-left: 15px;
+          padding-left: 20px;
           margin-top: 9px;
-          margin-left: 27.3%;
+          margin-left: 23%;
           .trick-cancel-btn {
             color: #3262a5;
             background-color: #fff;
             border: 1px solid #3262a5;
             font-size: 18px;
             padding: 6px 30px;
-            
+
             // &:hover {
             //   color: #3262a5;
             //   background-color: #fff;
@@ -89,18 +89,19 @@
       }
     }
   }
-}
-@media all and (max-width: 699px) and (min-width: 320px) {
-  .trick-col-float-left {
-    float: left;
-    .trick-float-left {
-      display: none;
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .trick-col-float-left {
+      float: left;
+      .trick-float-left {
+        display: none;
+      }
+      .trick-md-right {
+        width: 100% !important;
+        font-size: 20px !important;
+      }
     }
-    .trick-md-right {
-      width: 100% !important;
+    .trick-buttons {
+      margin-left: 0px !important;
     }
-  }
-  .trick-buttons {
-    margin-left: 0px !important;
   }
 }

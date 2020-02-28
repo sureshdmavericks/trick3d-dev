@@ -14,7 +14,7 @@
       border-bottom: none;
       background-color: transparent;
       padding: 0px;
-      .category-title{
+      .category-title {
         font-size: 21px;
         font-weight: 600;
         color: #3262a5;
@@ -43,21 +43,20 @@
         left: 270px;
         top: 8px;
       }
-      .card-header-actions{
-          // height: 21px;
-          .create-client-bgclr{
-            background-color: transparent;
-            color: #3262a5;
-            border: 1px solid #3262a5;
-            height: 38px;
-            width: 120px;
-            font-size: 18px;
-            &:hover{
-                color: #fff;
-                background-color: #3262a5;
-                
-            }
+      .card-header-actions {
+        // height: 21px;
+        .create-client-bgclr {
+          background-color: transparent;
+          color: #3262a5;
+          border: 1px solid #3262a5;
+          height: 38px;
+          width: 148px;
+          font-size: 18px;
+          &:hover {
+            color: #fff;
+            background-color: #3262a5;
           }
+        }
       }
     }
     .card-body {
@@ -116,34 +115,43 @@
       font-size: 18px;
       border: 1px solid #ecf2f8;
     }
-      .no-margin {
-        margin: 0px;
-        .trick3d-table {
-          text-align: left;
-          // padding: 0px;
-          .client-management-header {
-            display: block;
-            font-weight: 600;
-            color: #80a8cf;
-          }
-          .client-clr {
-            color: #3262a5;
-            .trick-text-size{
-                font-size: 18px;
-            }
-          }
-          .btn-published{
-            height: 38px;
-            background-color: #3262a5;
-            color: #fff;
+    .no-margin {
+      margin: 0px;
+      .trick3d-table {
+        text-align: left;
+        // padding: 0px;
+        .client-management-header {
+          display: block;
+          font-weight: 600;
+          color: #80a8cf;
+        }
+        .client-clr {
+          color: #3262a5;
+          .trick-text-size {
             font-size: 18px;
-            width: 122px;
-            margin-top: 4px;
           }
         }
+        .btn-published {
+          height: 38px;
+          background-color: #3262a5;
+          color: #fff;
+          font-size: 18px;
+          width: 122px;
+          margin-top: 4px;
+        }
       }
-    
+    }
+  }
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .trick3d-table {
+      margin-bottom: 10px;
+    }
+    .category-title {
+      font-size: 18px !important;
+    }
+    .create-client-bgclr {
+      font-size: 15px !important;
+      width: 123px !important;
+    }
   }
 }
-
-

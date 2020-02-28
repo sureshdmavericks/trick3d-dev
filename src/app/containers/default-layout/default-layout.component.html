@@ -1,6 +1,6 @@
 <app-header class="trick3d-default-layout" [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
   [navbarBrandFull]="{src: 'assets/img/brand/logo_new3.svg', width: 89, height: 25, alt: 'Trick3D'}"
-  [sidebarToggler]="'lg'" [asideMenuToggler]=false>
+  [sidebarToggler]="'lg'" [mobileAsideMenuToggler]="false" [asideMenuToggler]=false>
   <div class="client-logged-msg" dropdown placement="bottom right" *ngIf="_authService.isClient()">
     <a class="client-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
       dropdownToggle (click)="false">

@@ -1,20 +1,20 @@
 .trick3d-dashboard {
   .bg-color {
     background-color: #fff !important;
-    box-shadow: 0px 1px 3px 0px #000;
-    border: none;
+    // box-shadow: 0px 1px 3px 0px #000;
+    border: 1px solid #3262a5;
     padding: 22px 0px 15px 0px;
-    .trick3d-header-asset{
-        color: #3262a5;
-        text-align: center;
-        font-size: 20px;
+    .trick3d-header-asset {
+      color: #3262a5;
+      text-align: center;
+      font-size: 20px;
     }
-    .text-left{
-        text-align: left;
-        padding-left: 20px;
+    .text-left {
+      text-align: left;
+      padding-left: 20px;
     }
     .card-body {
-        padding-top: 5px;
+      padding-top: 5px;
       .trick3d-clients-num {
         color: #3262a5;
         font-size: 75px;
@@ -23,11 +23,11 @@
         display: block;
         line-height: 93px;
       }
-      .trick3d-clients-text{
+      .trick3d-clients-text {
         font-size: 22px;
         color: #3262a5;
         text-align: center;
-        width: 131px;
+        width: 173px;
         margin: 0 auto;
         display: block;
       }

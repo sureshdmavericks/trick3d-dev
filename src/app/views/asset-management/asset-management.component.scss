@@ -12,7 +12,7 @@
     .card-header {
       border-bottom: none;
       background-color: transparent;
-      padding:0px;
+      padding: 0px;
       .asset-saerch {
         background-color: #3262a5;
         color: #ecf2f8;
@@ -51,8 +51,9 @@
           color: #3262a5;
           border: 1px solid #3262a5;
           height: 38px;
-          width: 150px;
+          width: 135px;
           font-size: 18px;
+          margin-right: 6px;
           &:hover {
             color: #fff;
             background-color: #3262a5;
@@ -115,37 +116,58 @@
       border-radius: 5px;
       font-size: 18px;
       background-color: transparent;
-    border: 1px solid #ecf2f8;
+      border: 1px solid #ecf2f8;
     }
-      .no-margin {
-        margin: 0px;
-        .trick3d-table {
-          text-align: left;
-          // padding: 0px;
-          .client-management-header {
-            display: block;
-            font-weight: 600;
-            color: #80a8cf;
-          }
-          .client-clr {
-            color: #3262a5;
-            .trick-text-size {
-              font-size: 18px;
-            }
-          }
-          .btn-published {
-            height: 38px;
-            background-color: #3262a5;
-            color: #fff;
+    .no-margin {
+      margin: 0px;
+      .trick3d-table {
+        text-align: left;
+        // padding: 0px;
+        .client-management-header {
+          display: block;
+          font-weight: 600;
+          color: #80a8cf;
+        }
+        .client-clr {
+          color: #3262a5;
+          .trick-text-size {
             font-size: 18px;
-            width: 122px;
-            margin-top: 4px;
           }
         }
-        .text-center{
-          text-align: center;
+        .btn-published {
+          height: 38px;
+          background-color: #3262a5;
+          color: #fff;
+          font-size: 18px;
+          width: 122px;
+          margin-top: 4px;
         }
       }
-    
+      .text-center {
+        text-align: center;
+      }
+    }
+  }
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .user-title {
+      font-size: 19px !important;
+    }
+    .create-client-bgclr {
+      width: 122px !important;
+      font-size: 16px !important;
+    }
+    .create-client-bgclr {
+      margin-right: 0px !important;
+    }
+    .trick3d-table {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .text-center {
+      text-align: left !important;
+    }
+    // .create-client-bgclr{
+    //   font-size: 17px !important;
+    // }
   }
 }

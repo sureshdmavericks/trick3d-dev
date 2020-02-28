@@ -1,12 +1,26 @@
 .nav-link {
-  font-size: 0.86rem!important;
-  &:hover{
-    background-color: #3262A5;
+  font-size: 0.86rem !important;
+  &:hover {
+    background-color: #3262a5;
   }
-  &.active{
-    background-color: #3262A5;
+  &.active {
+    background-color: #3262a5;
   }
 }
-.nav{
-  width: 210px;
+.sidebar {
+  width: 207px;
+}
+.nav {
+  width: 222px;
+}
+@media all and (max-width: 699px) and (min-width: 320px) {
+  .nav {
+    width: 220px;
+  }
+  .sidebar {
+    width: 200px;
+  }
+  .nav-link {
+    font-size: 12px !important;
+  }
 }
