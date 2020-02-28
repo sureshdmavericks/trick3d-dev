@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Inject } from '@angular/core';
+import { Component, OnDestroy, Inject, HostListener } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { navItems } from '../../_nav';
 import { AuthService } from '../../authentication/auth.service';
@@ -32,6 +32,8 @@ export class DefaultLayoutComponent implements OnDestroy {
     this.data = this._authService.getData();
     console.log(this.data)
   }
+
+  
 
   ngOnDestroy(): void {
     this.changes.disconnect();

@@ -1,4 +1,4 @@
-import { Component, OnInit,  HostBinding, Input } from '@angular/core';
+import { Component, OnInit,  HostBinding, Input, HostListener } from '@angular/core';
 import { AuthService } from '../../authentication/auth.service';
 import { NavData } from '../../_nav';
 
@@ -23,6 +23,22 @@ export class SidebarNavCustomComponent implements OnInit {
         console.log(this.roleData);
         if(this.roleData)
         this.myRole = this.roleData.role;
+    }
+
+    public hideMobile() {
+        if (document.body.classList.contains('sidebar-mobile-show')) {
+          document.body.classList.toggle('sidebar-mobile-show');
+        if (document.body.classList.contains('sidebar-show')) {
+          document.body.classList.toggle('sidebar-show');
+        }
+      }
+    }
+
+    @HostListener('click', ['$event'])
+    toggleOpen($event: any) {
+        $event.preventDefault();
+        document.querySelector('body').classList.toggle('sidebar-mobile-show');
+        document.querySelector('body').classList.toggle('sidebar-show');
     }
 
     isDivider(navItem:NavData) {
