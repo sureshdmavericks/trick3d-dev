@@ -3,11 +3,12 @@ import { CategoryService, CategoryMgntData } from './category.service';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { CategoryDataService } from '../../services/category-data.service';
+import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   templateUrl: './category-management.component.html',
   styleUrls:['./category-management.component.scss'],
-  providers:[CategoryService]
+  providers:[CategoryService, AuthService]
 })
 export class CategoryManagementComponent implements OnInit {
 
@@ -19,6 +20,7 @@ export class CategoryManagementComponent implements OnInit {
 
   constructor(
     private dataTableService: CategoryService,
+    private _authService: AuthService,
     private categoryDataService: CategoryDataService,
     private router : Router
     ) {
@@ -43,7 +45,15 @@ export class CategoryManagementComponent implements OnInit {
           }))
 
         }, // success path
-        error => this.error = error // error path
+        error => {
+          if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+            console.log('in token error');
+            this._authService.logout();
+          }else{
+            this.error = error // error path
+
+          }
+        }
       );
   }
 

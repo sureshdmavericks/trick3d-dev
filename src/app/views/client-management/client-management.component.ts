@@ -74,11 +74,12 @@ export class ClientManagementComponent implements OnInit {
           })
       },
       error => {
-        console.log(error)
-        if (error.status === 400)
-          swal.fire("Oops..", error.error.error.message, "error")
-        else swal.fire("Oops..", `Something went wrong.`, "error")
-        return false
+        if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+          console.log('in token error');
+          this._authService.logout();
+        }else{
+          swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+        }
       }
     )
   }

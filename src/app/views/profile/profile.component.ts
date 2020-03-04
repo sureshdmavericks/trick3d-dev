@@ -3,11 +3,12 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from "@angular/router"
 import { UserService } from "../user-management/user.service"
 import swal from "sweetalert2"
+import { AuthService } from '../../authentication/auth.service'
 
 @Component({
   templateUrl: "./profile.component.html",
   styleUrls: ["./profile.component.scss"],
-  providers: [UserService]
+  providers: [UserService, AuthService]
 })
 export class ProfileComponent implements OnInit {
   simpleForm: FormGroup;
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _router: Router,
+    private _authService:AuthService,
     private _userService: UserService,
     private cd: ChangeDetectorRef
   ) {
@@ -43,6 +45,13 @@ export class ProfileComponent implements OnInit {
         FontColor:response.body.FontColor,
         SidebarColor:response.body.SidebarColor
       })
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+      }
     })
   }
 
@@ -98,7 +107,12 @@ export class ProfileComponent implements OnInit {
       console.log(response.body)
       swal.fire("Success!", `Your profile has been updated.`, "success")
     }, error=>{
-      console.log(error)
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+      }
     })
   }
 

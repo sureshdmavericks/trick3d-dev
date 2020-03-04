@@ -23,13 +23,22 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const token = JSON.parse(sessionStorage.getItem('token'))[0];
+    let token:any;
+    if(sessionStorage.getItem('token')!=null)
+    token = JSON.parse(sessionStorage.getItem('token'))[0];
     return !this.jwtHelper.isTokenExpired(token);
   }
 
   public isClient(): boolean {
     let user = this.getData()
     return user.clientID;
+  }
+
+  public isFromAdmin(): boolean {
+    let token:Array<any> = [];
+    if(sessionStorage.getItem('token')!=null)
+    token = JSON.parse(sessionStorage.getItem('token'));
+    return token.length > 1 ;
   }
 
   loggedIn() {
@@ -47,7 +56,6 @@ export class AuthService {
   }
 
   setData(data:string, flag?:boolean) {
-    console.log("sessionStorage.getItem('token')::",sessionStorage.getItem('token'))
     // if(flag){
       this.tokenArray = JSON.parse(sessionStorage.getItem('token')) || [];
       console.log(this.tokenArray);

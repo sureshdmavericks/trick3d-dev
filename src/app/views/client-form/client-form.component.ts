@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { Router, Event } from "@angular/router"
 import { ClientService } from "../client-management/client.service"
 import swal from "sweetalert2"
+import { AuthService } from '../../authentication/auth.service'
 
 @Component({
   templateUrl: "./client-form.component.html",
-  providers: [ClientService]
+  providers: [ClientService, AuthService]
 })
 export class ClientFormComponent implements OnInit {
   simpleForm: FormGroup
@@ -15,6 +16,7 @@ export class ClientFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private _authService:AuthService,
     private dataTableService: ClientService,
     private _router: Router
   ) {
@@ -57,12 +59,13 @@ export class ClientFormComponent implements OnInit {
             this._router.navigateByUrl("client-management")
           })
       },
-      err => {
-        swal.fire(
-          "Oops!",
-          err.error.error.message || "something went wrong",
-          "error"
-        )
+      error => {
+        if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+          console.log('in token error');
+          this._authService.logout();
+        }else{
+          swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+        }
       }
     )
   }

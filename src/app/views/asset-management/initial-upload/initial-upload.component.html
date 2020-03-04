@@ -92,6 +92,17 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-6 form-group no-padding">
+                    <label class=" col-form-label" for="uploadcounts">Maximum Uploads</label>
+                    <input
+                      [ngClass]="{ 'is-invalid': submitted && f.UploadCount.errors, 'is-valid': f.UploadCount.touched && !f.UploadCount.errors }"
+                      class="form-control form-clr" formControlName="UploadCount" type="number" id="uploadcounts" />
+                    <div *ngIf="submitted && f['UploadCount'].errors" class="invalid-feedback">
+                      <div class="invalid-text" *ngIf="f['UploadCount'].errors.required">
+                        Maximum Uploads required.
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
                 <div class="col-md-12 float-left">

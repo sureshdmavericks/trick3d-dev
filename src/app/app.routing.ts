@@ -20,7 +20,6 @@ import { AssetManagementComponent } from './views/asset-management/asset-managem
 import { CategoryManagementComponent } from './views/category-management/category-management.component';
 import { CategoryFormComponent } from './views/category-form/category-form.component';
 import { InitialUploadComponent } from './views/asset-management/initial-upload/initial-upload.component';
-import { ClientMarkingComponent } from './views/asset-management/client-marking/client-marking.component';
 import { AdminReviewComponent } from './views/asset-management/admin-review/admin-review.component';
 import { P500Component } from './views/error/500.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
@@ -143,14 +142,6 @@ export const routes: Routes = [
       {
         path: 'initupload',
         component: InitialUploadComponent,
-        canActivate: [AuthGuard],
-        data:{
-          expectedRole: [1,2,3]
-        }
-      },
-      {
-        path: 'marking',
-        component: ClientMarkingComponent,
         canActivate: [AuthGuard],
         data:{
           expectedRole: [1,2,3]

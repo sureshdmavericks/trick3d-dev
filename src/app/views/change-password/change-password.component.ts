@@ -39,9 +39,15 @@ export class ChangePasswordComponent implements OnInit {
           sessionStorage.clear();
           this.router.navigate(['/login'])
         });
-      }, err=>{
-        console.log(err);
-        swal.fire('Oops!',err.error.error.message || `something went wrong`, 'error')
+      }, error=>{
+        console.log(error);
+        if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+          console.log('in token error');
+          this._authService.logout();
+        }else{
+          swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+        }
+        
       })
   }
 }

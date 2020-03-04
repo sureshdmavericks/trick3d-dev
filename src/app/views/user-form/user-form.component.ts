@@ -88,8 +88,13 @@ export class UserFormComponent implements OnInit {
             this._router.navigateByUrl("user-management")
           })
       },
-      err => {
-        swal.fire("Oops!", err.error.error.message, "error")
+      error => {
+        if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+          console.log('in token error');
+          this._authService.logout();
+        }else{
+          swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+        }
       }
     )
   }
@@ -101,6 +106,13 @@ export class UserFormComponent implements OnInit {
           return x
         }
       })
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+      }
     })
   }
 
@@ -127,8 +139,13 @@ export class UserFormComponent implements OnInit {
       (data: any) => {
         this.roles = data.body
       },
-      err => {
-        console.log(err)
+      error => {
+        if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+          console.log('in token error');
+          this._authService.logout();
+        }else{
+          swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+        }
       }
     )
   }

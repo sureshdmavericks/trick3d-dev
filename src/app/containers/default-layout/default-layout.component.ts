@@ -1,24 +1,31 @@
-import { Component, OnDestroy, Inject, HostListener } from '@angular/core';
+import { Component, OnDestroy, Inject, OnInit, HostListener } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { navItems } from '../../_nav';
 import { AuthService } from '../../authentication/auth.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../../views/login/login.service';
 import swal from 'sweetalert2';
+import { UserService } from '../../views/user-management/user.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html',
-  providers:[LoginService]
+  providers:[LoginService,UserService]
 })
-export class DefaultLayoutComponent implements OnDestroy {
+export class DefaultLayoutComponent implements OnDestroy, OnInit {
 
   public navItems = navItems;
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement;
   data:any;
-  constructor(private loginService:LoginService, private _authService: AuthService, private router: Router, @Inject(DOCUMENT) _document?: any) {
+  user_data : any;
+  constructor(
+    private userService:UserService,
+    private loginService:LoginService, 
+    private _authService: AuthService, 
+    private router: Router, @Inject(DOCUMENT) _document?: any
+    ) {
 
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
@@ -30,10 +37,21 @@ export class DefaultLayoutComponent implements OnDestroy {
     });
 
     this.data = this._authService.getData();
-    console.log(this.data)
+    console.log(this.data);
+    console.log(_authService.isFromAdmin());
   }
 
-  
+  ngOnInit(){ 
+    console.log('in default init');
+    this.userService.getProfile().subscribe(res=>{
+      console.log(res.body);
+      this.user_data = res.body;
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        this._authService.logout();
+      }
+    });
+  }
 
   ngOnDestroy(): void {
     this.changes.disconnect();

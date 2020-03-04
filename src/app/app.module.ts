@@ -86,9 +86,6 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { LoaderService } from './shared/loader/loader.service';
 import { LoaderInterceptor } from './loader.interceptor';
 import { InitialUploadComponent } from './views/asset-management/initial-upload/initial-upload.component';
-import { ClientMarkingComponent } from './views/asset-management/client-marking/client-marking.component';
-import { AdminDataComponent } from './views/asset-management/admin-data/admin-data.component';
-import { ClientDataComponent } from './views/asset-management/client-data/client-data.component';
 import { AdminReviewComponent } from './views/asset-management/admin-review/admin-review.component';
 import { CategoryManagementComponent } from './views/category-management/category-management.component';
 import { CategoryFormComponent } from './views/category-form/category-form.component';
@@ -145,9 +142,6 @@ import { ChangePasswordComponent } from './views/change-password/change-password
     AssetManagementComponent,
     ChangeAssetCategoryComponent,
     InitialUploadComponent,
-    ClientMarkingComponent,
-    AdminDataComponent,
-    ClientDataComponent,
     AdminReviewComponent,
     CategoryManagementComponent,
     CategoryFormComponent,

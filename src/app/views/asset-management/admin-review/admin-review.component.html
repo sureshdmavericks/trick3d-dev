@@ -62,16 +62,17 @@
                                                     <label for="file-upload" class="upload-labe">
                                                         {{piName || 'Choose File'}}
                                                     </label>
-                                                    <span *ngIf="!piPreview">No file</span>
-                                                    <span *ngIf="piPreview && piPreview !== null"><img width="60"
-                                                            [src]="piPreview" [alt]="piName"></span>
+                                                    <span *ngIf="piPreview.length==0">No file</span>
+                                                    <span *ngIf="piPreview.length>0 && piPreview">
+                                                        <img *ngFor="let pimg of piPreview" width="60" [src]="pimg" [alt]="piName"/>
+                                                    </span>
                                                 </div>
-                                                <input #pi id="file-upload" type="file"
+                                                <input #pi id="file-upload" type="file" multiple
                                                     (change)="onFileChange($event,'pi')" accept="image/*" />
                                             </div>
                                             <div class="col-md-8 float-left"
                                                 *ngIf="product_data.assetPicture.ProductImage && !isHaving.pi">
-                                                <span><a svd href="javascript:void(0)"
+                                                <span><a href="javascript:void(0)"
                                                         (click)="showAsset(product_data.assetPicture.ProductImage, 'image')"><img
                                                             decode=true
                                                             [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
@@ -92,8 +93,9 @@
                                                         {{pvName || 'Choose File'}}
                                                     </label>
                                                     <span *ngIf="!pvPreview">No file </span>
+                                                    <!-- <span *ngIf="!pvPreview">No file </span> -->
                                                 </div>
-                                                <input #pv id="file-upload" type="file"
+                                                <input #pv id="file-upload" type="file" multiple
                                                     (change)="onFileChange($event,'pv')" accept="video/*" />
                                             </div>
 
@@ -180,11 +182,12 @@
                                                     <label for="file-upload" class="upload-labe">
                                                         {{feiName || 'Choose File'}}
                                                     </label>
-                                                    <span *ngIf="!feiPreview">No file </span>
-                                                    <span *ngIf="feiPreview && feiPreview !== null"><img width="60"
-                                                            [src]="feiPreview" [alt]="feiName"></span>
+                                                    <span *ngIf="feiPreview.length==0">No file </span>
+                                                    <span *ngIf="feiPreview.length>0 && feiPreview">
+                                                        <img *ngFor="let fiview of feiPreview" width="60" [src]="fiview" [alt]="feiName"/>
+                                                    </span>
                                                 </div>
-                                                <input #mi id="file-upload" (change)="onFileChange($event,'fei')"
+                                                <input #mi id="file-upload" multiple (change)="onFileChange($event,'fei')"
                                                     type="file" accept="image/*" />
                                             </div>
                                             <div class="col-md-4 float-left"
@@ -211,7 +214,7 @@
                                                     </label>
                                                     <span *ngIf="!fevPreview">No file </span>
                                                 </div>
-                                                <input #mv id="file-upload" (change)="onFileChange($event,'fev')"
+                                                <input #mv id="file-upload" multiple (change)="onFileChange($event,'fev')"
                                                     type="file" accept="video/*" />
                                             </div>
                                             <div class="col-md-4 float-left"

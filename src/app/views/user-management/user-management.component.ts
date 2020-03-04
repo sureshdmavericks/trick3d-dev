@@ -34,7 +34,15 @@ export class UserManagementComponent implements OnInit {
           });
           // console.log('this.datao::',this.datao)
         },
-        error => this.error = error
+        error => {
+          if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+            console.log('in token error');
+            this._authService.logout();
+          }else{
+            this.error = error
+          }
+          
+        }
       );
   }
 
@@ -66,8 +74,13 @@ export class UserManagementComponent implements OnInit {
       if (result.value) {
         this.dataTableService.status(Status, UserID).subscribe((res:any)=>{
           swal.fire("Success", `User ${Status?'activated':'inactivated'}`, "success")
-        }, err=>{
-          swal.fire("Oops!", err.error.error.message, "error")
+        }, error=>{
+          if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+            console.log('in token error');
+            this._authService.logout();
+          }else{
+            swal.fire('Oops!',error.error.error.message || `something went wrong`, 'error')
+          }
         })
       }else{
         event.target.checked = !event.target.checked;

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientService, ClientManagementData } from '../client-management/client.service';
+import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   templateUrl: './client-login.component.html',
-  providers:[ClientService]
+  providers:[ClientService, AuthService]
 })
 export class ClientLoginComponent implements OnInit {
 
@@ -14,6 +15,7 @@ export class ClientLoginComponent implements OnInit {
 
   constructor(
     private dataTableService: ClientService,
+    private _authService: AuthService,
     private router : Router
     ) {
     this.dataTableService.getData()
@@ -23,7 +25,15 @@ export class ClientLoginComponent implements OnInit {
             this.data = [...data];
             }, 1000);
         }, // success path
-        error => this.error = error // error path
+        error => { 
+          
+          if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+            console.log('in token error');
+            this._authService.logout();
+          }else{
+            this.error = error // error path
+          }
+        }
       );
   }
 

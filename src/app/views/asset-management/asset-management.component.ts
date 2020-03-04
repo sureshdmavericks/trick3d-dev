@@ -31,7 +31,16 @@ export class AssetManagementComponent implements OnInit {
       (data: any) => {
         this.data = [...data.body]
       },
-      error => (this.error = error)
+      error => {
+        console.log(error.error.error.code)
+        if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+          console.log('in token error');
+          this._authService.logout();
+          // window.location.href = '/login';
+        }else{
+          this.error = error
+        }
+      }
     )
   }
 
@@ -94,7 +103,12 @@ export class AssetManagementComponent implements OnInit {
                 swal.fire('Success',`Product ${Status}.`);
               },
               error => {
-                swal.fire("Oops!", `Something went wrong.`, "error");
+                if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+                  console.log('in token error');
+                  this._authService.logout();
+                }else{
+                  swal.fire("Oops!", `Something went wrong.`, "error");
+                }
               }
             )
         } 

@@ -11,20 +11,21 @@ import { AssetService } from "../asset.service"
 import _ from "lodash"
 import { CategoryService } from "../../category-management/category.service"
 import swal from "sweetalert2"
-import { Router } from '@angular/router'
+import { Router } from "@angular/router"
+import { AuthService } from '../../../authentication/auth.service'
 
 @Component({
   selector: "app-admin-review",
   templateUrl: "./admin-review.component.html",
   styleUrls: ["./admin-review.component.scss"],
-  providers: [AssetService, CategoryService]
+  providers: [AssetService, CategoryService, AuthService]
 })
 export class AdminReviewComponent implements OnInit {
   simpleForm: FormGroup
   submitted: boolean = false
   features: Array<any> = []
   categories: Array<any> = []
-  videoURL:boolean = true;
+  videoURL: boolean = true
 
   @ViewChild("mv", { static: false }) mv: ElementRef
   @ViewChild("mi", { static: false }) mi: ElementRef
@@ -38,22 +39,23 @@ export class AdminReviewComponent implements OnInit {
     mi: false,
     mv: false
   }
-  feiPreview: string
+  feiPreview: Array<any> = [];
   feiName: string
-  pvPreview: string
+  pvPreview: Array<any> = [];
   pvName: string
-  fevPreview: string
+  fevPreview: Array<any> = [];
   fevName: string
-  piPreview: string
-  piName: string
+  piPreview: Array<any> = [];
+  piName: string;
 
   constructor(
     public navCtrl: NgxNavigationWithDataComponent,
     private assetService: AssetService,
+    private _authService:AuthService,
     private cd: ChangeDetectorRef,
     private _categoryService: CategoryService,
     private fb: FormBuilder,
-    private router:Router
+    private router: Router
   ) {
     if (Object.keys(this.navCtrl.data).length === 0) {
       this.navCtrl.navigate("assets")
@@ -86,23 +88,27 @@ export class AdminReviewComponent implements OnInit {
       MarkingNumber: [null, Validators.required],
       ProductImage: [""],
       ProductVideo: [""],
-      ProductVideoURL:[""],
+      ProductVideoURL: [""],
       AssetID: [this.product_data.AssetID],
       PictureID: [this.product_data.assetPicture.PictureID],
       MarkingImgURL: [""],
       MarkingVideoURL: [""]
       // MarkingText: [""]
     })
-
   }
 
   getAssetDetails() {
     this.assetService.getById(this.product_data.AssetID).subscribe(response => {
       let data: any = response.body
-      this.product_data = data;
+      this.product_data = data
       this.product_data.NoOfFeatures = Array(data.NoOfFeatures)
         .fill(data.NoOfFeatures)
         .map((x, i) => i)
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }
     })
   }
 
@@ -113,12 +119,12 @@ export class AdminReviewComponent implements OnInit {
       MarkingImgURL: "",
       MarkingVideoURL: ""
     })
-    this.isHaving.mi = false;
-    this.isHaving.mv = false;
-    this.feiPreview = null;
-    this.feiName = null;
-    this.fevPreview = null;
-    this.feiName = null;
+    this.isHaving.mi = false
+    this.isHaving.mv = false
+    this.feiPreview = []
+    this.feiName = null
+    this.fevPreview = []
+    this.feiName = null
     let featureData = _.find(this.product_data.assetMarking, {
       MarkingNumber: +event.target.value
     })
@@ -145,15 +151,17 @@ export class AdminReviewComponent implements OnInit {
     this.submitted = true
     // if (this.simpleForm.invalid && (this.product_data.assetMarking.length< this.product_data.NoOfFeatures.length)) {
     if (this.simpleForm.invalid) {
-      swal.fire('Invalid', 'Please fill feature details', 'error');
-      return false;
+      swal.fire("Invalid", "Please fill feature details", "error")
+      return false
     }
+    console.log(this.simpleForm.value)
+    // return false;
     this.assetService
       .createMarking(this.simpleForm.value, this.product_data.ClientID)
       .subscribe(
         response => {
-          this.submitted = false;
-          this.getAssetDetails();
+          this.submitted = false
+          this.getAssetDetails()
           let index = _.findIndex(this.product_data.assetMarking, {
             MarkingNumber: response.body.MarkingNumber
           })
@@ -162,7 +170,12 @@ export class AdminReviewComponent implements OnInit {
           swal.fire("Success", `Product updated successfully.`, "success")
         },
         error => {
-          swal.fire("Oops!", `Something went wrong.`, "error")
+          if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+            console.log('in token error');
+            this._authService.logout();
+          }else{
+            swal.fire("Oops!", `Something went wrong.`, "error");
+          }
         }
       )
   }
@@ -179,19 +192,26 @@ export class AdminReviewComponent implements OnInit {
         confirmButtonText: "Yes"
       })
       .then(result => {
-        console.log(result);
+        console.log(result)
         if (result.value) {
           this.assetService
             .update({ Status: "published" }, this.product_data.AssetID)
             .subscribe(
               response => {
                 console.log(response)
-                swal.fire("Success", "Product published successfully.").then(result=>{
-                  this.router.navigate(['/assets']);
-                });
+                swal
+                  .fire("Success", "Product published successfully.")
+                  .then(result => {
+                    this.router.navigate(["/assets"])
+                  })
               },
               error => {
-                swal.fire("Oops!", `Something went wrong.`, "error")
+                if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+                  console.log('in token error');
+                  this._authService.logout();
+                }else{
+                  swal.fire("Oops!", `Something went wrong.`, "error");
+                }
               }
             )
         }
@@ -207,14 +227,14 @@ export class AdminReviewComponent implements OnInit {
   }
 
   toggleAssets(flag, element, iClose?: boolean) {
-    this.isHaving[element] = flag;
+    this.isHaving[element] = flag
     if (iClose) {
-      if(element=='pv'){
-        this.videoURL = true;
+      if (element == "pv") {
+        this.videoURL = true
         this.simpleForm.patchValue({
-          ProductVideo:null
-        });
-        this.simpleForm.controls['ProductVideoURL'].enable();
+          ProductVideo: null
+        })
+        this.simpleForm.controls["ProductVideoURL"].enable()
       }
       this[element].nativeElement.value = ""
       this[`${element}Preview`] = null
@@ -222,40 +242,69 @@ export class AdminReviewComponent implements OnInit {
     }
   }
 
-  onFileChange(event, type: string) {
-    const reader = new FileReader()
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files
-      reader.readAsDataURL(file)
-      reader.onload = () => {
-        if (type == "fei") {
-          this.feiPreview = reader.result as string
-          this.feiName = "File Choosen"
-          this.simpleForm.patchValue({
-            MarkingImgURL: file
-          })
-        } else if (type == "fev") {
-          this.fevPreview = reader.result as string
-          this.fevName = file.name
-          this.simpleForm.patchValue({
-            MarkingVideoURL: file
-          })
-        } else if (type == "pi") {
-          this.piPreview = reader.result as string
-          this.piName = "File Choosen"
-          this.simpleForm.patchValue({
-            ProductImage: file
-          })
-        } else {
-          this.pvPreview = reader.result as string
-          this.pvName = file.name;
-          this.videoURL = false;
-          this.simpleForm.controls['ProductVideoURL'].disable();
-          this.simpleForm.patchValue({
-            ProductVideo: file
-          })
+  createFileList(files: Array<File>): FileList {
+    return {
+      length: files.length,
+      item: (index: number) => files[index],
+      * [Symbol.iterator]() {
+        for (let i = 0; i < files.length; i++) {
+          yield files[i];
         }
-        this.cd.markForCheck()
+      },
+      ...files,
+    };
+  }
+  
+  onFileChange(event, type: string) {
+    if (event.target.files && event.target.files.length) {
+      if (event.target.files.length > this.product_data.UploadCount) {
+        swal.fire(
+          "Info",
+          `You can select only ${this.product_data.UploadCount} images`,
+          "info"
+        )
+        event.preventDefault()
+        return false
+      }
+      let selectedFiles = [];
+      for (let index = 0; index < event.target.files.length; index++) {
+        const reader = new FileReader()
+        const element = event.target.files[index];
+        reader.readAsDataURL(element)
+        reader.onload = () => {
+          if (type == "fei") {
+            this.feiPreview.push(reader.result as string);
+            this.feiName = "File Choosen";
+            selectedFiles.push(element);
+            this.simpleForm.patchValue({
+              MarkingImgURL: selectedFiles
+            })
+          } else if (type == "fev") {
+            this.fevPreview.push(reader.result as string);
+            this.fevName = element.name;
+            selectedFiles.push(element);
+            this.simpleForm.patchValue({
+              MarkingVideoURL: selectedFiles
+            })
+          } else if (type == "pi") {
+            this.piPreview.push(reader.result as string);
+            this.piName = "File Choosen";
+            selectedFiles.push(element);
+            this.simpleForm.patchValue({
+              ProductImage: selectedFiles
+            })
+          } else {
+            this.pvPreview.push(reader.result as string);
+            this.pvName = element.name
+            this.videoURL = false;
+            selectedFiles.push(element);
+            this.simpleForm.controls["ProductVideoURL"].disable()
+            this.simpleForm.patchValue({
+              ProductVideo: selectedFiles
+            })
+          }
+          this.cd.markForCheck()
+        }
       }
     }
   }

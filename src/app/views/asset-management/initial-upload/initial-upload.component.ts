@@ -7,10 +7,11 @@ import { CategoryService } from "../../category-management/category.service"
 import * as _ from "lodash"
 import swal from "sweetalert2"
 import { NgxNavigationWithDataComponent } from "ngx-navigation-with-data"
+import { AuthService } from '../../../authentication/auth.service'
 
 @Component({
   templateUrl: "./initial-upload.component.html",
-  providers: [AssetService, ClientService, CategoryService]
+  providers: [AssetService, ClientService, CategoryService, AuthService]
 })
 export class InitialUploadComponent implements OnInit {
   simpleForm: FormGroup;
@@ -28,6 +29,7 @@ export class InitialUploadComponent implements OnInit {
     private fb: FormBuilder,
     private _dataService: AssetService,
     private _clientService: ClientService,
+    private _authService:AuthService,
     private _categoryService: CategoryService,
     private cd: ChangeDetectorRef,
     public navCtrl: NgxNavigationWithDataComponent,
@@ -48,7 +50,8 @@ export class InitialUploadComponent implements OnInit {
         Name: this.product_data.Name,
         Upload: this.product_data.Upload,
         AssetBundle:this.product_data.AssetBundle,
-        NoOfFeatures: this.product_data.NoOfFeatures
+        NoOfFeatures: this.product_data.NoOfFeatures,
+        UploadCount:this.product_data.UploadCount
       })
     }
     this.getCategpries();
@@ -76,6 +79,13 @@ export class InitialUploadComponent implements OnInit {
           return x
         }
       })
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire("Oops!", `Something went wrong.`, "error");
+      }
     })
   }
 
@@ -88,6 +98,13 @@ export class InitialUploadComponent implements OnInit {
         })
       }
 
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire("Oops!", `Something went wrong.`, "error");
+      }
     })
   }
 
@@ -104,7 +121,8 @@ export class InitialUploadComponent implements OnInit {
       sub_category: [""],
       Name: ["", [Validators.required]],
       Upload: [null, [Validators.required]],
-      NoOfFeatures: [null, [Validators.required]]
+      NoOfFeatures: [null, [Validators.required]],
+      UploadCount:[null, [Validators.required]]
     })
   }
 
@@ -137,7 +155,13 @@ export class InitialUploadComponent implements OnInit {
           })
         },
         error => {
-          swal.fire("Oops!", "Something went wrong.", "error")
+          
+          if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+            console.log('in token error');
+            this._authService.logout();
+          }else{
+            swal.fire("Oops!", `Something went wrong.`, "error");
+          }
         }
       )
   }

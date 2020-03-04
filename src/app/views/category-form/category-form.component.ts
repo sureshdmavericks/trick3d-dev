@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { CategoryService, CategoryMgntData } from '../category-management/category.service'
 import { CategoryDataService } from '../../services/category-data.service';
 import swal from 'sweetalert2';
+import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   templateUrl: './category-form.component.html',
-  providers:[CategoryService]
+  providers:[CategoryService,AuthService]
 })
 export class CategoryFormComponent implements OnInit {
 
@@ -19,6 +20,7 @@ export class CategoryFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _categoryService: CategoryService,
+    private _authService:AuthService,
     private _categoryDataService:CategoryDataService,
     private _router:Router
   ) {
@@ -39,6 +41,13 @@ export class CategoryFormComponent implements OnInit {
         return;
       }
       this.parentData = res;
+    }, error=>{
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire('Error',error.error.message,'error');
+      }
     })
   }
 
@@ -71,7 +80,12 @@ export class CategoryFormComponent implements OnInit {
       });
     }, error=>{
       console.log(error.error.error);
-      swal.fire('Error',error.error.message,'error');
+      if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+        console.log('in token error');
+        this._authService.logout();
+      }else{
+        swal.fire('Error',error.error.message,'error');
+      }
     })
   }
 
