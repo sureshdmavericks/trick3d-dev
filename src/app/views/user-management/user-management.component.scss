@@ -224,6 +224,23 @@
       padding-left: 25px !important;
     }
   }
+  @media all and (width: 375px) {
+    
+  }
+  @media all and (width: 360px) {
+    .user-title {
+      font-size: 19px !important;
+    }
+  }
+  @media all and (width: 320px) {
+    .user-title {
+      font-size: 18px !important;
+    }
+    .add-client-bgclr {
+      width: 93px !important;
+    font-size: 17px !important;
+    }
+  }
 }
 // .breadcrumb{
 //   display: none;

@@ -170,4 +170,31 @@
     //   font-size: 17px !important;
     // }
   }
+  @media all and (width: 375px) {
+    .user-title {
+      font-size: 18px !important;
+  }
+  .create-client-bgclr {
+    width: 126px !important;
+    font-size: 15px !important;
+}
+  }
+  @media all and (width: 360px) {
+    .user-title {
+      font-size: 16px !important;
+  }
+  .create-client-bgclr {
+    width: 124px !important;
+    font-size: 15px !important;
+}
+  }
+  @media all and (width: 320px) {
+    .user-title {
+      font-size: 15px !important;
+  }
+  .create-client-bgclr {
+    width: 103px !important;
+    font-size: 12px !important;
+}
+  }
 }

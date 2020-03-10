@@ -16,7 +16,7 @@ export class AssetManagementComponent implements OnInit {
   bsModalRef: BsModalRef
 
   error: any
-  public data: any;
+  public data: any = [];
   // public filterQuery = ""
   isAdmin:boolean;
 

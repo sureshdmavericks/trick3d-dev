@@ -61,7 +61,7 @@
         .trick-buttons {
           padding-left: 20px;
           margin-top: 9px;
-          margin-left: 23%;
+          margin-left: 25%;
           .trick-cancel-btn {
             color: #3262a5;
             background-color: #fff;
@@ -102,6 +102,28 @@
     }
     .trick-buttons {
       margin-left: 0px !important;
+      padding-left:32px !important;
     }
+  }
+  @media all and (width: 375px) {
+    .trick-buttons {
+      padding-left:15px !important;
+    }
+  }
+  @media all and (width: 360px) {
+    .trick-buttons {
+      padding-left:7px !important;
+    }
+  }
+  @media all and (width: 320px) {
+     .trick-buttons {
+       padding-left:0px !important;
+     }
+     .trick-submit-btn {
+      padding: 6px 23px !important;
+     }
+     .trick-cancel-btn {
+      padding: 6px 23px !important;
+     }
   }
 }

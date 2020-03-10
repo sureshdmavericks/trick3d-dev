@@ -1,4 +1,4 @@
-<app-header class="trick3d-default-layout" [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
+<app-header theme class="trick3d-default-layout" [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
   [navbarBrandFull]="{src: user_data.Logo ? user_data.Logo : 'assets/img/brand/logo_new3.svg', width: 89, height: 25, alt: 'Trick3D'}"
   [sidebarToggler]="'lg'" [mobileAsideMenuToggler]="false" [asideMenuToggler]=false>
   <div class="client-logged-msg" dropdown placement="bottom right" *ngIf="_authService.isClient() && _authService.isFromAdmin()">

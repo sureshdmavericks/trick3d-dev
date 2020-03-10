@@ -67,6 +67,34 @@
               border-radius: 3px;
               padding: 6px 14px;
             }
+            .no-file-chosen{
+              display: none;
+            }
+            img{
+              width:60px;
+            }
+            .product-images:nth-child(6){
+              margin-top: 3px;
+            }
+          }
+          .trick3d-five-images{
+            height:115px;
+            span{
+              display: block;
+              img{
+                margin-right: 3px;
+              }
+            }
+          }
+          .trick3d-six-images{
+            height:162px;
+            span{
+              display: block;
+              img{
+                margin-right: 3px;
+                margin-top:3px;
+              }
+            }
           }
           .trick-width {
             width: 100%;
@@ -184,6 +212,34 @@
         width: 329px !important;
       }
     }
+    .custom-file-upload {
+      img{
+        width:57px !important; 
+      }
+    product-images:nth-child(6){
+      margin-top: 3px;
+    }
+  }
+  
+  .trick3d-five-images{
+    height:96px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+      }
+    }
+  }
+  .trick3d-six-images{
+    height:162px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+        margin-top:3px;
+      }
+    }
+  }
     .trick3d-product-form {
       padding: 0px !important;
       .product-form {
@@ -193,6 +249,10 @@
         padding: 19px 0px 0px 0px !important;
         .float-left{
           padding-left:0px !important;
+          margin-bottom: 20px !important;
+        }
+        .padding-left{
+          padding-left: 15px !important;
         }
       }
       .col-md-4 {
@@ -213,6 +273,9 @@
       margin-right: 0px !important;
       float: left !important;
     }
+    .image-span{
+      display: none;
+    }
     .profile-publish-btn {
       font-size: 16px !important;
       width: 95px !important;
@@ -227,4 +290,173 @@
       width: 95px !important;
     }
   }
+  @media all and (width: 375px) {
+    
+    .trick3d-review-image {
+      padding: 0px !important;
+      border-right: none;
+      img {
+        width: 300px !important;
+      }
+    }
+    .custom-file-upload {
+      img{
+        width:49px !important; 
+      }
+    product-images:nth-child(6){
+      margin-top: 3px;
+    }
+  }
+  
+  .trick3d-five-images{
+    height:99px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+      }
+    }
+  }
+  .trick3d-six-images{
+    height:136px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+        margin-top:3px;
+      }
+    }
+  }
+  .review-btns{
+    margin-left: -14px !important;
+    .profile-publish-btn {
+      font-size: 15px !important;
+      width: 93px !important;
+  }
+  .profile-submit-btn {
+    font-size: 15px !important;
+    width: 93px !important;
+    margin-right: 0px !important;
+}
+.profile-cncl-btn {
+  font-size: 15px !important;
+  width: 93px !important;
+}
+  }
+    
+}
+  
+  @media all and (width: 360px) {
+    .review-header{
+      font-size: 26px !important;
+    }
+    .trick3d-review-image {
+      padding: 0px !important;
+      border-right: none;
+      img {
+        width: 300px !important;
+      }
+    }
+    .custom-file-upload {
+      img{
+        width:48px !important; 
+      }
+    product-images:nth-child(6){
+      margin-top: 3px;
+    }
+  }
+  
+  .trick3d-five-images{
+    height:96px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+      }
+    }
+  }
+  .trick3d-six-images{
+    height:162px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+        margin-top:3px;
+      }
+    }
+  }
+  .review-btns{
+    margin-right: -2px !important;
+    .profile-publish-btn {
+      font-size: 15px !important;
+      width: 83px !important;
+  }
+  .profile-submit-btn {
+    font-size: 15px !important;
+    width: 83px !important;
+    margin-right: 0px !important;
+}
+.profile-cncl-btn {
+  font-size: 15px !important;
+  width: 83px !important;
+}
+  }
+  }
+  @media all and (width: 320px) {
+    .review-header{
+      font-size: 23px !important;
+    }
+    .trick3d-review-image {
+      padding: 0px !important;
+      border-right: none;
+      img {
+        width: 260px !important;
+      }
+    }
+    .custom-file-upload {
+      img{
+        width:40px !important; 
+      }
+    product-images:nth-child(6){
+      margin-top: 3px;
+    }
+  }
+  
+  .trick3d-five-images{
+    height:89px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+      }
+    }
+  }
+  .trick3d-six-images{
+    height:136px !important;
+    span{
+      display: block;
+      img{
+        margin-right: 3px;
+        margin-top:3px;
+      }
+    }
+  }
+  .review-btns{
+    margin-left: -14px !important;
+    .profile-publish-btn {
+      font-size: 14px !important;
+      width: 74px !important;
+  }
+  .profile-submit-btn {
+    font-size: 14px !important;
+    width: 74px !important;
+    margin-right: 0px !important;
+}
+.profile-cncl-btn {
+  font-size: 14px !important;
+  width: 74px !important;
+}
+  }
+    
+}
 }

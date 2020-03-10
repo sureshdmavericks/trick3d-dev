@@ -65,9 +65,9 @@ export class InitialUploadComponent implements OnInit {
       text: this.product_data.Name,
       imageUrl: this.product_data.Upload,
       imageWidth: 600,
-      showCloseButton: true,
-      showConfirmButton: false,
-      focusCancel: false,
+      // showCloseButton: true,
+      // showConfirmButton: false,
+      // focusCancel: false,
       imageAlt: `${this.product_data.Name} Thumbnail`,
     })
   }

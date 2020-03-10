@@ -48,6 +48,11 @@ export class AdminReviewComponent implements OnInit {
   piPreview: Array<any> = [];
   piName: string;
 
+  pImages = [];
+  pVideos = [];
+  iImages = [];
+  iVideos = [];
+
   constructor(
     public navCtrl: NgxNavigationWithDataComponent,
     private assetService: AssetService,
@@ -61,12 +66,10 @@ export class AdminReviewComponent implements OnInit {
       this.navCtrl.navigate("assets")
       return
     }
-    this.product_data = this.navCtrl.data
-    this.product_data.NoOfFeatures = Array(this.product_data.NoOfFeatures)
-      .fill(this.product_data.NoOfFeatures)
-      .map((x, i) => i)
-    this.getAssetDetails()
-    this.getCategpries(this.product_data.ClientID)
+    this.product_data = this.navCtrl.data;
+    this.product_data.NoOfFeatures = Array(this.product_data.NoOfFeatures).fill(this.product_data.NoOfFeatures).map((x, i) => i);
+    this.getAssetDetails();
+    this.getCategpries(this.product_data.ClientID);
   }
 
   getCategpries(clientID: string) {
@@ -99,11 +102,23 @@ export class AdminReviewComponent implements OnInit {
 
   getAssetDetails() {
     this.assetService.getById(this.product_data.AssetID).subscribe(response => {
-      let data: any = response.body
-      this.product_data = data
-      this.product_data.NoOfFeatures = Array(data.NoOfFeatures)
-        .fill(data.NoOfFeatures)
-        .map((x, i) => i)
+      let data: any = response.body;
+      this.product_data = data;
+      this.pImages = [];
+      this.pVideos = [];
+      this.product_data.NoOfFeatures = Array(data.NoOfFeatures).fill(data.NoOfFeatures).map((x, i) => i);
+      if(this.product_data.assetPicture && this.product_data.assetPicture.assetUploads && this.product_data.assetPicture.assetUploads.length>0){
+        this.product_data.assetPicture.assetUploads = _.map(
+          this.product_data.assetPicture.assetUploads,
+          x => {
+            if(x.Type=='image')
+            this.pImages.push(x.URL);
+            if(x.Type=='video')
+            this.pVideos.push(x.URL);
+            return x;
+          },
+        );
+      }
     }, error=>{
       if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
         console.log('in token error');
@@ -128,6 +143,9 @@ export class AdminReviewComponent implements OnInit {
     let featureData = _.find(this.product_data.assetMarking, {
       MarkingNumber: +event.target.value
     })
+    console.log('not featureData',featureData);
+    this.iImages = [];
+    this.iVideos = [];
     if (!featureData) {
       this.simpleForm.patchValue({
         Title: "",
@@ -137,14 +155,27 @@ export class AdminReviewComponent implements OnInit {
       })
       return false
     }
-    console.log("featureData:", featureData)
+    
+    if(featureData.assetMarkingUploads.length>0){
+      for (let index = 0; index < featureData.assetMarkingUploads.length; index++) {
+        const element = featureData.assetMarkingUploads[index];
+        if(element.Type=='image')
+        this.iImages.push(element.URL);
+        if(element.Type=='video')
+        this.iVideos.push(element.URL);
+        // return element;
+      }
+      console.log('this.iImages:',this.iImages);
+    }
+
     this.simpleForm.patchValue({
       MarkingNumber: +event.target.value,
       Title: featureData.Title,
       Description: featureData.Description,
-      MarkingImgURL: featureData.MarkingImgURL,
-      MarkingVideoURL: featureData.MarkingVideoURL
+      MarkingImgURL: this.iImages,
+      MarkingVideoURL: this.iVideos
     })
+    console.log(this.simpleForm.value);
   }
 
   onSubmitMarking() {

@@ -1,4 +1,13 @@
 .trick3d-default-layout {
+  .app-header {
+    background: var(--background);
+    color: var(--on-background);
+  }
+  
+  .sidebar {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
   .trick3d-notify {
     .notifiacrtion-bgclr {
       background-color: #3262a5;
@@ -46,8 +55,11 @@
       }
     }
     .logout-text {
-      right: 39px !important;
-      top: 29px !important;
+      // right: 39px ;
+      // top: 29px ;
+      left: 55% !important;
+      // bottom: 3%;
+      margin-top: 0px;
       border-radius: 0px 0px 19px 19px;
       background-color: #fff;
       .logout-clr {
@@ -88,79 +100,131 @@
       }
     }
   }
-}
-.sidebar-fixed {
-  .sidebar {
-    width: 212px;
-    .sidebar-nav {
-      width: 212px;
+
+  @media all and (max-width: 699px) and (min-width: 320px) {
+    .navbar-brand {
+      left: 28% !important;
+    }
+    .sidebar-fixed {
+      .sidebar {
+        width: 200px;
+        .sidebar-nav {
+          width: 200px;
+        }
+      }
+    }
+    .trick3d-footer {
+      margin-left: 0px !important;
+    }
+    .navbar-toggler:nth-child(5) {
+      display: none;
+    }
+    .navbar-toggler:nth-child(6) {
+      display: none;
+    }
+    .client-logged-msg {
+      width: 69% !important;
+      left: 3%;
+      .client-text {
+        width: 100% !important;
+        .icon-lock {
+          display: none !important;
+        }
+        .text-clr {
+          font-size: 12px !important;
+          padding-top: 12px;
+          i {
+            display: block;
+            padding-bottom: 3px;
+            padding-top: 4px;
+          }
+        }
+      }
+      .logout-text {
+        top: 45px !important;
+        width: 41% !important;
+        min-width: 76% !important;
+        // right: -6px !important;
+        left: 11% !important;
+        margin-top: 9px;
+        .logout-clr {
+          font-size: 11px;
+          min-width: 115px !important;
+          padding: 10px 27px !important;
+          .fa-lock {
+            display: none;
+          }
+        }
+      }
     }
   }
-}
-.trick3d-footer {
-  margin-left: 212px !important;
-}
-@media all and (max-width: 699px) and (min-width: 320px) {
-  .navbar-brand {
-    left: 28% !important;
+  @media all and (width: 375px) {
+    .client-logged-msg {
+      width: 70% !important;
+      left: 0%;
+    }
   }
+  @media all and (width: 360px) {
+    .client-logged-msg {
+      left: -1% !important;
+
+      .logout-text {
+        .logout-clr {
+          padding: 10px 20px !important;
+        }
+      }
+    }
+  }
+  @media all and (width: 320px) {
+    .client-logged-msg {
+      width: 67% !important;
+      left: 1%;
+      .client-text {
+        width: 108% !important;
+      }
+      .logout-text {
+        top: 45px !important;
+        width: 41% !important;
+        min-width: 76% !important;
+        left: 7% !important;
+        margin-top: 9px;
+        .logout-clr {
+          font-size: 10px;
+          min-width: 114px !important;
+          padding: 10px 14px !important;
+        }
+      }
+    }
+  }
+
   .sidebar-fixed {
     .sidebar {
-      width: 200px;
+      width: 212px;
       .sidebar-nav {
-        width: 200px;
+        width: 212px;
       }
     }
   }
   .trick3d-footer {
-    margin-left: 0px !important;
+    margin-left: 212px !important;
   }
-  .navbar-toggler:nth-child(5) {
-    display: none;
-  }
-  .navbar-toggler:nth-child(6) {
-    display: none;
-  }
-  .client-logged-msg {
-    width: 20% !important;
-    left: 50%;
-    .client-text {
-      width: 190% !important;
-      .icon-lock {
-        display: none !important;
-      }
-      .text-clr {
-        font-size: 9px !important;
-        i {
-          display: block;
-          padding-bottom: 3px;
-          padding-top: 4px;
-        }
-      }
-    }
-    .logout-text {
-      top: 36px !important;
-      width: 72px;
-      min-width: 136px;
-      right: -6px !important;
-      left: -65px !important;
-      margin-top: 9px;
-      .logout-clr {
-        font-size: 9px;
-        min-width: 115px !important;
-        padding: 10px 4px;
-        .fa-lock {
-          display: none;
-        }
+  .trick3d-footer {
+    // margin-left:208px !important;
+    span {
+      a {
+        color: #3262a5;
       }
     }
   }
 }
-.trick3d-footer {
-  // margin-left:208px !important;
-  span {
-    a {
-      color: #3262a5;
-    }
-  }
+
+.app-header {
+  background: var(--background);
+  color: var(--on-background);
 }
+
+.sidebar {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+

@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../views/login/login.service';
 import swal from 'sweetalert2';
 import { UserService } from '../../views/user-management/user.service';
+import { ThemeService } from './theme';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html',
-  providers:[LoginService,UserService]
+  providers:[LoginService,UserService,ThemeService]
 })
 export class DefaultLayoutComponent implements OnDestroy, OnInit {
 
@@ -21,6 +22,7 @@ export class DefaultLayoutComponent implements OnDestroy, OnInit {
   data:any;
   user_data : any;
   constructor(
+    private themeService: ThemeService,
     private userService:UserService,
     private loginService:LoginService, 
     private _authService: AuthService, 
@@ -46,6 +48,20 @@ export class DefaultLayoutComponent implements OnDestroy, OnInit {
     this.userService.getProfile().subscribe(res=>{
       console.log(res.body);
       this.user_data = res.body;
+      this.themeService.registerTheme({name:'delta', properties:{
+        '--background': res.body.HeaderColor,
+        '--on-background': res.body.FontColor,
+        '--primary': res.body.SidebarColor,
+        '--on-primary': res.body.FontColor,
+      }})
+      const active = this.themeService.updateTheme('delta',{
+        '--background': res.body.HeaderColor,
+        '--on-background': res.body.FontColor,
+        '--primary': res.body.SidebarColor,
+        '--on-primary': res.body.FontColor,
+        
+      });
+      this.themeService.setTheme('delta');
     }, error=>{
       if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
         this._authService.logout();

@@ -188,6 +188,10 @@
       &:focus {
         box-shadow: none;
       }
+      &:active{
+        background-color: #3262a5;
+      border: 1px solid #3262a5;
+      }
     }
     .title-clr {
       color: #80a8cf;
@@ -241,10 +245,10 @@
   }
   @media all and (max-width: 699px) and (min-width: 320px) {
     .client-title {
-      font-size: 19px !important;
+      font-size: 18px !important;
     }
     .add-client-bgclr {
-      width: 117px !important;
+      width: 105px !important;
       font-size: 16px !important;
     }
     .trick3d-table {
@@ -263,10 +267,50 @@
         }
       }
       .btn-unaproved {
-        width: 310px;
+        width: 322px;
         font-size: 20px;
         height: 41px;
       }
+    }
+  }
+  @media all and (width: 375px) {
+    // .client-title {
+    //   font-size: 18px !important;
+    // }
+    // .add-client-bgclr{
+    //   width: 105px !important;
+    // }
+    .btn-unaproved {
+      width: 286px !important;
+    }
+  }
+  @media all and (width: 360px) {
+    // .client-title {
+    //   font-size: 18px !important;
+    // }
+    // .add-client-bgclr{
+    //   width: 105px !important;
+    // }
+    .btn-unaproved {
+      width: 273px !important;
+    }
+  }
+  @media all and (width: 320px) {
+    // .client-title {
+    //   font-size: 18px !important;
+    // }
+    // .add-client-bgclr{
+    //   width: 105px !important;
+    // }
+    .client-title {
+      font-size: 16px !important;
+  }
+  .add-client-bgclr {
+    width: 92px !important;
+    font-size: 15px !important;
+}
+    .btn-unaproved {
+      width: 231px !important;
     }
   }
 }

@@ -154,4 +154,27 @@
       width: 123px !important;
     }
   }
+  @media all and (max-width: 375px) {
+    .create-client-bgclr {
+      width: 112px !important;
+    }
+  }
+  @media all and (max-width: 360px) {
+    .category-title {
+      font-size: 16px !important;
+    }
+    .create-client-bgclr {
+      font-size: 15px !important;
+      width: 115px !important;
+    }
+  }
+  @media all and (max-width: 320px) {
+    .create-client-bgclr {
+      font-size: 15px !important;
+      width: 93px !important;
+    }
+    .category-title {
+      font-size: 15px !important;
+    }
+  }
 }

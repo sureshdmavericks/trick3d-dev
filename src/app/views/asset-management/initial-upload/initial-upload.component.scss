@@ -105,7 +105,7 @@
       .trick-buttons {
         // padding-left: 15px;
         margin-top: 9px;
-        margin-left: 26%;
+        margin-left: 27%;
       }
       .profile-cancel-btn {
         color: #3262a5;
@@ -164,4 +164,43 @@
       height: 43px;
     }
   }
+  @media all and (width: 375px) {
+    .custom-file-upload {
+      right: 0px !important;
+    }  
+    .trick-buttons {
+      padding-left: 14px;
+      margin-left: 0px !important;
+  } 
+  }
+  @media all and (width: 360px) {
+    .trick-buttons {
+      padding-left: 10px;
+      margin-left: 0px !important;
+  } 
+  .custom-file-upload {
+    right: -1px !important;
+  }   
+  }
+  @media all and (width: 320px) {
+    .trick-buttons {
+      padding-left: 0px;
+      margin-left: 0px !important;
+  }
+  .profile-submit-btn {
+    font-size: 17px !important;
+    padding: 0px 24px !important;
+  }
+  .profile-cancel-btn {
+    font-size: 17px !important;
+    padding: 0px 24px !important;
+  }
+  .custom-file-upload {
+    right:0px !important;
+  
+  .upload-labe {
+    width: 59% !important;
+}
+  }
+}
 }

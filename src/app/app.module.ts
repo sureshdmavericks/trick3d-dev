@@ -9,6 +9,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { ThemeModule, lightTheme, darkTheme } from './containers/default-layout/theme';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -106,7 +107,10 @@ import { ChangePasswordComponent } from './views/change-password/change-password
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     AccordionModule.forRoot(),
-
+    ThemeModule.forRoot({
+      themes: [lightTheme, darkTheme],
+      active: 'light'
+    }),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
