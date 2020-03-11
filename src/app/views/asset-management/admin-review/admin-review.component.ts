@@ -104,17 +104,17 @@ export class AdminReviewComponent implements OnInit {
     this.assetService.getById(this.product_data.AssetID).subscribe(response => {
       let data: any = response.body;
       this.product_data = data;
-      this.pImages = [];
-      this.pVideos = [];
+      this.piPreview = [];
+      this.pvPreview = [];
       this.product_data.NoOfFeatures = Array(data.NoOfFeatures).fill(data.NoOfFeatures).map((x, i) => i);
       if(this.product_data.assetPicture && this.product_data.assetPicture.assetUploads && this.product_data.assetPicture.assetUploads.length>0){
         this.product_data.assetPicture.assetUploads = _.map(
           this.product_data.assetPicture.assetUploads,
           x => {
             if(x.Type=='image')
-            this.pImages.push(x.URL);
+            this.piPreview.push({url:x.URL, id:x.AssetUploadID});
             if(x.Type=='video')
-            this.pVideos.push(x.URL);
+            this.pvPreview.push({url:x.URL, id:x.AssetUploadID});
             return x;
           },
         );
@@ -136,16 +136,14 @@ export class AdminReviewComponent implements OnInit {
     })
     this.isHaving.mi = false
     this.isHaving.mv = false
-    this.feiPreview = []
     this.feiName = null
-    this.fevPreview = []
     this.feiName = null
     let featureData = _.find(this.product_data.assetMarking, {
       MarkingNumber: +event.target.value
     })
     console.log('not featureData',featureData);
-    this.iImages = [];
-    this.iVideos = [];
+    this.feiPreview = [];
+    this.fevPreview = [];
     if (!featureData) {
       this.simpleForm.patchValue({
         Title: "",
@@ -160,12 +158,10 @@ export class AdminReviewComponent implements OnInit {
       for (let index = 0; index < featureData.assetMarkingUploads.length; index++) {
         const element = featureData.assetMarkingUploads[index];
         if(element.Type=='image')
-        this.iImages.push(element.URL);
+        this.feiPreview.push({url:element.URL, id:element.AssetMarkingUploadID});
         if(element.Type=='video')
-        this.iVideos.push(element.URL);
-        // return element;
+        this.fevPreview.push({url:element.URL, id:element.AssetMarkingUploadID});
       }
-      console.log('this.iImages:',this.iImages);
     }
 
     this.simpleForm.patchValue({
@@ -182,8 +178,8 @@ export class AdminReviewComponent implements OnInit {
     this.submitted = true
     // if (this.simpleForm.invalid && (this.product_data.assetMarking.length< this.product_data.NoOfFeatures.length)) {
     if (this.simpleForm.invalid) {
-      swal.fire("Invalid", "Please fill feature details", "error")
-      return false
+      swal.fire("Invalid", "Please fill feature details", "error");
+      return false;
     }
     console.log(this.simpleForm.value)
     // return false;
@@ -304,28 +300,30 @@ export class AdminReviewComponent implements OnInit {
         reader.readAsDataURL(element)
         reader.onload = () => {
           if (type == "fei") {
-            this.feiPreview.push(reader.result as string);
+            this.feiPreview.push({url:reader.result as string, id:null});
             this.feiName = "File Choosen";
             selectedFiles.push(element);
             this.simpleForm.patchValue({
               MarkingImgURL: selectedFiles
             })
           } else if (type == "fev") {
-            this.fevPreview.push(reader.result as string);
+            this.fevPreview.push({url:element, id:null});
             this.fevName = element.name;
             selectedFiles.push(element);
             this.simpleForm.patchValue({
               MarkingVideoURL: selectedFiles
             })
           } else if (type == "pi") {
-            this.piPreview.push(reader.result as string);
+            this.piPreview.push({url:reader.result as string, id:null});
             this.piName = "File Choosen";
             selectedFiles.push(element);
             this.simpleForm.patchValue({
               ProductImage: selectedFiles
             })
           } else {
-            this.pvPreview.push(reader.result as string);
+            console.log('in product video');
+            // this.pvPreview.push(reader.result as string);
+            this.pvPreview.push({url:element, id:null});
             this.pvName = element.name
             this.videoURL = false;
             selectedFiles.push(element);
@@ -340,6 +338,52 @@ export class AdminReviewComponent implements OnInit {
     }
   }
 
+  removeSelectedImage(event:any,index:number, type:string, id:string) {
+    event.preventDefault();
+
+    swal
+      .fire({
+        title: "Are you sure?",
+        text: `This will be deleted permanently.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3262a5",
+        cancelButtonColor: "#20a8d8",
+        confirmButtonText: "Yes"
+      })
+      .then(result => {
+        console.log(result)
+        if (result.value) {
+          if(!id){
+            this[type].splice(index, 1);
+            return false;
+          }
+
+          let deleteMethod = ['piPreview','pvPreview'].includes(type)?'deleteUpload':'deleteMarking';
+
+          this.assetService[deleteMethod](id)
+            .subscribe(
+              response => {
+                console.log(response)
+                swal
+                  .fire("Success", "Upload deleted successfully.")
+                  .then(result => {
+                    this[type].splice(index, 1);
+                  })
+              },
+              error => {
+                if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
+                  console.log('in token error');
+                  this._authService.logout();
+                }else{
+                  swal.fire("Oops!", `Something went wrong.`, "error");
+                }
+              }
+            )
+        }
+      })
+  }
+
   showAsset(asset: string, type: string) {
     if (!asset) {
       return
@@ -351,6 +395,9 @@ export class AdminReviewComponent implements OnInit {
         imageAlt: "Product"
       })
     } else {
+      if(typeof asset=="object"){
+        asset = window.URL.createObjectURL(asset);
+      }
       swal.fire({
         html: `
           <iframe width="100%" height="300" src="${asset}" frameborder="0"></iframe>

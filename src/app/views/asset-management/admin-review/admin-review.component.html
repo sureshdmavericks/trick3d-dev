@@ -56,68 +56,36 @@
                                     <div class="col-md-12 review-forms bg-noclr">
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Product Image</label>
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="((product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length==0) || pImages.length==0) || isHaving.pi" [ngClass]="{'trick3d-five-images' :  piPreview.length>0 , 'trick3d-six-images' :  piPreview.length>5}">
-                                                <div class="custom-file-upload">
-                                                    <label for="file-upload" class="upload-labe">
-                                                        {{piName || 'Choose File'}}
-                                                    </label>
-                                                    <span class="no-file-chosen" *ngIf="piPreview && piPreview.length==0">No file</span>
-                                                    <span *ngIf="piPreview.length>0 && piPreview">
-                                                        <img class="product-images" *ngFor="let pimg of piPreview" width="60" [src]="pimg" [alt]="piName"/>
+                                            <div class="col-md-8 float-left" >
+                                                <div class="custom-file-upload float-right">
+                                                    <label for="file-upload" class="upload-labe"><i class="fa fa-upload"></i></label>
+                                                    <input #pi id="file-upload" type="file" multiple (change)="onFileChange($event,'pi')" accept="image/*" />
+                                                </div>
+                                                <div class="float-left" *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length==0 || pImages.length==0) || isHaving.pi" >
+                                                    <span *ngFor="let pimg of piPreview;let i=index" >
+                                                        <img class="product-images" width="60" [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
+                                                        [lazyLoad]="pimg.url" [alt]="piName"/>
+                                                        <i class="fa fa-close" (click)="removeSelectedImage($event,i,'piPreview',pimg.id)"></i>
                                                     </span>
                                                 </div>
-                                                <input #pi id="file-upload" type="file" multiple
-                                                    (change)="onFileChange($event,'pi')" accept="image/*" />
                                             </div>
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length>0 && pImages.length>0) && !isHaving.pi">
-                                                <span *ngFor="let product_image of product_data.assetPicture.assetUploads">
-                                                    <a href="javascript:void(0)"
-                                                        (click)="showAsset(product_image.URL, 'image')"><img
-                                                            decode=true
-                                                            [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
-                                                            [lazyLoad]="product_image.URL"
-                                                            width="42" /></a>
-                                                </span>
-                                            </div>
-                                            <i *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length>0) && !isHaving.pi"
-                                                class="fa fa-close" (click)="toggleAssets(true, 'pi')">&nbsp;</i>
-                                            <i *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length==0 && pImages.length==0) || isHaving.pi"
-                                                class="fa fa-close" (click)="toggleAssets(false, 'pi', true)">&nbsp;</i>
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Product Video</label>
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="(product_data.assetPicture.assetUploads || pVideos.length==0) || isHaving.pv">
-                                                <div class="custom-file-upload">
-                                                    <label for="file-upload" class="upload-labe">
-                                                        {{pvName || 'Choose File'}}
-                                                    </label>
-                                                    <span class="no-file-chosen" *ngIf="!pvPreview ">No file </span>
-                                                    <!-- <span *ngIf="pvPreview && pvPreview.length==0">No file</span>
-                                                    <span *ngIf="pvPreview.length>0 && pvPreview">
-                                                        <img *ngFor="let pvid of pvPreview" width="60" [src]="pvid" [alt]="piName"/>
-                                                    </span> -->
+                                            <div class="col-md-8 float-left">
+                                                <div class="custom-file-upload float-right">
+                                                    <label for="file-upload" class="upload-labe"><i class="fa fa-upload"></i></label>
+                                                    <input #pv id="file-upload" type="file" multiple (change)="onFileChange($event,'pv')" accept="video/*" />
                                                 </div>
-                                                <input #pv id="file-upload" type="file" multiple
-                                                    (change)="onFileChange($event,'pv')" accept="video/*" />
+                                                <div class="float-left" *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length==0 || pVideos.length==0) || isHaving.pv" >
+                                                    <span *ngFor="let pvid of pvPreview;let i=index" >
+                                                        <img class="product-images" (click)="showAsset(pvid.url,'video')" width="60" src="../../../../assets/img/video-preview.png" [alt]="pvName"/>
+                                                        <i class="fa fa-close" (click)="removeSelectedImage($event,i,'pvPreview', pvid.id)"></i>
+                                                    </span>
+                                                </div>
                                             </div>
+                                            
 
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length>0 && pVideos.length>0) && !isHaving.pv">
-                                                <span>
-                                                    <a href="javascript:void(0)"
-                                                        (click)="showAsset(product_data.assetPicture.ProductVideo,'video')">
-                                                        show Video
-                                                    </a>
-                                                </span>
-
-                                            </div>
-                                            <i *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length>0 && pVideos.length>0) && !isHaving.pv "
-                                                class="fa fa-close" (click)="toggleAssets(true, 'pv')">&nbsp;</i>
-                                            <i *ngIf="(product_data.assetPicture.assetUploads && product_data.assetPicture.assetUploads.length==0 && pVideos.length==0) || isHaving.pv "
-                                                class="fa fa-close" (click)="toggleAssets(false, 'pv', true)">&nbsp;</i>
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Product Video Url</label>
@@ -130,8 +98,6 @@
                                                     Not a valid URL
                                                 </div>
                                             </div>
-                                            <!-- <i *ngIf="product_data.assetPicture.ProductVideo && !isHaving.pv" class="fa fa-close" (click)="toggleAssets(true, 'pv')">&nbsp;</i> -->
-                                            <!-- <i *ngIf="!product_data.assetPicture.ProductVideo || isHaving.pv" class="fa fa-close" (click)="toggleAssets(false, 'pv', true)">&nbsp;</i> -->
                                         </div>
                                     </div>
                                 </div>
@@ -181,61 +147,34 @@
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Image</label>
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="(!f['MarkingImgURL'].value || this.iImages.length==0) || isHaving.mi" 
-                                                [ngClass]="{'trick3d-five-images' :  feiPreview.length>0 , 'trick3d-six-images' :  feiPreview.length>5}">
-                                                <div class="custom-file-upload">
-                                                    <label for="file-upload" class="upload-labe">
-                                                        {{feiName || 'Choose File'}}
-                                                    </label>
-                                                    <span class="image-span" *ngIf="feiPreview.length==0">No file </span>
-                                                    <span *ngIf="feiPreview.length>0 && feiPreview">
-                                                        <img class="product-images" *ngFor="let fiview of feiPreview" width="60" [src]="fiview" [alt]="feiName"/>
+                                            <div class="col-md-8 float-left">
+                                                <div class="custom-file-upload float-right">
+                                                    <label for="file-upload" class="upload-labe"><i class="fa fa-upload"></i></label>
+                                                    <input #mi id="file-upload" type="file" multiple (change)="onFileChange($event,'fei')" accept="image/*" />
+                                                </div>
+                                                <div class="float-left" *ngIf="this.iImages.length==0 || isHaving.mi" >
+                                                    <span *ngFor="let pimg of feiPreview;let i=index" >
+                                                        <img class="product-images" width="60" [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
+                                                        [lazyLoad]="pimg.url" [alt]="feiName"/>
+                                                        <i class="fa fa-close" (click)="removeSelectedImage($event,i,'feiPreview',pimg.id)"></i>
                                                     </span>
                                                 </div>
-                                                <input #mi id="file-upload" multiple (change)="onFileChange($event,'fei')"
-                                                    type="file" accept="image/*" />
                                             </div>
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="(f['MarkingImgURL'].value || iImages.length>0) && !isHaving.mi">
-                                                <span *ngFor="let iImage of iImages"><a href="javascript:void(0)"
-                                                        (click)="showAsset(iImage, 'image')"><img
-                                                            decode=true
-                                                            [defaultImage]="'../../../../assets/Spinner-1s-201px.svg'"
-                                                            [lazyLoad]="iImage"
-                                                            width="42" /></a></span>
-                                            </div>
-                                            <i *ngIf="(f['MarkingImgURL'].value || iImages.length>0) && !isHaving.mi" class="fa fa-close"
-                                                (click)="toggleAssets(true, 'mi')">&nbsp;</i>
-                                            <i *ngIf="(!f['MarkingImgURL'].value && iImages.length==0) || isHaving.mi" class="fa fa-close"
-                                                (click)="toggleAssets(false, 'mi', true)">&nbsp;</i>
                                         </div>
                                         <div class="form-group review-name margin-btm">
                                             <label class="col-md-4 float-left" for="_client">Video</label>
-                                            <div class="col-md-8 float-left"
-                                                *ngIf="(!f['MarkingVideoURL'].value || iVideos.length==0 )|| isHaving.mv">
-                                                <div class="custom-file-upload">
-                                                    <label for="file-upload" class="upload-labe">
-                                                        {{fevName || 'Choose File'}}
-                                                    </label>
-                                                    <span *ngIf="!fevPreview">No file </span>
+                                            <div class="col-md-8 float-left">
+                                                <div class="custom-file-upload float-right" >
+                                                    <label for="file-upload" class="upload-labe"><i class="fa fa-upload"></i></label>
+                                                    <input #mv id="file-upload" type="file" multiple (change)="onFileChange($event,'fev')" accept="video/*" />
                                                 </div>
-                                                <input #mv id="file-upload" multiple (change)="onFileChange($event,'fev')"
-                                                    type="file" accept="video/*" />
+                                                <div class="float-left" *ngIf="iVideos.length==0 || isHaving.mv">
+                                                    <span *ngFor="let pvid of fevPreview;let i=index" >
+                                                        <img class="product-images" (click)="showAsset(pvid.url,'video')" width="60" src="../../../../assets/img/video-preview.png" [alt]="fevName"/>
+                                                        <i class="fa fa-close" (click)="removeSelectedImage($event,i,'fevPreview', pvid.id)"></i>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 float-left"
-                                                *ngIf="iVideos.length>0 && !isHaving.mv">
-                                                <span *ngFor="let iVideo of iVideos">
-                                                    <a href="javascript:void(0)"
-                                                        (click)="showAsset(iVideo, 'video')">
-                                                        Show Video
-                                                    </a>
-                                                </span>
-                                            </div>
-                                            <i *ngIf="(f['MarkingVideoURL'].value || iVideos.length>0)&& !isHaving.mv" class="fa fa-close"
-                                                (click)="toggleAssets(true, 'mv')">&nbsp;</i>
-                                            <i *ngIf="(!f['MarkingVideoURL'].value && iVideos.length==0 )|| isHaving.mv" class="fa fa-close"
-                                                (click)="toggleAssets(false, 'mv', true)">&nbsp;</i>
                                         </div>
                                     </div>
                                 </div>

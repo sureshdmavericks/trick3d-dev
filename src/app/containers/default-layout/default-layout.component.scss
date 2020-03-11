@@ -4,9 +4,9 @@
     color: var(--on-background);
   }
   
-  .sidebar {
-    background: var(--primary);
-    color: var(--on-primary);
+  .c-sidebar {
+    background: var(--sidebar);
+    color: var(--on-sidebar);
   }
   .trick3d-notify {
     .notifiacrtion-bgclr {
@@ -223,8 +223,8 @@
   color: var(--on-background);
 }
 
-.sidebar {
-  background: var(--primary);
-  color: var(--on-primary);
+.c-sidebar {
+  background: var(--sidebar);
+  color: var(--on-sidebar);
 }
 

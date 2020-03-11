@@ -96,7 +96,7 @@
                     <label class=" col-form-label" for="uploadcounts">Maximum Uploads</label>
                     <input
                       [ngClass]="{ 'is-invalid': submitted && f.UploadCount.errors, 'is-valid': f.UploadCount.touched && !f.UploadCount.errors }"
-                      class="form-control form-clr" formControlName="UploadCount" type="number" id="uploadcounts" />
+                      class="form-control form-clr" formControlName="UploadCount" type="number" id="uploadcounts" max=10/>
                     <div *ngIf="submitted && f['UploadCount'].errors" class="invalid-feedback">
                       <div class="invalid-text" *ngIf="f['UploadCount'].errors.required">
                         Maximum Uploads required.

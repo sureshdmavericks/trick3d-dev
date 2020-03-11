@@ -15,8 +15,9 @@ export interface AssetMgntData extends Array<AssetData> {}
 
 @Injectable()
 export class AssetService {
-  dataUrl = `${environment.API_URL}/assets`
-  dataMarkingUrl = `${environment.API_URL}/asset-markings`
+  dataUrl = `${environment.API_URL}/assets`;
+  dataMarkingUrl = `${environment.API_URL}/asset-markings`;
+  dataUploadUrl = `${environment.API_URL}/asset-pictures`;
 
   constructor(private http: HttpClient, private _authService: AuthService) {}
 
@@ -61,6 +62,20 @@ export class AssetService {
 
   update(data: any, id: string): Observable<any> {
     return this.http.patch(`${this.dataUrl}/${id}`, data, {
+      observe: "response",
+      headers: new HttpHeaders().set("Authorization", this.authHeader)
+    })
+  }
+
+  deleteUpload(id: string): Observable<any> {
+    return this.http.delete(`${this.dataUploadUrl}/${id}`, {
+      observe: "response",
+      headers: new HttpHeaders().set("Authorization", this.authHeader)
+    })
+  }
+
+  deleteMarking(id: string): Observable<any> {
+    return this.http.delete(`${this.dataMarkingUrl}/${id}`, {
       observe: "response",
       headers: new HttpHeaders().set("Authorization", this.authHeader)
     })

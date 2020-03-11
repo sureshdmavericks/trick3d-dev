@@ -41,6 +41,7 @@
           line-height: 33px;
           color: #3262a5;
         }
+       
         .trick-profile-usrname {
           float: left;
           width: 259px;
@@ -67,6 +68,28 @@
         color: #3262a5;
         float: left;
         line-height: 33px;
+      }
+      .custom-file-upload {
+        position: absolute;
+        opacity: 1;
+        background-color: #fff;
+        width: 63%;
+        left: 19%;
+        .upload-labe {
+          border: 1px solid #3262a5;
+          width: 28%;
+          border-radius: 3px;
+          padding: 6px 14px;
+          font-size: 18px;
+          color: #3262a5;
+        }
+      }
+      .choose-file-form {
+        position: relative;
+        opacity: 0;
+        width: 36%;
+        left: 99px;
+        line-height: 35px;
       }
       .trick-profile-usrname {
         float: left;
@@ -101,35 +124,35 @@
     }
   }
   @media all and (max-width: 699px) and (min-width: 320px) {
-      .trick-user{
-          display: none;
-      }
-      .trick-body{
-          padding-left:0px;
-          padding-right:0px;
-      }
-      .trick-profile-usrname{
-          width:100% !important;
-      }
-      .trick-profile-btn{
-          margin-left: 8% !important;
-      }
-      .trick-header{
-        padding-left:0px;
-        padding-right:0px;
-      }
-      .trick-profile-right{
-          padding-left: 0px;
-      }
-      .trick-profile-usrname{
-          margin-left: 0px !important;
-      }
-      .trick-profile-left{
-          margin-left: 62px;
-      }
-      .trick-edit-pctre{
-        margin-left: 62px;
-      }
+    .trick-user {
+      display: none;
+    }
+    .trick-body {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .trick-profile-usrname {
+      width: 100% !important;
+    }
+    .trick-profile-btn {
+      margin-left: 8% !important;
+    }
+    .trick-header {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .trick-profile-right {
+      padding-left: 0px;
+    }
+    .trick-profile-usrname {
+      margin-left: 0px !important;
+    }
+    .trick-profile-left {
+      margin-left: 62px;
+    }
+    .trick-edit-pctre {
+      margin-left: 62px;
+    }
     //   .trick-body{
     //     padding-top: 8px;
     //   }

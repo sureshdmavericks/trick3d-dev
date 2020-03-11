@@ -51,14 +51,14 @@ export class DefaultLayoutComponent implements OnDestroy, OnInit {
       this.themeService.registerTheme({name:'delta', properties:{
         '--background': res.body.HeaderColor,
         '--on-background': res.body.FontColor,
-        '--primary': res.body.SidebarColor,
-        '--on-primary': res.body.FontColor,
+        '--sidebar': res.body.SidebarColor,
+        '--on-sidebar': res.body.FontColor,
       }})
       const active = this.themeService.updateTheme('delta',{
         '--background': res.body.HeaderColor,
         '--on-background': res.body.FontColor,
-        '--primary': res.body.SidebarColor,
-        '--on-primary': res.body.FontColor,
+        '--sidebar': res.body.SidebarColor,
+        '--on-sidebar': res.body.FontColor,
         
       });
       this.themeService.setTheme('delta');

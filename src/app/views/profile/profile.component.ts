@@ -2,8 +2,9 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core"
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from "@angular/router"
 import { UserService } from "../user-management/user.service"
-import swal from "sweetalert2"
-import { AuthService } from '../../authentication/auth.service'
+import swal from "sweetalert2";
+import { AuthService } from '../../authentication/auth.service';
+import { ThemeService } from './../../containers/default-layout/theme';
 
 @Component({
   templateUrl: "./profile.component.html",
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit {
   fileName:string;
 
   constructor(
+    private themeService: ThemeService,
     private fb: FormBuilder,
     private _router: Router,
     private _authService:AuthService,
@@ -105,7 +107,22 @@ export class ProfileComponent implements OnInit {
     }
     this._userService.updateProfile(data).subscribe(response => {
       console.log(response.body)
-      swal.fire("Success!", `Your profile has been updated.`, "success")
+      swal.fire("Success!", `Your profile has been updated.`, "success").then(res=>{
+        this.themeService.registerTheme({name:'delta', properties:{
+          '--background': data.HeaderColor,
+          '--on-background': data.FontColor,
+          '--sidebar': data.SidebarColor,
+          '--on-sidebar': data.FontColor,
+        }})
+        const active = this.themeService.updateTheme('delta',{
+          '--background': data.HeaderColor,
+          '--on-background': data.FontColor,
+          '--sidebar': data.SidebarColor,
+          '--on-sidebar': data.FontColor,
+          
+        });
+        this.themeService.setTheme('delta');
+      })
     }, error=>{
       if(error.error && error.error.error && error.error.error.code=='INVALID_ACCESS_TOKEN'){
         console.log('in token error');

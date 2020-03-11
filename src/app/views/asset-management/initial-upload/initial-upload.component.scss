@@ -22,7 +22,7 @@
       }
       .float-left {
         float: left;
-        padding: 0px;
+        // padding: 0px;
       }
       .no-padding {
         padding: 0px;
@@ -47,6 +47,7 @@
         opacity: 0;
         width: 36%;
         left: 69px;
+        line-height: 35px;
       }
       .custom-file-upload {
         position: absolute;
@@ -54,10 +55,10 @@
         background-color: #fff;
         width: 63%;
         /* float: right; */
-        right: -7px;
+        right: -5px;
         .upload-labe {
           border: 1px solid #3262a5;
-          width: 42%;
+          width: 43%;
           border-radius: 3px;
           padding: 6px 14px;
           font-size: 18px;

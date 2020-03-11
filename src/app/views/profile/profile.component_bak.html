@@ -47,7 +47,7 @@
             <span class="col-md-2 trick-user">Email</span>
             <input formControlName="Email" readonly type="Email" placeholder="Email" class="col-md-8 form-control trick-profile-usrname" />
           </div>
-          <div class="trick-body-form">
+          <div class="trick-body-form col-md-6 form-group no-padding">
             <span class="col-md-2 trick-user">Logo</span>
             <div class="custom-file-upload">
               <label for="file-upload" class="upload-labe">
@@ -64,17 +64,17 @@
           </div>
           <div class="trick-body-form">
             <span class="col-md-2 trick-user">Header Color</span>
-            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'HeaderColor')"  [value]="f['HeaderColor'].value" [style.background]="f['HeaderColor'].value" [(colorPicker)]="f['HeaderColor'].value"/>
+            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'HeaderColor')"  [value]="f['HeaderColor'].value" [style.background]="f['HeaderColor'].value" [cpOKButton]="true" [cpSaveClickOutside]="false" [cpOKButtonClass]= "'btn btn-primary btn-xs'" [(colorPicker)]="f['HeaderColor'].value"/>
             <!-- <input formControlName="HeaderColor" readonly type="text" placeholder="Header Color" class="col-md-8 form-control trick-profile-usrname" /> -->
           </div>
           <div class="trick-body-form">
             <span class="col-md-2 trick-user">Sidebar Color</span>
-            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'SidebarColor')" [value]="f['SidebarColor'].value" [style.background]="f['SidebarColor'].value" [(colorPicker)]="f['SidebarColor'].value"/>
+            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'SidebarColor')" [value]="f['SidebarColor'].value" [style.background]="f['SidebarColor'].value" [cpOKButton]="true" [cpSaveClickOutside]="false" [cpOKButtonClass]= "'btn btn-primary btn-xs'" [(colorPicker)]="f['SidebarColor'].value"/>
             <!-- <input formControlName="SidebarColor" readonly type="text" placeholder="Sidebar Color" class="col-md-8 form-control trick-profile-usrname" /> -->
           </div>
           <div class="trick-body-form">
             <span class="col-md-2 trick-user">Font Color</span>
-            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'FontColor')" [value]="f['FontColor'].value" [style.background]="f['FontColor'].value" [(colorPicker)]="f['FontColor'].value"/>
+            <input class="col-md-8 form-control trick-profile-usrname" (colorPickerChange)="colorChanged($event, 'FontColor')" [value]="f['FontColor'].value" [style.background]="f['FontColor'].value" [cpOKButton]="true" [cpSaveClickOutside]="false" [cpOKButtonClass]= "'btn btn-primary btn-xs'" [(colorPicker)]="f['FontColor'].value"/>
             <!-- <input formControlName="FontColor" readonly type="text" placeholder="Font Color" class="col-md-8 form-control trick-profile-usrname" /> -->
           </div>
           <!-- <div class="trick-body-form">
