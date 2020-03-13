@@ -23,6 +23,7 @@
           display: flex;
           font-size: 18px;
           color: #3262a5;
+
           .product-name {
             border: none;
             border-radius: 4px;
@@ -52,47 +53,97 @@
           //     display: none;
           //   }
           input[type="file"] {
-            width: 100%;
+            width: 18%;
             position: relative;
             opacity: 0;
+            left: -14px;
+            top: 6px;
+            height: 54px;
           }
           .custom-file-upload {
             position: absolute;
             opacity: 1;
             background-color: #fff;
-            width: 12%;
+            width: 94%;
+            .fa-upload {
+              font-size: 15px;
+              padding: 11px 0px 0px 17px;
+            }
             .upload-labe {
               border: 1px solid #3262a5;
-              width: 100%;
+              width: 69%;
               border-radius: 3px;
               padding: 6px 14px;
             }
-            .no-file-chosen{
+            .upload-label {
+              border: 1px solid #3262a5;
+              width: 16%;
+              border-radius: 3px;
+              padding: 6px 3px;
+              float: left;
+              height: 55px;
+              margin: 7px 4px 0px 0px;
+              font-size: 10px;
+              line-height: 17px;
+            }
+            .no-file-chosen {
               display: none;
             }
-            img{
-              width:60px;
-            }
-            .product-images:nth-child(6){
-              margin-top: 3px;
+            .div-image {
+              // float: left;
+              // display: contents;
+              .multiple-image {
+                position: relative;
+                float: left;
+                margin-right: 3px;
+                img {
+                  width: 55px;
+                  margin-top: 3px;
+                  // height: 55px;
+                  
+                  // position: relative;
+                }
+                .zoom-img {
+                  cursor:zoom-in;
+                }
+                .zoom-video{
+                  cursor: pointer;;
+                }
+                .product-images:nth-child(6) {
+                  margin-top: 3px;
+                }
+                .img-close {
+                  position: absolute;
+                  left: 35px;
+                  top: 8px;
+                  // border: 1px solid #fff;
+                  // border-radius: 31px;
+                  width: 17px;
+                  height: 17px;
+                  line-height: 14px;
+                  font-size: 14px;
+                  padding-left: 2px;
+                  cursor: pointer;
+                }
+              }
             }
           }
-          .trick3d-five-images{
-            height:115px;
-            span{
+          .trick3d-five-images {
+            height: 65px;
+            span {
               display: block;
-              img{
+              img {
                 margin-right: 3px;
               }
             }
           }
-          .trick3d-six-images{
-            height:162px;
-            span{
+          .trick3d-six-images {
+            height: 119px;
+            span {
               display: block;
-              img{
+              img {
                 margin-right: 3px;
-                margin-top:3px;
+                margin-top: 3px;
               }
             }
           }
@@ -149,6 +200,9 @@
             resize: none;
           }
         }
+        .line-height {
+          line-height: 63px;
+        }
         .margin-btm {
           margin-bottom: 20px;
         }
@@ -172,6 +226,9 @@
         //   background-color: #3262a5;
         //   color: #fff;
         // }
+        &:focus {
+          box-shadow: none;
+        }
       }
       .profile-cncl-btn {
         background-color: transparent;
@@ -186,6 +243,9 @@
         //   color: #3262a5;
         //   border: 1px solid #3262a5;
         // }
+        &:focus {
+          box-shadow: none;
+        }
       }
       .profile-publish-btn {
         color: #fff;
@@ -194,6 +254,9 @@
         font-size: 18px;
         &:hover {
           background-color: #20a8d8;
+        }
+        &:focus {
+          box-shadow: none;
         }
       }
     }
@@ -213,45 +276,45 @@
       }
     }
     .custom-file-upload {
-      img{
-        width:57px !important; 
+      img {
+        width: 57px !important;
       }
-    product-images:nth-child(6){
-      margin-top: 3px;
-    }
-  }
-  
-  .trick3d-five-images{
-    height:96px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
+      product-images:nth-child(6) {
+        margin-top: 3px;
       }
     }
-  }
-  .trick3d-six-images{
-    height:162px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
-        margin-top:3px;
+
+    .trick3d-five-images {
+      height: 96px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+        }
       }
     }
-  }
+    .trick3d-six-images {
+      height: 162px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+          margin-top: 3px;
+        }
+      }
+    }
     .trick3d-product-form {
       padding: 0px !important;
       .product-form {
         padding: 0px;
       }
-      .review-form-body{
+      .review-form-body {
         padding: 19px 0px 0px 0px !important;
-        .float-left{
-          padding-left:0px !important;
+        .float-left {
+          padding-left: 0px !important;
           margin-bottom: 20px !important;
         }
-        .padding-left{
+        .padding-left {
           padding-left: 15px !important;
         }
       }
@@ -261,10 +324,8 @@
       .review-forms {
         padding-left: 0px;
         padding-right: 0px;
-        .margin-btm{
-          margin-bottom: 0px !important
-          
-          ;
+        .margin-btm {
+          margin-bottom: 0px !important;
         }
       }
     }
@@ -273,7 +334,7 @@
       margin-right: 0px !important;
       float: left !important;
     }
-    .image-span{
+    .image-span {
       display: none;
     }
     .profile-publish-btn {
@@ -291,7 +352,6 @@
     }
   }
   @media all and (width: 375px) {
-    
     .trick3d-review-image {
       padding: 0px !important;
       border-right: none;
@@ -300,54 +360,71 @@
       }
     }
     .custom-file-upload {
-      img{
-        width:49px !important; 
+      img {
+        width: 49px !important;
+        height: 53px !important;
       }
-    product-images:nth-child(6){
-      margin-top: 3px;
+      product-images:nth-child(6) {
+        margin-top: 3px;
+      }
+      .upload-label {
+        width: 19% !important;
+        height: 53px !important;
+        font-size: 8px !important;
+      }
+      .img-close {
+        position: absolute;
+        left: 31px !important;
+        top: 9px !important;
+        border: 1px solid #fff;
+        border-radius: 31px;
+        width: 14px !important;
+        height: 14px !important;
+        line-height: 11px !important;
+        font-size: 11px !important;
+        padding-left: 3px;
+      }
+    }
+
+    .trick3d-five-images {
+      height: 50px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+        }
+      }
+    }
+    .trick3d-six-images {
+      height: 105px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+          margin-top: 3px;
+        }
+      }
+    }
+    .review-btns {
+      margin-left: -14px !important;
+      .profile-publish-btn {
+        font-size: 15px !important;
+        width: 93px !important;
+      }
+      .profile-submit-btn {
+        font-size: 15px !important;
+        width: 93px !important;
+        margin-right: 0px !important;
+      }
+      .profile-cncl-btn {
+        font-size: 15px !important;
+        width: 93px !important;
+      }
     }
   }
-  
-  .trick3d-five-images{
-    height:99px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
-      }
-    }
-  }
-  .trick3d-six-images{
-    height:136px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
-        margin-top:3px;
-      }
-    }
-  }
-  .review-btns{
-    margin-left: -14px !important;
-    .profile-publish-btn {
-      font-size: 15px !important;
-      width: 93px !important;
-  }
-  .profile-submit-btn {
-    font-size: 15px !important;
-    width: 93px !important;
-    margin-right: 0px !important;
-}
-.profile-cncl-btn {
-  font-size: 15px !important;
-  width: 93px !important;
-}
-  }
-    
-}
-  
+
   @media all and (width: 360px) {
-    .review-header{
+    .review-header {
       font-size: 26px !important;
     }
     .trick3d-review-image {
@@ -358,52 +435,74 @@
       }
     }
     .custom-file-upload {
-      img{
-        width:48px !important; 
+      img {
+        width: 47px !important;
+        height: 52px !important; 
       }
-    product-images:nth-child(6){
-      margin-top: 3px;
+      product-images:nth-child(6) {
+        margin-top: 3px;
+      }
+      .fa-upload {
+        font-size: 15px;
+        padding: 10px 0px 0px 15px !important;
     }
-  }
-  
-  .trick3d-five-images{
-    height:96px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
+      .upload-label {
+        width: 18% !important;
+        height: 53px !important;
+        font-size: 8px !important;
+      }
+      .img-close {
+        position: absolute;
+        left: 31px !important;
+        top: 9px !important;
+        border: 1px solid #fff;
+        border-radius: 31px;
+        width: 14px !important;
+        height: 14px !important;
+        line-height: 11px !important;
+        font-size: 11px !important;
+        padding-left: 3px;
       }
     }
-  }
-  .trick3d-six-images{
-    height:162px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
-        margin-top:3px;
+
+    .trick3d-five-images {
+      height: 51px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+        }
       }
     }
-  }
-  .review-btns{
-    margin-right: -2px !important;
-    .profile-publish-btn {
-      font-size: 15px !important;
-      width: 83px !important;
-  }
-  .profile-submit-btn {
-    font-size: 15px !important;
-    width: 83px !important;
-    margin-right: 0px !important;
-}
-.profile-cncl-btn {
-  font-size: 15px !important;
-  width: 83px !important;
-}
-  }
+    .trick3d-six-images {
+      height: 102px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+          margin-top: 3px;
+        }
+      }
+    }
+    .review-btns {
+      margin-right: -2px !important;
+      .profile-publish-btn {
+        font-size: 15px !important;
+        width: 83px !important;
+      }
+      .profile-submit-btn {
+        font-size: 15px !important;
+        width: 83px !important;
+        margin-right: 0px !important;
+      }
+      .profile-cncl-btn {
+        font-size: 15px !important;
+        width: 83px !important;
+      }
+    }
   }
   @media all and (width: 320px) {
-    .review-header{
+    .review-header {
       font-size: 23px !important;
     }
     .trick3d-review-image {
@@ -414,49 +513,72 @@
       }
     }
     .custom-file-upload {
-      img{
-        width:40px !important; 
+      img {
+        width: 40px !important;
+        height: 53px !important;
       }
-    product-images:nth-child(6){
-      margin-top: 3px;
+      product-images:nth-child(6) {
+        margin-top: 3px;
+      }
+      .fa-upload {
+        font-size: 20px;
+        padding: 10px 0px 0px 10px !important;
+      }
+      .upload-label {
+        width: 18% !important;
+        height: 53px !important;
+        font-size: 7px !important;
+        margin: 7px 4px 0px 0px !important;
+        line-height: 10px !important;
+      }
+      .img-close {
+        position: absolute;
+        left: 25px !important;
+        top: 8px !important;
+        border: 1px solid #fff;
+        border-radius: 31px;
+        width: 14px !important;
+        height: 14px !important;
+        line-height: 11px !important;
+        font-size: 10px !important;
+        padding-left: 3px;
+      }
+    }
+
+    .trick3d-five-images {
+      height: 45px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+        }
+      }
+    }
+    .trick3d-six-images {
+      height: 97px !important;
+      span {
+        display: block;
+        img {
+          margin-right: 3px;
+          margin-top: 3px;
+        }
+      }
+    }
+    .review-btns {
+      margin-left: -14px !important;
+      .profile-publish-btn {
+        font-size: 14px !important;
+        width: 74px !important;
+      }
+      .profile-submit-btn {
+        font-size: 14px !important;
+        width: 74px !important;
+        margin-right: 0px !important;
+      }
+      .profile-cncl-btn {
+        font-size: 14px !important;
+        width: 74px !important;
+      }
     }
   }
-  
-  .trick3d-five-images{
-    height:89px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
-      }
-    }
-  }
-  .trick3d-six-images{
-    height:136px !important;
-    span{
-      display: block;
-      img{
-        margin-right: 3px;
-        margin-top:3px;
-      }
-    }
-  }
-  .review-btns{
-    margin-left: -14px !important;
-    .profile-publish-btn {
-      font-size: 14px !important;
-      width: 74px !important;
-  }
-  .profile-submit-btn {
-    font-size: 14px !important;
-    width: 74px !important;
-    margin-right: 0px !important;
-}
-.profile-cncl-btn {
-  font-size: 14px !important;
-  width: 74px !important;
-}
-  }
-    
-}
 }

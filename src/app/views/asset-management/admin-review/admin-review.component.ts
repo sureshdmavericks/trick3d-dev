@@ -73,7 +73,8 @@ export class AdminReviewComponent implements OnInit {
   }
 
   getCategpries(clientID: string) {
-    this._categoryService.getDataByClient(clientID).subscribe(response => {
+    // this._categoryService.getDataByClient(clientID).subscribe(response => {
+    this._categoryService.getData().subscribe(response => {
       this.categories = response.body
     })
   }
@@ -392,7 +393,13 @@ export class AdminReviewComponent implements OnInit {
       swal.fire({
         imageUrl: asset,
         width: 900,
-        imageAlt: "Product"
+        imageAlt: "Product",
+        showClass: {
+          popup: 'animated fadeIn faster'
+        },
+        // hideClass: {
+        //   popup: 'animated fadeOut faster'
+        // }
       })
     } else {
       if(typeof asset=="object"){

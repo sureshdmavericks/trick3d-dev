@@ -41,7 +41,7 @@
           line-height: 33px;
           color: #3262a5;
         }
-       
+
         .trick-profile-usrname {
           float: left;
           width: 259px;
@@ -88,7 +88,7 @@
         position: relative;
         opacity: 0;
         width: 36%;
-        left: 99px;
+        // left: 99px;
         line-height: 35px;
       }
       .trick-profile-usrname {
@@ -134,6 +134,13 @@
     .trick-profile-usrname {
       width: 100% !important;
     }
+    .custom-file-upload {
+      left: 0% !important;
+      width: 78% !important;
+      .upload-labe {
+        width: 74% !important;
+      }
+    }
     .trick-profile-btn {
       margin-left: 8% !important;
     }
@@ -143,15 +150,16 @@
     }
     .trick-profile-right {
       padding-left: 0px;
+      padding-top: 66px !important;
     }
     .trick-profile-usrname {
       margin-left: 0px !important;
     }
     .trick-profile-left {
-      margin-left: 62px;
+      margin-left: 77px;
     }
     .trick-edit-pctre {
-      margin-left: 62px;
+      margin-left: 91px;
     }
     //   .trick-body{
     //     padding-top: 8px;
@@ -159,5 +167,59 @@
     //   .trick-form{
     //       padding-top: 61px;
     //   }
+  }
+  @media all and (width: 375px) {
+    .custom-file-upload {
+      left: 0% !important;
+      width: 87% !important;
+      .upload-labe {
+        width: 76% !important;
+      }
+    }
+    .trick-profile-left {
+      margin-left: 61px !important;
+    }
+    .trick-profile-right {
+      padding-top: 72px !important;
+    }
+    .trick-edit-pctre {
+      margin-left: 76px !important;
+    }
+  }
+  @media all and (width: 360px) {
+    .custom-file-upload {
+      left: 0% !important;
+      width: 91% !important;
+      .upload-labe {
+        width: 76% !important;
+      }
+    }
+    .trick-profile-left {
+      margin-left: 64px !important;
+    }
+    .trick-profile-right {
+      padding-top: 72px !important;
+    }
+    .trick-edit-pctre {
+      margin-left: 76px !important;
+    }
+  }
+  @media all and (width: 320px) {
+    .trick-profile-left {
+      margin-left: 34px !important;
+    }
+    .custom-file-upload {
+      left: 0% !important;
+      width: 100% !important;
+      .upload-labe {
+        width: 70% !important;
+      }
+    }
+    .trick-profile-right {
+      padding-top: 72px !important;
+    }
+    .trick-edit-pctre {
+      margin-left: 49px !important;
+    }
   }
 }
